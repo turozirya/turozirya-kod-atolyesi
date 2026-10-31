@@ -49,7 +49,7 @@ export default function Home() {
             render={<Link href="/giris" />}
             nativeButton={false}
             size="lg"
-            className="h-12 w-full rounded-2xl text-base font-bold shadow-sm"
+            className="h-12 w-full rounded-2xl text-base font-bold shadow-sm sm:w-auto sm:flex-1"
           >
             Giriş Yap
           </Button>
@@ -58,7 +58,7 @@ export default function Home() {
             nativeButton={false}
             variant="secondary"
             size="lg"
-            className="h-12 w-full rounded-2xl text-base font-bold shadow-sm"
+            className="h-12 w-full rounded-2xl text-base font-bold shadow-sm sm:w-auto sm:flex-1"
           >
             Kayıt Ol
           </Button>
