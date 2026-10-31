@@ -16,11 +16,13 @@ export function Header({
   avatar,
   menu,
   points,
+  profileHref,
 }: {
   displayName: string;
   avatar: string;
   menu?: React.ReactNode;
   points?: number;
+  profileHref?: string;
 }) {
   return (
     <header className="flex items-center justify-between gap-3 border-b bg-card px-4 py-3 sm:px-6">
@@ -47,9 +49,11 @@ export function Header({
           </span>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem render={<Link href="/profil" />}>
-            Profil
-          </DropdownMenuItem>
+          {profileHref && (
+            <DropdownMenuItem render={<Link href={profileHref} />}>
+              Profil
+            </DropdownMenuItem>
+          )}
           <DropdownMenuItem onClick={() => signOut()}>Çıkış</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

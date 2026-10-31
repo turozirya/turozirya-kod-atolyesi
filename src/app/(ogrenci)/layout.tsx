@@ -27,6 +27,7 @@ export default async function OgrenciLayout({
         displayName={profile.display_name}
         avatar={profile.avatar}
         points={profile.role === "student" ? profile.total_points : undefined}
+        profileHref={profile.role === "student" ? "/profil" : undefined}
       />
       <StudentNav leaderboardEnabled={leaderboardEnabled} />
       <main className="flex flex-1 flex-col pb-16 sm:pb-0">{children}</main>
