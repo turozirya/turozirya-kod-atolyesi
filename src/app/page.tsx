@@ -36,11 +36,11 @@ export default function Home() {
 
         <div className="flex flex-col items-center gap-3">
           <h1 className="font-heading text-4xl font-bold text-foreground sm:text-5xl">
-            Kodlama Kulübü
+            Turozirya Kod Atölyesi
           </h1>
           <p className="max-w-md text-lg text-muted-foreground">
             micro:bit ile kodlamayı öğren, rozetler topla, sınıfınla
-            yarış! Robotik kodlama kulübünün eğlenceli öğrenme platformu.
+            yarış! Turozirya Kod Atölyesi&apos;nin eğlenceli öğrenme platformu.
           </p>
         </div>
 

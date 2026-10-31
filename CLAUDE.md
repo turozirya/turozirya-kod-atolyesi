@@ -1,4 +1,4 @@
-# Kodlama Kulübü — Proje Planı ve Claude Code Rehberi
+# Turozirya Kod Atölyesi — Proje Planı ve Claude Code Rehberi
 
 > Bu dosya projenin kök dizininde `CLAUDE.md` olarak durur. Claude Code her oturumda bu dosyayı okur.
 > Proje **fazlar** halinde geliştirilir. Her faz bitmeden bir sonrakine geçilmez.
@@ -18,6 +18,7 @@
 
 Faz notları (Claude Code doldurur — alınan önemli kararlar, ertelenen işler):
 
+- **Faz 0 sonrası:** Proje adı **Turozirya Kod Atölyesi** olarak değiştirildi (paket adı: `turozirya-kod-atolyesi`). Görünen ad ana sayfada, `layout.tsx` metadata'sında (title/description) ve bu dosyanın başlığı + "Proje adı notu" paragrafında güncellendi. `package.json` adı değişti, `package-lock.json` `npm install` ile yenilendi. Klasör adı hâlâ `kodlama_kulubu` (kullanıcı ayrıca değiştirecek); `.env*`, `STUDENT_EMAIL_DOMAIN` ve §11'deki klasör ağacı/Faz Promptları metinleri bilinçli olarak dokunulmadan bırakıldı (kapsam dışı).
 - **Faz 0:**
   - Next.js 16.4.3 + React 19.3 kuruldu (Turbopack varsayılan). `middleware.ts` yerine `src/proxy.ts` kullanıldı (Next 16'da middleware → proxy olarak yeniden adlandırıldı; dışa aktarılan fonksiyon adı da `proxy`).
   - create-next-app'ın yeni varsayılanı olan **Cache Components** (`cacheComponents` + `partialPrefetching`) kullanıcı kararıyla **kapatıldı** — her dinamik/`cookies()` okuyan bileşeni `<Suspense>` ile sarma zorunluluğunu projeye getirmemek için. `next.config.ts`'de bu seçenekler yok; geleneksel dinamik render kullanılıyor.
@@ -46,7 +47,7 @@ Kurslar sınıflara atanır; öğrenci yalnızca sınıfına atanmış kursları
 
 **Hedef kitle:** 11–12 yaş, ilk kez kod yazan öğrenciler. Arayüz renkli, sade, büyük dokunma alanlı, telefonda rahat kullanılır olmalı. Tüm arayüz metinleri **Türkçe**.
 
-**Proje adı notu:** Görünen ad "Kodlama Kulübü". npm paket adı ve klasör adı Türkçe karakter içeremeyeceği için `kodlama-kulubu` kullanılır.
+**Proje adı notu:** Görünen ad "Turozirya Kod Atölyesi". npm paket adı `turozirya-kod-atolyesi` (npm büyük harf ve Türkçe karakter kabul etmediği için kebab-case kullanılır). Klasör adı şu an hâlâ `kodlama_kulubu` — yeniden adlandırma ayrıca yapılacak.
 
 ---
 

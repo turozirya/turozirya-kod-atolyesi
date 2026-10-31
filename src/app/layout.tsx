@@ -15,8 +15,9 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Kodlama Kulübü",
-  description: "Ortaokul robotik kodlama kulübü için öğrenme platformu",
+  title: "Turozirya Kod Atölyesi",
+  description:
+    "Turozirya Kod Atölyesi — ortaokul robotik kodlama kulübü için öğrenme platformu",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
