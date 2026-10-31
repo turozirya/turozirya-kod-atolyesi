@@ -18,3 +18,10 @@ export function suggestUsername(displayName: string): string {
 export function usernameToEmail(username: string, domain: string): string {
   return `${username}@${domain}`;
 }
+
+export function ensureUniqueUsername(base: string, existing: Set<string>): string {
+  if (!existing.has(base)) return base;
+  let i = 2;
+  while (existing.has(`${base}${i}`)) i++;
+  return `${base}${i}`;
+}

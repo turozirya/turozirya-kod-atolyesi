@@ -7,9 +7,11 @@ import { Switch } from "@/components/ui/switch";
 export function PublishSwitch({
   checked,
   onToggle,
+  ariaLabel = "Yayında",
 }: {
   checked: boolean;
   onToggle: (next: boolean) => Promise<{ error?: string } | void>;
+  ariaLabel?: string;
 }) {
   const router = useRouter();
   const [value, setValue] = useState(checked);
@@ -19,7 +21,7 @@ export function PublishSwitch({
     <Switch
       checked={value}
       disabled={pending}
-      aria-label="Yayında"
+      aria-label={ariaLabel}
       onCheckedChange={async (next) => {
         setValue(next);
         setPending(true);

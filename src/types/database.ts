@@ -549,6 +549,14 @@ export type Database = {
       is_teacher: { Args: never; Returns: boolean }
       mark_badges_seen: { Args: never; Returns: undefined }
       mark_lesson_viewed: { Args: { p_lesson_id: string }; Returns: undefined }
+      teacher_add_bonus: {
+        Args: { p_amount: number; p_note: string; p_student: string }
+        Returns: Json
+      }
+      teacher_update_student_class: {
+        Args: { p_class_id: string; p_student: string }
+        Returns: undefined
+      }
       teaches_student: { Args: { student: string }; Returns: boolean }
     }
     Enums: {

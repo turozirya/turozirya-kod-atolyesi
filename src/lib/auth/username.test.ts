@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  ensureUniqueUsername,
   isValidUsername,
   suggestUsername,
   turkishToAscii,
@@ -60,5 +61,20 @@ describe("usernameToEmail", () => {
     expect(usernameToEmail("ahmet_01", "ogrenci.kodlamakulubu.local")).toBe(
       "ahmet_01@ogrenci.kodlamakulubu.local"
     );
+  });
+});
+
+describe("ensureUniqueUsername", () => {
+  it("returns the base unchanged when it is free", () => {
+    expect(ensureUniqueUsername("ayse", new Set())).toBe("ayse");
+  });
+
+  it("appends 2 when the base is taken", () => {
+    expect(ensureUniqueUsername("ayse", new Set(["ayse"]))).toBe("ayse2");
+  });
+
+  it("keeps incrementing until a free suffix is found", () => {
+    const taken = new Set(["ayse", "ayse2", "ayse3"]);
+    expect(ensureUniqueUsername("ayse", taken)).toBe("ayse4");
   });
 });
