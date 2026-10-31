@@ -155,6 +155,7 @@ export default async function DersPage({
         <CompleteButton
           lessonId={lesson.id}
           initiallyCompleted={progressMap.get(lesson.id) === "completed"}
+          initialPoints={profile!.total_points}
         />
       ) : (
         <p className="mt-4 rounded-2xl bg-muted px-4 py-3 text-center text-sm text-muted-foreground">

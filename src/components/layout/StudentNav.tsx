@@ -13,13 +13,16 @@ const NAV_ITEMS = [
   { href: "/profil", label: "Profil", icon: User },
 ] as const;
 
-export function StudentNav() {
+export function StudentNav({ leaderboardEnabled = true }: { leaderboardEnabled?: boolean }) {
   const pathname = usePathname();
+  const navItems = NAV_ITEMS.filter(
+    (item) => leaderboardEnabled || item.href !== "/siralama"
+  );
 
   return (
     <>
       <nav className="hidden items-center gap-1 border-b bg-card px-4 sm:flex sm:px-6">
-        {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
+        {navItems.map(({ href, label, icon: Icon }) => {
           const active = pathname === href || pathname.startsWith(`${href}/`);
           return (
             <Link
@@ -43,7 +46,7 @@ export function StudentNav() {
         aria-label="Alt gezinme"
         className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-around border-t bg-card py-1.5 sm:hidden"
       >
-        {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
+        {navItems.map(({ href, label, icon: Icon }) => {
           const active = pathname === href || pathname.startsWith(`${href}/`);
           return (
             <Link

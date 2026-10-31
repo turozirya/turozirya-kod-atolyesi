@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PartyPopper, Sparkles } from "lucide-react";
+import { Flame, PartyPopper, Sparkles } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentProfile } from "@/lib/auth/session";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,9 @@ import { Progress } from "@/components/ui/progress";
 import { getIconComponent } from "@/lib/icons";
 import { getModuleColorClasses } from "@/lib/module-colors";
 import { cn } from "@/lib/utils";
+import { LevelBar } from "@/components/gamification/LevelBar";
+import { UnseenBadgesDialog } from "@/components/gamification/UnseenBadgesDialog";
+import { getCurrentStreak } from "@/lib/gamification/streak";
 import type { Json } from "@/types/database";
 
 type ResumeTarget =
@@ -88,11 +91,44 @@ export default async function PanelPage({
         .limit(3)
     : { data: null };
 
+  let streak = 0;
+  let unseenBadges: { code: string; name: string; description: string; icon: string; color: string }[] = [];
+  if (profile?.role === "student") {
+    const { data: days } = await supabase
+      .from("activity_days")
+      .select("day")
+      .eq("student_id", profile.id)
+      .order("day", { ascending: false })
+      .limit(400);
+    streak = getCurrentStreak((days ?? []).map((d) => d.day));
+
+    const { data: unseen } = await supabase
+      .from("student_badges")
+      .select("badges(code, name, description, icon, color)")
+      .eq("student_id", profile.id)
+      .eq("seen", false);
+    unseenBadges = (unseen ?? []).flatMap((row) => (row.badges ? [row.badges] : []));
+  }
+
   return (
     <div className="flex flex-1 flex-col gap-6 p-4 sm:p-6">
       <h1 className="font-heading text-2xl font-bold text-foreground">
         Merhaba, {profile?.display_name}!
       </h1>
+
+      {profile?.role === "student" && (
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+          <LevelBar points={profile.total_points} className="flex-1" />
+          {streak > 0 && (
+            <Card className="flex items-center gap-2 rounded-2xl border-2 border-orange-300 bg-orange-100 px-4 py-3 text-orange-700">
+              <Flame className="h-5 w-5" aria-hidden />
+              <span className="font-bold">{streak} günlük seri</span>
+            </Card>
+          )}
+        </div>
+      )}
+
+      {unseenBadges.length > 0 && <UnseenBadgesDialog badges={unseenBadges} />}
 
       {finishedCourseTitle && (
         <Card className="flex items-center gap-3 rounded-2xl border-2 border-badge bg-badge/10 p-4">

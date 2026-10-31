@@ -5,62 +5,46 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { completeLesson } from "@/actions/progress";
-import type { Json } from "@/types/database";
-
-type NextLesson = {
-  course_slug: string;
-  module_slug: string;
-  lesson_slug: string;
-  title: string;
-};
-
-function parseNextLesson(value: Json | undefined): NextLesson | null {
-  if (!value || typeof value !== "object" || Array.isArray(value)) {
-    return null;
-  }
-  const { course_slug, module_slug, lesson_slug, title } = value as Record<
-    string,
-    Json | undefined
-  >;
-  if (
-    typeof course_slug === "string" &&
-    typeof module_slug === "string" &&
-    typeof lesson_slug === "string" &&
-    typeof title === "string"
-  ) {
-    return { course_slug, module_slug, lesson_slug, title };
-  }
-  return null;
-}
+import { markBadgesSeen } from "@/actions/badges";
+import { CelebrationDialog } from "@/components/gamification/CelebrationDialog";
+import {
+  parseCompleteLessonResult,
+  type CompleteLessonResult,
+  type NextLesson,
+} from "@/lib/gamification/complete-lesson";
 
 export function CompleteButton({
   lessonId,
   initiallyCompleted,
+  initialPoints,
 }: {
   lessonId: string;
   initiallyCompleted: boolean;
+  initialPoints: number;
 }) {
   const [completed, setCompleted] = useState(initiallyCompleted);
   const [submitting, setSubmitting] = useState(false);
   const [nextLesson, setNextLesson] = useState<NextLesson | null>(null);
+  const [celebration, setCelebration] = useState<CompleteLessonResult | null>(null);
 
   const onClick = async () => {
     setSubmitting(true);
-    const result = await completeLesson(lessonId);
+    const response = await completeLesson(lessonId);
     setSubmitting(false);
 
-    if (result.error) {
-      toast.error(result.error);
+    if (response.error) {
+      toast.error(response.error);
       return;
     }
 
-    const payload = result.data as Record<string, Json | undefined> | undefined;
-    setCompleted(true);
-    setNextLesson(parseNextLesson(payload?.next_lesson));
+    const result = parseCompleteLessonResult(response.data);
+    if (!result) return;
 
-    const pointsEarned = typeof payload?.points_earned === "number" ? payload.points_earned : 0;
-    if (pointsEarned > 0) {
-      toast.success(`+${pointsEarned} puan!`);
+    setCompleted(true);
+    setNextLesson(result.next_lesson);
+
+    if (!result.already_completed && (result.points_earned > 0 || result.new_badges.length > 0)) {
+      setCelebration(result);
     }
   };
 
@@ -75,7 +59,7 @@ export function CompleteButton({
         {completed ? "Tamamlandı — tekrar göz atıyorsun" : submitting ? "Kaydediliyor…" : "Tamamlandı ✓"}
       </Button>
 
-      {completed && nextLesson && (
+      {completed && nextLesson && !celebration && (
         <Button
           size="lg"
           nativeButton={false}
@@ -88,6 +72,15 @@ export function CompleteButton({
         >
           Sonraki Derse Geç → {nextLesson.title}
         </Button>
+      )}
+
+      {celebration && (
+        <CelebrationDialog
+          result={celebration}
+          prevPoints={initialPoints}
+          onClose={() => setCelebration(null)}
+          onMarkSeen={() => markBadgesSeen()}
+        />
       )}
     </div>
   );

@@ -511,9 +511,43 @@ export type Database = {
       can_access_course: { Args: { course: string }; Returns: boolean }
       check_class_code: { Args: { p_code: string }; Returns: string }
       complete_lesson: { Args: { p_lesson_id: string }; Returns: Json }
+      evaluate_badges: {
+        Args: { p_student: string }
+        Returns: {
+          bonus_points: number
+          code: string
+          color: string
+          course_id: string | null
+          criteria: Database["public"]["Enums"]["badge_criteria"]
+          criteria_value: number | null
+          description: string
+          icon: string
+          id: string
+          module_id: string | null
+          name: string
+          order_index: number
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "badges"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      get_class_leaderboard: {
+        Args: never
+        Returns: {
+          avatar: string
+          badge_count: number
+          display_name: string
+          is_me: boolean
+          total_points: number
+        }[]
+      }
       get_resume_target: { Args: { p_course_id?: string }; Returns: Json }
       get_student_courses: { Args: never; Returns: Json }
       is_teacher: { Args: never; Returns: boolean }
+      mark_badges_seen: { Args: never; Returns: undefined }
       mark_lesson_viewed: { Args: { p_lesson_id: string }; Returns: undefined }
       teaches_student: { Args: { student: string }; Returns: boolean }
     }
