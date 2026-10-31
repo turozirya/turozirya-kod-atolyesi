@@ -510,7 +510,11 @@ export type Database = {
     Functions: {
       can_access_course: { Args: { course: string }; Returns: boolean }
       check_class_code: { Args: { p_code: string }; Returns: string }
+      complete_lesson: { Args: { p_lesson_id: string }; Returns: Json }
+      get_resume_target: { Args: { p_course_id?: string }; Returns: Json }
+      get_student_courses: { Args: never; Returns: Json }
       is_teacher: { Args: never; Returns: boolean }
+      mark_lesson_viewed: { Args: { p_lesson_id: string }; Returns: undefined }
       teaches_student: { Args: { student: string }; Returns: boolean }
     }
     Enums: {

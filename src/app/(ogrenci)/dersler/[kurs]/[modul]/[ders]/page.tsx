@@ -1,11 +1,14 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import { getCurrentProfile } from "@/lib/auth/session";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { CodeBlock } from "@/components/lesson/CodeBlock";
+import { CompleteButton } from "@/components/lesson/CompleteButton";
 import { LessonContent } from "@/components/lesson/LessonContent";
+import { LessonLockScreen } from "@/components/lesson/LessonLockScreen";
 import { MaterialsBox } from "@/components/lesson/MaterialsBox";
+import { ScrollPositionTracker } from "@/components/lesson/ScrollPositionTracker";
 import { ToolButton } from "@/components/lesson/ToolButton";
 import { VideoEmbed } from "@/components/lesson/VideoEmbed";
 
@@ -28,7 +31,7 @@ export default async function DersPage({
 
   const { data: moduleRow } = await supabase
     .from("modules")
-    .select("id, slug, title")
+    .select("id, slug, title, is_sequential")
     .eq("course_id", course.id)
     .eq("slug", modul)
     .eq("is_published", true)
@@ -61,6 +64,53 @@ export default async function DersPage({
     siblings && index !== -1 && index < siblings.length - 1
       ? siblings[index + 1]
       : null;
+
+  const profile = await getCurrentProfile();
+  const isStudent = profile?.role === "student";
+
+  const progressMap = new Map<string, "in_progress" | "completed">();
+  if (isStudent && siblings && siblings.length > 0) {
+    const { data: progress } = await supabase
+      .from("lesson_progress")
+      .select("lesson_id, status")
+      .eq("student_id", profile!.id)
+      .in(
+        "lesson_id",
+        siblings.map((s) => s.id)
+      );
+    for (const row of progress ?? []) {
+      progressMap.set(row.lesson_id, row.status);
+    }
+  }
+
+  const blockingLesson =
+    isStudent && moduleRow.is_sequential
+      ? (siblings ?? []).find(
+          (s) => s.order_index < lesson.order_index && progressMap.get(s.id) !== "completed"
+        )
+      : undefined;
+
+  if (blockingLesson) {
+    return (
+      <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-4 p-4 sm:p-6">
+        <nav className="text-sm text-muted-foreground">
+          <Link href={`/dersler/${course.slug}`} className="hover:underline">
+            {course.title}
+          </Link>
+          {" › "}
+          <span>{moduleRow.title}</span>
+        </nav>
+        <LessonLockScreen
+          blockingLessonTitle={blockingLesson.title}
+          blockingLessonHref={`/dersler/${course.slug}/${moduleRow.slug}/${blockingLesson.slug}`}
+        />
+      </div>
+    );
+  }
+
+  if (isStudent) {
+    await supabase.rpc("mark_lesson_viewed", { p_lesson_id: lesson.id });
+  }
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-4 p-4 sm:p-6">
@@ -101,13 +151,16 @@ export default async function DersPage({
         <ToolButton url={lesson.tool_url} label={lesson.tool_label} />
       )}
 
-      <Button
-        size="lg"
-        disabled
-        className="mt-4 h-14 rounded-2xl text-base font-bold"
-      >
-        Tamamlandı ✓ (yakında)
-      </Button>
+      {isStudent ? (
+        <CompleteButton
+          lessonId={lesson.id}
+          initiallyCompleted={progressMap.get(lesson.id) === "completed"}
+        />
+      ) : (
+        <p className="mt-4 rounded-2xl bg-muted px-4 py-3 text-center text-sm text-muted-foreground">
+          Bu bir önizleme — tamamlama öğrenciler içindir.
+        </p>
+      )}
 
       <div className="mt-2 flex items-center justify-between text-sm">
         {prev ? (
@@ -131,6 +184,8 @@ export default async function DersPage({
           <span />
         )}
       </div>
+
+      {isStudent && <ScrollPositionTracker lessonId={lesson.id} />}
     </div>
   );
 }

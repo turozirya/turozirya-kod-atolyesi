@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
+import { getCurrentProfile } from "@/lib/auth/session";
+import { Progress } from "@/components/ui/progress";
+import { LessonNode, type LessonNodeStatus } from "@/components/lesson/LessonNode";
 import { getModuleColorClasses } from "@/lib/module-colors";
 import { getIconComponent } from "@/lib/icons";
 import { cn } from "@/lib/utils";
@@ -27,7 +27,7 @@ export default async function KursPage({
 
   const { data: modules } = await supabase
     .from("modules")
-    .select("id, slug, title, description, icon, color, order_index")
+    .select("id, slug, title, description, icon, color, order_index, is_sequential")
     .eq("course_id", course.id)
     .eq("is_published", true)
     .order("order_index", { ascending: true });
@@ -49,6 +49,36 @@ export default async function KursPage({
     lessonsByModule.set(lesson.module_id, list);
   }
 
+  const profile = await getCurrentProfile();
+  const isStudent = profile?.role === "student";
+
+  const progressMap = new Map<string, "in_progress" | "completed">();
+  if (isStudent && lessons && lessons.length > 0) {
+    const { data: progress } = await supabase
+      .from("lesson_progress")
+      .select("lesson_id, status")
+      .eq("student_id", profile!.id)
+      .in("lesson_id", lessons.map((l) => l.id));
+    for (const row of progress ?? []) {
+      progressMap.set(row.lesson_id, row.status);
+    }
+  }
+
+  // Haritada parlayacak "sıradaki" ders: kurs sırasına göre ilk tamamlanmamış
+  // ders. Sıralı modüllerde ondan önceki her ders zaten tamamlanmış olacağı
+  // için bu ders hiçbir zaman kilitli olamaz.
+  let highlightLessonId: string | null = null;
+  for (const mod of modules ?? []) {
+    const modLessons = lessonsByModule.get(mod.id) ?? [];
+    const firstIncomplete = modLessons.find(
+      (lesson) => progressMap.get(lesson.id) !== "completed"
+    );
+    if (firstIncomplete) {
+      highlightLessonId = firstIncomplete.id;
+      break;
+    }
+  }
+
   return (
     <div className="flex flex-1 flex-col gap-6 p-4 sm:p-6">
       <div>
@@ -66,13 +96,19 @@ export default async function KursPage({
         </p>
       )}
 
-      <div className="flex flex-col gap-6">
-        {modules?.map((module) => {
-          const colors = getModuleColorClasses(module.color);
-          const Icon = getIconComponent(module.icon);
-          const moduleLessons = lessonsByModule.get(module.id) ?? [];
+      <div className="flex flex-col gap-8">
+        {modules?.map((mod) => {
+          const colors = getModuleColorClasses(mod.color);
+          const Icon = getIconComponent(mod.icon);
+          const modLessons = lessonsByModule.get(mod.id) ?? [];
+          const completedCount = modLessons.filter(
+            (l) => progressMap.get(l.id) === "completed"
+          ).length;
+
+          let priorIncomplete = false;
+
           return (
-            <section key={module.id} className="flex flex-col gap-3">
+            <section key={mod.id} className="flex flex-col gap-3">
               <div
                 className={cn(
                   "flex items-center gap-3 rounded-2xl px-4 py-3",
@@ -87,35 +123,51 @@ export default async function KursPage({
                 >
                   <Icon className="h-5 w-5" />
                 </span>
-                <div>
+                <div className="flex-1">
                   <h2 className={cn("font-heading text-base font-bold", colors.text)}>
-                    {module.title}
+                    {mod.title}
                   </h2>
                   <p className="text-xs text-muted-foreground">
-                    {moduleLessons.length} ders
+                    {completedCount}/{modLessons.length} ders
                   </p>
                 </div>
+                {modLessons.length > 0 && (
+                  <Progress
+                    value={(completedCount / modLessons.length) * 100}
+                    className="h-2 w-20"
+                  />
+                )}
               </div>
 
-              <div className="flex flex-col gap-2">
-                {moduleLessons.map((lesson) => (
-                  <Link
-                    key={lesson.id}
-                    href={`/dersler/${course.slug}/${module.slug}/${lesson.slug}`}
-                  >
-                    <Card className="flex flex-row items-center justify-between gap-3 rounded-2xl p-4 shadow-sm transition-transform hover:scale-[1.005]">
-                      <span className="font-medium text-foreground">
-                        {lesson.title}
-                      </span>
-                      <div className="flex shrink-0 items-center gap-2">
-                        <Badge variant="secondary">{lesson.estimated_minutes} dk</Badge>
-                        <Badge className="bg-badge text-badge-foreground">
-                          +{lesson.points}
-                        </Badge>
-                      </div>
-                    </Card>
-                  </Link>
-                ))}
+              <div className="flex flex-col pl-1">
+                {modLessons.map((lesson, idx) => {
+                  const progressStatus = progressMap.get(lesson.id);
+                  let status: LessonNodeStatus;
+                  if (progressStatus === "completed") {
+                    status = "completed";
+                  } else if (isStudent && mod.is_sequential && priorIncomplete) {
+                    status = "locked";
+                  } else {
+                    status = progressStatus === "in_progress" ? "in_progress" : "start";
+                  }
+                  if (status !== "completed" && mod.is_sequential) {
+                    priorIncomplete = true;
+                  }
+
+                  return (
+                    <LessonNode
+                      key={lesson.id}
+                      title={lesson.title}
+                      href={`/dersler/${course.slug}/${mod.slug}/${lesson.slug}`}
+                      status={status}
+                      highlighted={lesson.id === highlightLessonId}
+                      color={mod.color}
+                      durationMinutes={lesson.estimated_minutes}
+                      points={lesson.points}
+                      isLast={idx === modLessons.length - 1}
+                    />
+                  );
+                })}
               </div>
             </section>
           );

@@ -56,7 +56,7 @@ export async function registerStudent(
     return { error: "Bir şeyler ters gitti, tekrar dene." };
   }
 
-  redirect("/panel");
+  redirect("/devam");
 }
 
 export async function signIn(input: LoginInput): Promise<{ error?: string }> {
@@ -85,7 +85,7 @@ export async function signIn(input: LoginInput): Promise<{ error?: string }> {
     .eq("id", data.user.id)
     .maybeSingle();
 
-  redirect(profile?.role === "teacher" ? "/ogretmen" : "/panel");
+  redirect(profile?.role === "teacher" ? "/ogretmen" : "/devam");
 }
 
 export async function signOut() {

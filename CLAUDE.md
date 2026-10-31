@@ -11,13 +11,22 @@
 - [x] Faz 0 — Proje kurulumu ve temel iskelet
 - [x] Faz 1 — Veritabanı, kimlik doğrulama ve roller
 - [x] Faz 2 — Ders yönetimi (öğretmen) ve ders görüntüleme (öğrenci)
-- [ ] Faz 3 — İlerleme takibi ve "kaldığın yerden devam"
+- [x] Faz 3 — İlerleme takibi ve "kaldığın yerden devam"
 - [ ] Faz 4 — Oyunlaştırma (puan, seviye, rozet, sıralama)
 - [ ] Faz 5 — Öğretmen paneli: sınıf yönetimi ve raporlar
 - [ ] Faz 6 — Cilalama, erişilebilirlik, örnek içerik ve Vercel yayını
 
 Faz notları (Claude Code doldurur — alınan önemli kararlar, ertelenen işler):
 
+- **Faz 3:**
+  - `supabase/migrations/0010_progress_functions.sql`: `mark_lesson_viewed`, `complete_lesson`, `get_resume_target`, `get_student_courses`. §2'nin "devam mantığı" için vitest önerisi burada uygulanmadı — bu mantık `lesson_progress`/`activity_days` canlı DB durumuna bağlı olduğundan saf bir TS fonksiyonuna taşınamıyor; §6.4/§8 zaten bunu RPC olarak tarif ediyor, o esas alındı.
+  - `complete_lesson` dönüşünde `level` alanı **yok** — seviye hesabı Faz 4'ün `src/lib/gamification/levels.ts`'ine ait; o eklenince RPC dönüşü genişletilecek.
+  - **Kritik düzeltme (test sırasında bulundu):** `mark_lesson_viewed` ilk yazımda kilit kontrolünden *önce* çağrılıyordu — kilitli bir dersin URL'sine girmek bile sahte bir `in_progress` kaydı yaratıp `get_resume_target`'ı yanıltıyordu (öğrenciyi kilitli derse yönlendiriyordu). Çağrı sırası, kilit ekranı kontrolünden *sonra*ya alındı; yalnızca gerçekten görüntülenebilen (kilitli olmayan) dersler için tetikleniyor.
+  - Kilit mantığı modül bazlı: `is_sequential` bir modülde yalnızca o modül içindeki önceki dersler kontrol ediliyor (kurs genelinde değil) — hem `complete_lesson` RPC'sinde hem ders sayfasındaki görsel kilit ekranında aynı kural.
+  - Öğretmen "öğrenci gibi önizle" modunda: kilit ekranı ve `mark_lesson_viewed` çağrısı atlanıyor, "Tamamlandı" butonu yerine önizleme notu gösteriliyor (`complete_lesson` zaten `role='student'` şartı arıyor, UI bunu ayrıca gizliyor).
+  - `/devam` ve `/devam/[kurs]`: yönlendirme-only Server Component, ortak mantık `src/lib/resume.ts`'teki `redirectToResumeTarget()`'ta. `signIn`/`registerStudent` artık öğrenciyi `/panel` yerine `/devam`'a yönlendiriyor.
+  - Kurs sayfası (`/dersler/[kurs]`) §10'daki "yol/harita" düzenine çevrildi (`LessonNode` bileşeni — dikey bağlantı çizgisi, tamamlanan/sıradaki/kilitli/başla durumları, modül rengiyle `ring` vurgusu).
+  - Uçtan uca doğrulandı (tarayıcıda, gerçek RPC çağrılarıyla): hızlı çift tıklama tek `point_events` satırı üretti; kilitli ders URL'si kilit ekranı gösterdi, önceki ders bitince açıldı; çıkış-giriş sonrası `/devam` doğru derse götürdü; modül+kurs tamamlanınca bonuslar (+25, +100) doğru işlendi ve `/devam` → `/panel?kurs-bitti=...` banner'ına yönlendirdi; geçici olarak yayına alınan taslak Arduino kursuyla iki kursun bağımsız devam noktası korunduğu doğrulandı, sonra kurs tekrar taslağa alındı ve test ilerlemesi (puan, `lesson_progress`, `point_events`) temizlendi.
 - **Faz 2:**
   - Kod renklendirme: `shiki` seçildi. `CodeBlock` bir Server Component (sunucuda `codeToHtml` ile HTML üretir), yanında yalnızca panoya kopyalama için `"use client"` olan küçük bir `CopyButton` — veri/render sunucuda, etkileşim istemcide kuralına uygun.
   - `0008_storage.sql`: `lesson-media` bucket'ı (public, png/jpeg/webp, 2MB sınırı) + `storage.objects` politikaları (okuma herkese, yazma/silme yalnızca `is_teacher()`). `next.config.ts`'e `images.remotePatterns` Supabase URL'inden türetilerek eklendi (sabit host yazılmadı).
