@@ -13,15 +13,20 @@ import { signOut } from "@/actions/auth";
 export function Header({
   displayName,
   avatar,
+  menu,
 }: {
   displayName: string;
   avatar: string;
+  menu?: React.ReactNode;
 }) {
   return (
     <header className="flex items-center justify-between border-b bg-card px-4 py-3 sm:px-6">
-      <Link href="/" className="font-heading text-lg font-bold text-foreground">
-        Turozirya Kod Atölyesi
-      </Link>
+      <div className="flex items-center gap-2">
+        {menu}
+        <Link href="/" className="font-heading text-lg font-bold text-foreground">
+          Turozirya Kod Atölyesi
+        </Link>
+      </div>
       <DropdownMenu>
         <DropdownMenuTrigger className="flex h-11 items-center gap-2 rounded-full px-1.5">
           <Image

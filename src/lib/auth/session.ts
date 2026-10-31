@@ -40,3 +40,17 @@ export async function requireRole(role: Profile["role"]): Promise<Profile> {
 
   return profile;
 }
+
+// Öğrenci sayfaları için: oturum şart ama rol şart değil — öğretmen kendi
+// hesabıyla "öğrenci gibi önizle" yapabilsin diye (RLS zaten öğretmene her
+// şeyi gösteriyor). Yalnızca öğrencinin /ogretmen/* yollarına giremediği
+// yön (CLAUDE.md §5.4) requireRole('teacher') ile ayrıca korunuyor.
+export async function requireProfile(): Promise<Profile> {
+  const profile = await getCurrentProfile();
+
+  if (!profile) {
+    redirect("/giris");
+  }
+
+  return profile;
+}

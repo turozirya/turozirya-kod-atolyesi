@@ -1,25 +1,6 @@
-const TURKISH_CHAR_MAP: Record<string, string> = {
-  ç: "c",
-  Ç: "c",
-  ğ: "g",
-  Ğ: "g",
-  ı: "i",
-  I: "i",
-  İ: "i",
-  ö: "o",
-  Ö: "o",
-  ş: "s",
-  Ş: "s",
-  ü: "u",
-  Ü: "u",
-};
+import { turkishToAscii } from "@/lib/text";
 
-export function turkishToAscii(input: string): string {
-  return Array.from(input)
-    .map((char) => TURKISH_CHAR_MAP[char] ?? char)
-    .join("")
-    .toLowerCase();
-}
+export { turkishToAscii };
 
 const USERNAME_PATTERN = /^[a-z0-9_]{3,20}$/;
 

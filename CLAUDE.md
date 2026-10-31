@@ -10,7 +10,7 @@
 
 - [x] Faz 0 — Proje kurulumu ve temel iskelet
 - [x] Faz 1 — Veritabanı, kimlik doğrulama ve roller
-- [ ] Faz 2 — Ders yönetimi (öğretmen) ve ders görüntüleme (öğrenci)
+- [x] Faz 2 — Ders yönetimi (öğretmen) ve ders görüntüleme (öğrenci)
 - [ ] Faz 3 — İlerleme takibi ve "kaldığın yerden devam"
 - [ ] Faz 4 — Oyunlaştırma (puan, seviye, rozet, sıralama)
 - [ ] Faz 5 — Öğretmen paneli: sınıf yönetimi ve raporlar
@@ -18,6 +18,18 @@
 
 Faz notları (Claude Code doldurur — alınan önemli kararlar, ertelenen işler):
 
+- **Faz 2:**
+  - Kod renklendirme: `shiki` seçildi. `CodeBlock` bir Server Component (sunucuda `codeToHtml` ile HTML üretir), yanında yalnızca panoya kopyalama için `"use client"` olan küçük bir `CopyButton` — veri/render sunucuda, etkileşim istemcide kuralına uygun.
+  - `0008_storage.sql`: `lesson-media` bucket'ı (public, png/jpeg/webp, 2MB sınırı) + `storage.objects` politikaları (okuma herkese, yazma/silme yalnızca `is_teacher()`). `next.config.ts`'e `images.remotePatterns` Supabase URL'inden türetilerek eklendi (sabit host yazılmadı).
+  - Sıralama: sürükle-bırak değil, basit yukarı/aşağı ok butonları (`ReorderButtons`, komşu `order_index` takası, iki ayrı `.update()` — puan sistemi dışında atomiklik gerekmiyor).
+  - "Öğrenci gibi önizle": ayrı bir render yolu yazılmadı, gerçek `/dersler/...` URL'sine link (öğretmen RLS'te `is_published` kısıtından zaten muaf).
+  - Seed içerik (`0009_seed_microbit_content.sql`): CLAUDE.md §14'ün "(blok)" etiketini esas aldım (Faz 2 prompt metni "örnek MicroPython kodu" diyordu ama bu §14/§10.1 ile çelişiyordu) — "micro:bit ile Tanışma" ve "Sensörler" modülleri, her birinde 4 ders, `code_language='blocks'`, gerçek Türkçe içerik + malzeme listesi.
+  - **Kritik RSC hatası ve düzeltmesi:** Server Component sayfalardan Client Component'lere (`ReorderButtons`, `PublishSwitch`, `ConfirmDeleteDialog`) inline ok fonksiyonu (`onReorder={(d) => reorderCourse(course.id, d)}`) geçirilemiyor ("Event handlers cannot be passed to Client Component props"). Çözüm: Server Action'ın kendisini `.bind(null, ...args)` ile bağlamak (`reorderCourse.bind(null, course.id)`). İleride benzer prop geçişlerinde bu kalıp tekrar edecek.
+  - `(ogrenci)/layout.tsx`, `requireRole("student")` yerine yeni `requireProfile()` (rol kontrolü yok, sadece oturum) kullanıyor — "Öğrenci gibi önizle" linkine tıklayan öğretmen `/ogretmen`'e geri atılmasın diye. RLS zaten öğretmene her şeyi gösteriyor; CLAUDE.md §5.4 yalnızca öğrenci→öğretmen yönünü yasaklıyor, bu değişiklik güvenlik kontrol listesini ihlal etmiyor.
+  - `src/lib/text.ts` yeni dosya: `turkishToAscii` ve `slugify`, `username.ts`'ten taşındı/genelleştirildi (slug üretimi için de gerekiyordu).
+  - Test fixture'ları (Faz 2 QA için, saklandı): Arduino kursu + 1 modül + 1 ders, taslak/test amaçlı eklendi — yayında değil, test sınıfına atanmadı, kalıcı olarak DB'de duruyor (Faz 1'deki fixture saklama emsaline uygun).
+  - Supabase Security Advisor: yeni/Faz-2-kaynaklı bulgu yok; mevcut uyarılar (anon/authenticated `check_class_code`+yardımcı fonksiyon execute izinleri, leaked password protection kapalı) Faz 1'den beri bilinen ve bilerek ertelenen maddeler (ilki kayıt akışı için gerekli, ikincisi Faz 6 kontrol listesinde).
+  - Doğrulama: `npm run lint` (0 hata), `npm test` (31/31), `npm run build` (başarılı, 15 rota doğru static/dynamic) temiz geçti; tarayıcıda öğretmen (kurs/modül/ders CRUD, yayınla/gizle, sıralama, slug üretimi, canlı Markdown önizleme, Shiki kod renklendirme, öğrenci gibi önizleme) ve öğrenci (kurs listesi, tek-kurs otomatik yönlendirme, modül/ders gezinme, malzeme kutusu, ipucu kutuları, kod bloğu+kopyala, araç butonu, önceki/sonraki ders) akışları uçtan uca test edildi; yayından kaldırılan ders öğrenciye 404 veriyor; 375px mobil görünüm hem öğretmen (Sheet menü) hem öğrenci (alt gezinme çubuğu) tarafında kontrol edildi.
 - **Faz 1:**
   - Supabase projesi: `turozirya-kod-atolyesi`, `eu-central-1` (Frankfurt), proje ref `jgucnevkknxczcsiqrjf`, org `turozirya`. `create_project` (MCP) maliyet onayı için `get_cost`/`confirm_cost` araçlarını istedi ama o araçlar o an bağlı değildi; proje **kullanıcı tarafından panelden manuel oluşturuldu**, ben ref'i alıp migration'lara devam ettim.
   - Migration'lar `0001_schema` → `0007_performance_fixes` (7 dosya, CLAUDE.md'nin önerdiği 4'ten fazla — bkz. aşağıdaki güvenlik/performans düzeltmeleri). `complete_lesson` ve `evaluate_badges` bilerek yazılmadı (Faz 3-4).
