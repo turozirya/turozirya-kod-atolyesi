@@ -1,5 +1,6 @@
 export const ALLOWED_TOOL_DOMAINS = [
   "makecode.microbit.org",
+  "python.microbit.org",
   "wokwi.com",
   "tinkercad.com",
 ] as const;

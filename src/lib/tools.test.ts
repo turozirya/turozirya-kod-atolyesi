@@ -10,6 +10,10 @@ describe("isAllowedToolUrl", () => {
     expect(isAllowedToolUrl("https://preview.wokwi.com/projects/123")).toBe(true);
   });
 
+  it("accepts the MicroPython editor domain", () => {
+    expect(isAllowedToolUrl("https://python.microbit.org/v/3")).toBe(true);
+  });
+
   it("rejects a domain not on the list", () => {
     expect(isAllowedToolUrl("https://evil.example.com")).toBe(false);
   });

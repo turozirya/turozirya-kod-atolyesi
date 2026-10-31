@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { signOut } from "@/actions/auth";
 import { LevelBar } from "@/components/gamification/LevelBar";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 export function Header({
   displayName,
@@ -35,7 +36,9 @@ export function Header({
       {typeof points === "number" && (
         <LevelBar points={points} variant="compact" className="hidden sm:flex" />
       )}
-      <DropdownMenu>
+      <div className="flex items-center gap-1">
+        <ThemeToggle />
+        <DropdownMenu>
         <DropdownMenuTrigger className="flex h-11 items-center gap-2 rounded-full px-1.5">
           <Image
             src={`/avatars/${avatar}.svg`}
@@ -56,7 +59,8 @@ export function Header({
           )}
           <DropdownMenuItem onClick={() => signOut()}>Çıkış</DropdownMenuItem>
         </DropdownMenuContent>
-      </DropdownMenu>
+        </DropdownMenu>
+      </div>
     </header>
   );
 }
