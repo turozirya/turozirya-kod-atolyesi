@@ -9,7 +9,7 @@
 ## 0. Faz Durumu (Claude Code her faz sonunda burayı günceller)
 
 - [x] Faz 0 — Proje kurulumu ve temel iskelet
-- [ ] Faz 1 — Veritabanı, kimlik doğrulama ve roller
+- [x] Faz 1 — Veritabanı, kimlik doğrulama ve roller
 - [ ] Faz 2 — Ders yönetimi (öğretmen) ve ders görüntüleme (öğrenci)
 - [ ] Faz 3 — İlerleme takibi ve "kaldığın yerden devam"
 - [ ] Faz 4 — Oyunlaştırma (puan, seviye, rozet, sıralama)
@@ -18,6 +18,16 @@
 
 Faz notları (Claude Code doldurur — alınan önemli kararlar, ertelenen işler):
 
+- **Faz 1:**
+  - Supabase projesi: `turozirya-kod-atolyesi`, `eu-central-1` (Frankfurt), proje ref `jgucnevkknxczcsiqrjf`, org `turozirya`. `create_project` (MCP) maliyet onayı için `get_cost`/`confirm_cost` araçlarını istedi ama o araçlar o an bağlı değildi; proje **kullanıcı tarafından panelden manuel oluşturuldu**, ben ref'i alıp migration'lara devam ettim.
+  - Migration'lar `0001_schema` → `0007_performance_fixes` (7 dosya, CLAUDE.md'nin önerdiği 4'ten fazla — bkz. aşağıdaki güvenlik/performans düzeltmeleri). `complete_lesson` ve `evaluate_badges` bilerek yazılmadı (Faz 3-4).
+  - **Güvenlik Advisor bulguları düzeltildi (0005, 0006):** (a) `set_updated_at`'in `search_path`'i sabit değildi. (b) Postgres `create function`'da `PUBLIC`'e otomatik `execute` verir **ve ayrıca** Supabase, `public` şemadaki her fonksiyona `anon`+`authenticated` için **ayrı, açık** bir execute izni veriyor — `revoke ... from public` bu ikincisini temizlemiyor, `pg_proc.proacl`'ı sorgulayıp doğrulamak gerekti. `is_teacher/teaches_student/can_access_course` artık yalnızca `authenticated`'a (RLS politikaları bunu gerektiriyor), `handle_new_user` hiçbir role açık değil (yalnızca tetikleyici), `check_class_code` bilerek `anon`+`authenticated`'a açık (kayıt akışı için gerekli).
+  - **Performans Advisor bulguları (0007):** eksik FK indeksleri (badges, classes, lesson_progress, point_events, student_badges) eklendi; RLS politikalarındaki `auth.uid()` çağrıları `(select auth.uid())` ile sarmalandı (satır başına yeniden değerlendirmeyi önler). "Multiple permissive policies" (select_own + select_teacher ayrı politikaları, 55 bulgu) **bilinçli olarak ertelendi** — CLAUDE.md §12 yalnızca Security Advisor'ı hedefliyor, birleştirmek ~11 tabloda riskli bir RLS yeniden yazımı gerektirir.
+  - `profiles.username` biçimi (`^[a-z0-9_]{3,20}$`) DB'de `CHECK` olarak **değil**, yalnızca istemci tarafında (`username.ts` + zod) zorlanıyor — aksi halde panelden elle eklenen öğretmen hesapları (serbest e-posta biçimi, metadata yok) `handle_new_user`'ın ürettiği `user_<uuid>` varsayılanıyla bile DB kısıtına takılabilirdi.
+  - Supabase Auth panelinde CLAUDE.md §13'ün bahsetmediği **ikinci bir anahtar** bulundu: "Enable email provider" varsayılan **kapalı** geliyor (yalnızca "Confirm email"i kapatmak yetmiyor, e-posta sağlayıcısının kendisi de açılmalı) — "Email signups are disabled" hatasıyla ortaya çıktı. Faz 6'daki Supabase ayarları listesine eklenmeli.
+  - `react-hook-form`'un `watch()`'u Next 16'nın React Compiler farkında eslint kuralıyla uyumsuz (`react-hooks/incompatible-library`) — yerine `useWatch({ control, name })` kullanıldı. Ayrıca `react-hooks/set-state-in-effect` kuralı, bir effect gövdesinde senkron `setState` çağrısını hata sayıyor (derive edilebilen durum render'da hesaplanmalı, state yalnızca async callback içinde set edilmeli) — `/kayit`'taki debounce'lı sınıf kodu kontrolünde bu kalıba göre yazıldı; ileride benzer debounce/async kontrol yapılan her yerde tekrar edecek.
+  - Test fixture'ları (Faz 2+ için saklandı, silinmedi): öğretmen `turgayozcan@hotmail.com` (role=teacher), sınıf "6-A Robotik" (`join_code=MBT6A2`, id `73ad0a47-6296-4092-908c-ba3ee62df03e`) micro:bit kursuna atanmış, test öğrencisi `ayseyilmaz` (şifre `test1234`, sınıf MBT6A2). Kayıt/giriş/çıkış/rol yönlendirmesi ve RLS (rol/puan yükseltme denemesi engelleniyor, başka profil okunamıyor, anon hiçbir tabloyu göremiyor, yalnızca atanmış+yayındaki kurs görünüyor) tarayıcıda ve doğrudan REST çağrılarıyla uçtan uca doğrulandı.
+  - Kapsam dışı bırakılanlar: `/` anasayfası giriş yapmış kullanıcıyı rolüne göre yönlendirmiyor (§7'de tarif edilse de Faz 1 görev listesinde yok); `/devam` henüz yok, giriş sonrası herkes `/panel`'e gidiyor (Faz 3'te gerçek "kaldığın yerden devam" mantığıyla değişecek).
 - **Faz 0 sonrası:** Proje adı **Turozirya Kod Atölyesi** olarak değiştirildi (paket adı: `turozirya-kod-atolyesi`). Görünen ad ana sayfada, `layout.tsx` metadata'sında (title/description) ve bu dosyanın başlığı + "Proje adı notu" paragrafında güncellendi. `package.json` adı değişti, `package-lock.json` `npm install` ile yenilendi. Klasör adı hâlâ `kodlama_kulubu` (kullanıcı ayrıca değiştirecek); `.env*`, `STUDENT_EMAIL_DOMAIN` ve §11'deki klasör ağacı/Faz Promptları metinleri bilinçli olarak dokunulmadan bırakıldı (kapsam dışı).
 - **Faz 0:**
   - Next.js 16.4.3 + React 19.3 kuruldu (Turbopack varsayılan). `middleware.ts` yerine `src/proxy.ts` kullanıldı (Next 16'da middleware → proxy olarak yeniden adlandırıldı; dışa aktarılan fonksiyon adı da `proxy`).

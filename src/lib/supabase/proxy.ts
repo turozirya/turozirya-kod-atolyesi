@@ -36,8 +36,18 @@ export async function updateSession(request: NextRequest) {
     }
   );
 
-  // Token yenilemesi için zorunlu; rota koruması Faz 1'de eklenecek.
-  await supabase.auth.getClaims();
+  // Token yenilemesi için zorunlu.
+  const { data } = await supabase.auth.getClaims();
+
+  if (!data?.claims && !isPublicPath(request.nextUrl.pathname)) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/giris";
+    return NextResponse.redirect(url);
+  }
 
   return supabaseResponse;
+}
+
+function isPublicPath(pathname: string): boolean {
+  return pathname === "/" || pathname === "/giris" || pathname === "/kayit";
 }
