@@ -65,6 +65,7 @@ export async function updateClass(id: string, input: ClassInput): Promise<Action
     .update({
       name: parsed.data.name,
       leaderboard_enabled: parsed.data.leaderboard_enabled,
+      weekly_goal: parsed.data.weekly_goal,
     })
     .eq("id", id);
   if (error) {

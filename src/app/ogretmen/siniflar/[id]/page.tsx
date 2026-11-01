@@ -1,18 +1,23 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Gift, KeyRound, LogOut, Plus, UserPlus } from "lucide-react";
+import { Gift, KeyRound, LogOut, Megaphone, Plus, Target, Trash2, UserPlus } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireRole } from "@/lib/auth/session";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { ClassCourseCheckbox } from "@/components/teacher/ClassCourseCheckbox";
+import { ClassDialog } from "@/components/teacher/ClassDialog";
 import { ResetPasswordDialog } from "@/components/teacher/ResetPasswordDialog";
 import { MoveClassDialog } from "@/components/teacher/MoveClassDialog";
 import { BonusPointsDialog } from "@/components/teacher/BonusPointsDialog";
+import { AnnouncementDialog } from "@/components/teacher/AnnouncementDialog";
 import { ConfirmDeleteDialog } from "@/components/teacher/ConfirmDeleteDialog";
 import { moveStudentClass } from "@/actions/students";
+import { deleteAnnouncement } from "@/actions/announcements";
 import { getLevel } from "@/lib/gamification/levels";
+import { getWeekStartIso } from "@/lib/week";
 
 export default async function OgretmenSinifDetayPage({
   params,
@@ -33,26 +38,47 @@ export default async function OgretmenSinifDetayPage({
     notFound();
   }
 
-  const [{ data: courses }, { data: assignedRows }, { data: otherClasses }, { data: students }] =
-    await Promise.all([
-      supabase.from("courses").select("id, title").order("order_index", { ascending: true }),
-      supabase.from("class_courses").select("course_id").eq("class_id", id),
-      supabase
-        .from("classes")
-        .select("id, name")
-        .eq("teacher_id", profile.id)
-        .neq("id", id)
-        .order("name", { ascending: true }),
-      supabase
-        .from("profiles")
-        .select("id, username, display_name, avatar, total_points")
-        .eq("class_id", id)
-        .eq("role", "student")
-        .order("display_name", { ascending: true }),
-    ]);
+  const [
+    { data: courses },
+    { data: assignedRows },
+    { data: otherClasses },
+    { data: students },
+    { data: announcements },
+  ] = await Promise.all([
+    supabase.from("courses").select("id, title").order("order_index", { ascending: true }),
+    supabase.from("class_courses").select("course_id").eq("class_id", id),
+    supabase
+      .from("classes")
+      .select("id, name")
+      .eq("teacher_id", profile.id)
+      .neq("id", id)
+      .order("name", { ascending: true }),
+    supabase
+      .from("profiles")
+      .select("id, username, display_name, avatar, total_points")
+      .eq("class_id", id)
+      .eq("role", "student")
+      .order("display_name", { ascending: true }),
+    supabase
+      .from("announcements")
+      .select("id, title, content, created_at")
+      .eq("class_id", id)
+      .order("created_at", { ascending: false }),
+  ]);
 
   const assignedCourseIds = new Set((assignedRows ?? []).map((r) => r.course_id));
   const studentIds = (students ?? []).map((s) => s.id);
+
+  let completedThisWeek = 0;
+  if (klass.weekly_goal && studentIds.length > 0) {
+    const { count } = await supabase
+      .from("point_events")
+      .select("id", { count: "exact", head: true })
+      .in("student_id", studentIds)
+      .eq("reason", "lesson_completed")
+      .gte("created_at", getWeekStartIso());
+    completedThisWeek = count ?? 0;
+  }
 
   const { data: progressRows } =
     studentIds.length > 0
@@ -80,7 +106,76 @@ export default async function OgretmenSinifDetayPage({
         <Link href="/ogretmen/siniflar" className="text-sm text-muted-foreground hover:underline">
           ← Sınıflar
         </Link>
-        <h1 className="font-heading text-2xl font-bold text-foreground">{klass.name}</h1>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h1 className="font-heading text-2xl font-bold text-foreground">{klass.name}</h1>
+          <ClassDialog
+            klass={klass}
+            trigger={
+              <Button variant="outline" size="sm">
+                Sınıfı Düzenle
+              </Button>
+            }
+          />
+        </div>
+      </div>
+
+      {klass.weekly_goal && (
+        <Card className="flex flex-col gap-2 rounded-2xl border-2 border-accent bg-accent/10 p-4 text-foreground">
+          <span className="flex items-center gap-1.5 font-bold">
+            <Target className="h-4 w-4" aria-hidden />
+            Bu hafta {completedThisWeek}/{klass.weekly_goal} ders tamamlandı
+          </span>
+          <Progress
+            value={Math.min(100, (completedThisWeek / klass.weekly_goal) * 100)}
+            className="h-2"
+          />
+        </Card>
+      )}
+
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center justify-between">
+          <h2 className="font-heading text-lg font-bold text-foreground">Duyurular</h2>
+          <AnnouncementDialog
+            classId={id}
+            trigger={
+              <Button size="sm" className="gap-1.5">
+                <Megaphone className="h-4 w-4" />
+                Yeni Duyuru
+              </Button>
+            }
+          />
+        </div>
+        {(!announcements || announcements.length === 0) && (
+          <p className="text-muted-foreground">Henüz duyuru yok.</p>
+        )}
+        <div className="flex flex-col gap-2">
+          {announcements?.map((a) => (
+            <Card key={a.id} className="flex flex-col gap-1 rounded-2xl p-3">
+              <div className="flex items-start justify-between gap-2">
+                <span className="font-medium text-foreground">{a.title}</span>
+                <ConfirmDeleteDialog
+                  trigger={
+                    <Button
+                      variant="ghost"
+                      size="icon-sm"
+                      aria-label="Duyuruyu sil"
+                      title="Duyuruyu sil"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  }
+                  title="Duyuru silinsin mi?"
+                  description="Bu duyuru öğrencilerin panelinden kaldırılır."
+                  onConfirm={deleteAnnouncement.bind(null, a.id, id)}
+                />
+              </div>
+              <p className="text-sm text-muted-foreground">{a.content}</p>
+              <span className="text-xs text-muted-foreground">
+                {new Date(a.created_at).toLocaleDateString("tr-TR")}
+              </span>
+            </Card>
+          ))}
+        </div>
       </div>
 
       <div className="flex flex-col gap-2">

@@ -110,7 +110,7 @@ export default async function ProfilPage() {
           {pointEvents.map((event, i) => (
             <Card key={i} className="flex items-center justify-between gap-3 rounded-2xl p-3 text-sm">
               <span className="text-foreground">{REASON_LABELS[event.reason] ?? event.reason}</span>
-              <span className="font-bold text-accent-foreground">+{event.amount}</span>
+              <span className="font-bold text-foreground">+{event.amount}</span>
             </Card>
           ))}
         </div>

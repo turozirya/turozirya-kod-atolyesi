@@ -37,6 +37,38 @@ export type Database = {
           },
         ]
       }
+      announcements: {
+        Row: {
+          class_id: string
+          content: string
+          created_at: string
+          id: string
+          title: string
+        }
+        Insert: {
+          class_id: string
+          content: string
+          created_at?: string
+          id?: string
+          title: string
+        }
+        Update: {
+          class_id?: string
+          content?: string
+          created_at?: string
+          id?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "announcements_class_id_fkey"
+            columns: ["class_id"]
+            isOneToOne: false
+            referencedRelation: "classes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       badges: {
         Row: {
           bonus_points: number
@@ -138,6 +170,7 @@ export type Database = {
           leaderboard_enabled: boolean
           name: string
           teacher_id: string
+          weekly_goal: number | null
         }
         Insert: {
           created_at?: string
@@ -146,6 +179,7 @@ export type Database = {
           leaderboard_enabled?: boolean
           name: string
           teacher_id: string
+          weekly_goal?: number | null
         }
         Update: {
           created_at?: string
@@ -154,6 +188,7 @@ export type Database = {
           leaderboard_enabled?: boolean
           name?: string
           teacher_id?: string
+          weekly_goal?: number | null
         }
         Relationships: []
       }
@@ -544,6 +579,7 @@ export type Database = {
           total_points: number
         }[]
       }
+      get_class_weekly_progress: { Args: never; Returns: Json }
       get_resume_target: { Args: { p_course_id?: string }; Returns: Json }
       get_student_courses: { Args: never; Returns: Json }
       is_teacher: { Args: never; Returns: boolean }

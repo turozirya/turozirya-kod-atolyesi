@@ -24,8 +24,12 @@ type ClassRow = Tables<"classes">;
 
 function defaultsFor(klass?: ClassRow): ClassInput {
   return klass
-    ? { name: klass.name, leaderboard_enabled: klass.leaderboard_enabled }
-    : { name: "", leaderboard_enabled: true };
+    ? {
+        name: klass.name,
+        leaderboard_enabled: klass.leaderboard_enabled,
+        weekly_goal: klass.weekly_goal,
+      }
+    : { name: "", leaderboard_enabled: true, weekly_goal: null };
 }
 
 export function ClassDialog({
@@ -53,6 +57,7 @@ export function ClassDialog({
   });
 
   const leaderboardEnabled = useWatch({ control, name: "leaderboard_enabled" });
+  const weeklyGoal = useWatch({ control, name: "weekly_goal" });
 
   const onSubmit = async (data: ClassInput) => {
     setServerError(null);
@@ -103,6 +108,29 @@ export function ClassDialog({
                 checked={leaderboardEnabled}
                 onCheckedChange={(checked) => setValue("leaderboard_enabled", checked)}
               />
+            </div>
+          )}
+
+          {klass && (
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="class-weekly-goal">Haftalık ders hedefi (opsiyonel)</Label>
+              <Input
+                id="class-weekly-goal"
+                type="number"
+                min={1}
+                placeholder="Ör. 50"
+                value={weeklyGoal ?? ""}
+                onChange={(e) => {
+                  const raw = e.target.value;
+                  setValue("weekly_goal", raw === "" ? null : Number(raw));
+                }}
+              />
+              <p className="text-xs text-muted-foreground">
+                Boş bırakırsan öğrenci panelinde haftalık hedef gösterilmez.
+              </p>
+              {errors.weekly_goal && (
+                <p className="text-sm text-destructive">{errors.weekly_goal.message}</p>
+              )}
             </div>
           )}
 

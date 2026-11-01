@@ -76,7 +76,7 @@ export default async function SiralamaPage() {
                     Seviye {level.level}: {level.name} · {row.badge_count} rozet
                   </span>
                 </div>
-                <span className="flex items-center gap-1 font-heading text-lg font-bold text-accent-foreground">
+                <span className="flex items-center gap-1 font-heading text-lg font-bold text-foreground">
                   <Medal className="h-4 w-4" aria-hidden /> {row.total_points}
                 </span>
               </Card>

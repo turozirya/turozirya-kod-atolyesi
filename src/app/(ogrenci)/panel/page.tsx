@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Flame, PartyPopper, Sparkles } from "lucide-react";
+import { Flame, Megaphone, PartyPopper, Sparkles, Target } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentProfile } from "@/lib/auth/session";
 import { Button } from "@/components/ui/button";
@@ -51,6 +51,15 @@ function parseStudentCourses(value: Json | null): StudentCourse[] {
   return value as unknown as StudentCourse[];
 }
 
+type WeeklyProgress = { goal: number; completed: number } | null;
+
+function parseWeeklyProgress(value: Json | undefined): WeeklyProgress {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return null;
+  }
+  return value as unknown as WeeklyProgress;
+}
+
 export default async function PanelPage({
   searchParams,
 }: {
@@ -68,6 +77,23 @@ export default async function PanelPage({
 
   const { data: coursesData } = await supabase.rpc("get_student_courses");
   const courses = parseStudentCourses(coursesData);
+
+  let weeklyProgress: WeeklyProgress = null;
+  let announcements: { id: string; title: string; content: string; created_at: string }[] = [];
+  if (profile?.role === "student") {
+    const { data: progressData } = await supabase.rpc("get_class_weekly_progress");
+    weeklyProgress = parseWeeklyProgress(progressData);
+
+    if (profile.class_id) {
+      const { data: announcementRows } = await supabase
+        .from("announcements")
+        .select("id, title, content, created_at")
+        .eq("class_id", profile.class_id)
+        .order("created_at", { ascending: false })
+        .limit(3);
+      announcements = announcementRows ?? [];
+    }
+  }
 
   let finishedCourseTitle: string | null = null;
   if (finishedCourseSlug) {
@@ -116,6 +142,26 @@ export default async function PanelPage({
         Merhaba, {profile?.display_name}!
       </h1>
 
+      {announcements.length > 0 && (
+        <div className="flex flex-col gap-2">
+          {announcements.map((a) => (
+            <Card
+              key={a.id}
+              className="flex flex-col gap-1 rounded-2xl border-2 border-primary bg-primary/10 p-4"
+            >
+              <span className="flex items-center gap-1.5 font-bold text-foreground">
+                <Megaphone className="h-4 w-4" aria-hidden />
+                {a.title}
+              </span>
+              <p className="text-sm text-foreground">{a.content}</p>
+              <span className="text-xs text-muted-foreground">
+                {new Date(a.created_at).toLocaleDateString("tr-TR")}
+              </span>
+            </Card>
+          ))}
+        </div>
+      )}
+
       {profile?.role === "student" && (
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
           <LevelBar points={profile.total_points} className="flex-1" />
@@ -128,11 +174,24 @@ export default async function PanelPage({
         </div>
       )}
 
+      {weeklyProgress && (
+        <Card className="flex flex-col gap-2 rounded-2xl border-2 border-accent bg-accent/10 p-4 text-foreground">
+          <span className="flex items-center gap-1.5 font-bold">
+            <Target className="h-4 w-4" aria-hidden />
+            Bu hafta sınıfça {weeklyProgress.completed}/{weeklyProgress.goal} ders tamamlandı!
+          </span>
+          <Progress
+            value={Math.min(100, (weeklyProgress.completed / weeklyProgress.goal) * 100)}
+            className="h-2"
+          />
+        </Card>
+      )}
+
       {unseenBadges.length > 0 && <UnseenBadgesDialog badges={unseenBadges} />}
 
       {finishedCourseTitle && (
         <Card className="flex items-center gap-3 rounded-2xl border-2 border-badge bg-badge/10 p-4">
-          <PartyPopper className="h-6 w-6 text-badge-foreground" />
+          <PartyPopper className="h-6 w-6 text-foreground" />
           <p className="font-medium text-foreground">
             {finishedCourseTitle} kursunu bitirdin! 🎉
           </p>
@@ -142,7 +201,7 @@ export default async function PanelPage({
       {resume && !resume.all_done && (
         <Link href={`/dersler/${resume.course_slug}/${resume.module_slug}/${resume.lesson_slug}`}>
           <Card className="flex flex-col gap-2 rounded-2xl border-2 border-accent bg-accent/10 p-6 shadow-sm transition-transform hover:scale-[1.005]">
-            <span className="flex items-center gap-1.5 text-sm font-medium text-accent-foreground">
+            <span className="flex items-center gap-1.5 text-sm font-medium text-foreground">
               <Sparkles className="h-4 w-4" /> {resume.course_title}
             </span>
             <span className="font-heading text-2xl font-bold text-foreground">
