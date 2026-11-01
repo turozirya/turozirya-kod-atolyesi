@@ -46,7 +46,7 @@ const components: Components = {
 
 export function LessonContent({ content }: { content: string }) {
   return (
-    <div className="prose prose-slate max-w-none prose-headings:font-heading prose-headings:text-foreground prose-a:text-primary prose-img:rounded-xl">
+    <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-heading prose-headings:text-foreground prose-a:text-primary prose-img:rounded-xl">
       <Markdown remarkPlugins={[remarkGfm]} components={components}>
         {content}
       </Markdown>
