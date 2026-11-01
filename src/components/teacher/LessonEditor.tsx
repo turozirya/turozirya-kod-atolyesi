@@ -194,16 +194,26 @@ export function LessonEditor({
         <h1 className="font-heading text-2xl font-bold text-foreground">
           {lesson ? "Dersi Düzenle" : "Yeni Ders"}
         </h1>
-        {previewPath && (
+        <div className="flex flex-wrap items-center gap-2">
           <Button
             type="button"
-            variant="outline"
+            variant="ghost"
             nativeButton={false}
-            render={<Link href={previewPath} target="_blank" />}
+            render={<Link href={`/ogretmen/moduller/${moduleId}`} />}
           >
-            Öğrenci gibi önizle
+            İptal
           </Button>
-        )}
+          {previewPath && (
+            <Button
+              type="button"
+              variant="outline"
+              nativeButton={false}
+              render={<Link href={previewPath} target="_blank" />}
+            >
+              Öğrenci gibi önizle
+            </Button>
+          )}
+        </div>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
@@ -423,14 +433,26 @@ export function LessonEditor({
         </p>
       )}
 
-      <Button
-        type="submit"
-        size="lg"
-        disabled={submitting}
-        className="h-12 self-start rounded-2xl font-bold"
-      >
-        {submitting ? "Kaydediliyor…" : "Kaydet"}
-      </Button>
+      <div className="flex gap-2">
+        <Button
+          type="submit"
+          size="lg"
+          disabled={submitting}
+          className="h-12 rounded-2xl font-bold"
+        >
+          {submitting ? "Kaydediliyor…" : "Kaydet"}
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          size="lg"
+          nativeButton={false}
+          className="h-12 rounded-2xl"
+          render={<Link href={`/ogretmen/moduller/${moduleId}`} />}
+        >
+          İptal
+        </Button>
+      </div>
     </form>
   );
 }
