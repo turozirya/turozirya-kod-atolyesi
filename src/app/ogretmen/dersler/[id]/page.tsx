@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { LessonEditor } from "@/components/teacher/LessonEditor";
+import { QuizEditor } from "@/components/teacher/QuizEditor";
 
 export default async function DersDuzenlePage({
   params,
@@ -29,11 +30,22 @@ export default async function DersDuzenlePage({
     ? `/dersler/${moduleRow.courses.slug}/${moduleRow.slug}/${lesson.slug}`
     : undefined;
 
+  const { data: quizQuestions } = await supabase
+    .from("lesson_quiz_questions")
+    .select("*")
+    .eq("lesson_id", lesson.id)
+    .order("order_index", { ascending: true });
+
   return (
-    <LessonEditor
-      moduleId={lesson.module_id}
-      lesson={lesson}
-      previewPath={previewPath}
-    />
+    <>
+      <LessonEditor
+        moduleId={lesson.module_id}
+        lesson={lesson}
+        previewPath={previewPath}
+      />
+      <div className="p-4 sm:p-6">
+        <QuizEditor lessonId={lesson.id} questions={quizQuestions ?? []} />
+      </div>
+    </>
   );
 }

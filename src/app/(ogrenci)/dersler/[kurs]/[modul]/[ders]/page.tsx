@@ -5,12 +5,15 @@ import { getCurrentProfile } from "@/lib/auth/session";
 import { Badge } from "@/components/ui/badge";
 import { CodeBlock } from "@/components/lesson/CodeBlock";
 import { CompleteButton } from "@/components/lesson/CompleteButton";
+import { EmbeddedSimulator } from "@/components/lesson/EmbeddedSimulator";
 import { LessonContent } from "@/components/lesson/LessonContent";
 import { LessonLockScreen } from "@/components/lesson/LessonLockScreen";
 import { MaterialsBox } from "@/components/lesson/MaterialsBox";
+import { QuizSection } from "@/components/lesson/QuizSection";
 import { ScrollPositionTracker } from "@/components/lesson/ScrollPositionTracker";
 import { ToolButton } from "@/components/lesson/ToolButton";
 import { VideoEmbed } from "@/components/lesson/VideoEmbed";
+import { parseQuizQuestions } from "@/lib/quiz";
 
 export default async function DersPage({
   params,
@@ -112,6 +115,24 @@ export default async function DersPage({
     await supabase.rpc("mark_lesson_viewed", { p_lesson_id: lesson.id });
   }
 
+  let quizQuestions: ReturnType<typeof parseQuizQuestions> = [];
+  let quizAttempt: { correct_count: number; total_questions: number } | null = null;
+  if (isStudent) {
+    const { data: quizData } = await supabase.rpc("get_lesson_quiz", {
+      p_lesson_id: lesson.id,
+    });
+    quizQuestions = parseQuizQuestions(quizData);
+    if (quizQuestions.length > 0) {
+      const { data: attemptRow } = await supabase
+        .from("lesson_quiz_attempts")
+        .select("correct_count, total_questions")
+        .eq("student_id", profile!.id)
+        .eq("lesson_id", lesson.id)
+        .maybeSingle();
+      quizAttempt = attemptRow ?? null;
+    }
+  }
+
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-4 p-4 sm:p-6">
       <nav className="text-sm text-muted-foreground">
@@ -148,15 +169,28 @@ export default async function DersPage({
       )}
 
       {lesson.tool_url && lesson.tool_label && (
-        <ToolButton url={lesson.tool_url} label={lesson.tool_label} />
+        <>
+          <ToolButton url={lesson.tool_url} label={lesson.tool_label} />
+          <EmbeddedSimulator url={lesson.tool_url} label={lesson.tool_label} />
+        </>
       )}
 
       {isStudent ? (
-        <CompleteButton
-          lessonId={lesson.id}
-          initiallyCompleted={progressMap.get(lesson.id) === "completed"}
-          initialPoints={profile!.total_points}
-        />
+        <>
+          <CompleteButton
+            lessonId={lesson.id}
+            initiallyCompleted={progressMap.get(lesson.id) === "completed"}
+            initialPoints={profile!.total_points}
+          />
+          {quizQuestions.length > 0 && (
+            <QuizSection
+              lessonId={lesson.id}
+              questions={quizQuestions}
+              initialAttempt={quizAttempt}
+              initialPoints={profile!.total_points}
+            />
+          )}
+        </>
       ) : (
         <p className="mt-4 rounded-2xl bg-muted px-4 py-3 text-center text-sm text-muted-foreground">
           Bu bir önizleme — tamamlama öğrenciler içindir.

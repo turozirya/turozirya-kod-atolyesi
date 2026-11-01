@@ -282,6 +282,86 @@ export type Database = {
           },
         ]
       }
+      lesson_quiz_attempts: {
+        Row: {
+          completed_at: string
+          correct_count: number
+          lesson_id: string
+          points_earned: number
+          student_id: string
+          total_questions: number
+        }
+        Insert: {
+          completed_at?: string
+          correct_count: number
+          lesson_id: string
+          points_earned: number
+          student_id: string
+          total_questions: number
+        }
+        Update: {
+          completed_at?: string
+          correct_count?: number
+          lesson_id?: string
+          points_earned?: number
+          student_id?: string
+          total_questions?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lesson_quiz_attempts_lesson_id_fkey"
+            columns: ["lesson_id"]
+            isOneToOne: false
+            referencedRelation: "lessons"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lesson_quiz_attempts_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lesson_quiz_questions: {
+        Row: {
+          correct_index: number
+          id: string
+          lesson_id: string
+          options: string[]
+          order_index: number
+          points: number
+          question: string
+        }
+        Insert: {
+          correct_index: number
+          id?: string
+          lesson_id: string
+          options: string[]
+          order_index?: number
+          points?: number
+          question: string
+        }
+        Update: {
+          correct_index?: number
+          id?: string
+          lesson_id?: string
+          options?: string[]
+          order_index?: number
+          points?: number
+          question?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lesson_quiz_questions_lesson_id_fkey"
+            columns: ["lesson_id"]
+            isOneToOne: false
+            referencedRelation: "lessons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       lessons: {
         Row: {
           code_language: string
@@ -580,11 +660,16 @@ export type Database = {
         }[]
       }
       get_class_weekly_progress: { Args: never; Returns: Json }
+      get_lesson_quiz: { Args: { p_lesson_id: string }; Returns: Json }
       get_resume_target: { Args: { p_course_id?: string }; Returns: Json }
       get_student_courses: { Args: never; Returns: Json }
       is_teacher: { Args: never; Returns: boolean }
       mark_badges_seen: { Args: never; Returns: undefined }
       mark_lesson_viewed: { Args: { p_lesson_id: string }; Returns: undefined }
+      submit_quiz: {
+        Args: { p_answers: Json; p_lesson_id: string }
+        Returns: Json
+      }
       teacher_add_bonus: {
         Args: { p_amount: number; p_note: string; p_student: string }
         Returns: Json

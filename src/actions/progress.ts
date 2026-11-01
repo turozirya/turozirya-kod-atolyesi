@@ -23,3 +23,23 @@ export async function completeLesson(
 
   return { data };
 }
+
+export async function submitQuiz(
+  lessonId: string,
+  answers: { question_id: string; selected_index: number }[]
+): Promise<{ data?: Json; error?: string }> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("submit_quiz", {
+    p_lesson_id: lessonId,
+    p_answers: answers,
+  });
+
+  if (error) {
+    if (error.message.includes("NOT_A_STUDENT")) {
+      return { error: "Bu bir önizleme — quiz öğrenciler içindir." };
+    }
+    return { error: "Bir şeyler ters gitti, tekrar dene." };
+  }
+
+  return { data };
+}
