@@ -147,14 +147,14 @@ export default async function PanelPage({
           {announcements.map((a) => (
             <Card
               key={a.id}
-              className="flex flex-col gap-1 rounded-2xl border-2 border-primary bg-primary/10 p-4"
+              className="flex flex-col gap-1 rounded-2xl border-2 border-secondary bg-secondary p-4 text-secondary-foreground"
             >
-              <span className="flex items-center gap-1.5 font-bold text-foreground">
+              <span className="flex items-center gap-1.5 font-bold">
                 <Megaphone className="h-4 w-4" aria-hidden />
                 {a.title}
               </span>
-              <p className="text-sm text-foreground">{a.content}</p>
-              <span className="text-xs text-muted-foreground">
+              <p className="text-sm">{a.content}</p>
+              <span className="text-xs text-secondary-foreground/70">
                 {new Date(a.created_at).toLocaleDateString("tr-TR")}
               </span>
             </Card>

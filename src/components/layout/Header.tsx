@@ -18,12 +18,14 @@ export function Header({
   menu,
   points,
   profileHref,
+  announcementsHref,
 }: {
   displayName: string;
   avatar: string;
   menu?: React.ReactNode;
   points?: number;
   profileHref?: string;
+  announcementsHref?: string;
 }) {
   return (
     <header className="flex items-center justify-between gap-3 border-b bg-card px-4 py-3 sm:px-6">
@@ -55,6 +57,11 @@ export function Header({
           {profileHref && (
             <DropdownMenuItem render={<Link href={profileHref} />}>
               Profil
+            </DropdownMenuItem>
+          )}
+          {announcementsHref && (
+            <DropdownMenuItem render={<Link href={announcementsHref} />}>
+              Duyurular
             </DropdownMenuItem>
           )}
           <DropdownMenuItem onClick={() => signOut()}>Çıkış</DropdownMenuItem>
