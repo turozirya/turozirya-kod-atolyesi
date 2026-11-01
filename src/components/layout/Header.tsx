@@ -19,6 +19,7 @@ export function Header({
   points,
   profileHref,
   announcementsHref,
+  homeHref = "/",
 }: {
   displayName: string;
   avatar: string;
@@ -26,12 +27,13 @@ export function Header({
   points?: number;
   profileHref?: string;
   announcementsHref?: string;
+  homeHref?: string;
 }) {
   return (
     <header className="flex items-center justify-between gap-3 border-b bg-card px-4 py-3 sm:px-6">
       <div className="flex min-w-0 items-center gap-2">
         {menu}
-        <Link href="/" className="truncate font-heading text-lg font-bold text-foreground">
+        <Link href={homeHref} className="truncate font-heading text-lg font-bold text-foreground">
           Turozirya Kod Atölyesi
         </Link>
       </div>

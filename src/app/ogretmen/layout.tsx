@@ -23,6 +23,7 @@ export default async function OgretmenLayout({
       <Header
         displayName={profile.display_name}
         avatar={profile.avatar}
+        homeHref="/ogretmen"
         menu={
           <Sheet>
             <SheetTrigger

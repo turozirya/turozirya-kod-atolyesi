@@ -44,7 +44,7 @@ export function StudentNav({ leaderboardEnabled = true }: { leaderboardEnabled?:
 
       <nav
         aria-label="Alt gezinme"
-        className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-around border-t bg-card py-1.5 sm:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-around border-t-2 border-border bg-card py-1.5 shadow-[0_-4px_12px_-2px_rgb(0_0_0_/_0.12)] sm:hidden"
       >
         {navItems.map(({ href, label, icon: Icon }) => {
           const active = pathname === href || pathname.startsWith(`${href}/`);

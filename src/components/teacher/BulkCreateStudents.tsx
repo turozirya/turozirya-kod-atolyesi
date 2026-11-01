@@ -23,7 +23,7 @@ export function BulkCreateStudents({
 
   const siteUrl =
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/^https?:\/\//, "") ??
-    "turozirya-kod-atolyesi.vercel.app";
+    "turozirya.vercel.app";
 
   const onSubmit = async () => {
     setSubmitting(true);
