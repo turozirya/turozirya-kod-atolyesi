@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run"
+    "test": "vitest run",
+    "content:import": "tsx scripts/content-import.ts",
+    "db:backup": "tsx scripts/db-backup.ts",
+    "db:cleanup-users": "tsx scripts/db-cleanup-users.ts",
+    "content:diagrams": "tsx scripts/generate-diagrams.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
@@ -42,7 +46,10 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
+    "gray-matter": "^4.0.3",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5",
     "vitest": "^5.0.5"
   }

@@ -30,6 +30,7 @@ function defaultsFor(nextOrderIndex: number, question?: QuestionRow): QuizQuesti
         question: question.question,
         options: question.options,
         correct_index: question.correct_index,
+        explanation: question.explanation,
         points: question.points,
         order_index: question.order_index,
       }
@@ -37,6 +38,7 @@ function defaultsFor(nextOrderIndex: number, question?: QuestionRow): QuizQuesti
         question: "",
         options: [],
         correct_index: 0,
+        explanation: "",
         points: 5,
         order_index: nextOrderIndex,
       };
@@ -188,6 +190,14 @@ export function QuizQuestionDialog({
             )}
             {errors.correct_index && (
               <p className="text-sm text-destructive">{errors.correct_index.message}</p>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="quiz-explanation">Açıklama (doğru cevaptan sonra gösterilir)</Label>
+            <Textarea id="quiz-explanation" rows={2} {...register("explanation")} />
+            {errors.explanation && (
+              <p className="text-sm text-destructive">{errors.explanation.message}</p>
             )}
           </div>
 

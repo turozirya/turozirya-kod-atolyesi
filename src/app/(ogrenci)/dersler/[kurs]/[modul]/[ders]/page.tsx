@@ -32,12 +32,15 @@ export default async function DersPage({
     notFound();
   }
 
+  // Yayında olmayan modül/ders RLS tarafından zaten filtreleniyor (öğrenci için
+  // is_published+can_access_course şartı, öğretmen için muafiyet — CLAUDE.md §6.3).
+  // Burada ayrıca .eq("is_published", true) eklemek öğretmenin "öğrenci gibi önizle"
+  // ile yayınlanmamış içeriği görmesini de engeller; bu yüzden filtre RLS'e bırakılır.
   const { data: moduleRow } = await supabase
     .from("modules")
     .select("id, slug, title, is_sequential")
     .eq("course_id", course.id)
     .eq("slug", modul)
-    .eq("is_published", true)
     .maybeSingle();
   if (!moduleRow) {
     notFound();
@@ -48,7 +51,6 @@ export default async function DersPage({
     .select("*")
     .eq("module_id", moduleRow.id)
     .eq("slug", ders)
-    .eq("is_published", true)
     .maybeSingle();
   if (!lesson) {
     notFound();
@@ -58,7 +60,6 @@ export default async function DersPage({
     .from("lessons")
     .select("id, slug, title, order_index")
     .eq("module_id", moduleRow.id)
-    .eq("is_published", true)
     .order("order_index", { ascending: true });
 
   const index = (siblings ?? []).findIndex((l) => l.id === lesson.id);

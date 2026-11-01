@@ -327,6 +327,7 @@ export type Database = {
       lesson_quiz_questions: {
         Row: {
           correct_index: number
+          explanation: string
           id: string
           lesson_id: string
           options: string[]
@@ -336,6 +337,7 @@ export type Database = {
         }
         Insert: {
           correct_index: number
+          explanation?: string
           id?: string
           lesson_id: string
           options: string[]
@@ -345,6 +347,7 @@ export type Database = {
         }
         Update: {
           correct_index?: number
+          explanation?: string
           id?: string
           lesson_id?: string
           options?: string[]

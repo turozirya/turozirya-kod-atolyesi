@@ -25,11 +25,13 @@ export default async function KursPage({
     notFound();
   }
 
+  // is_published filtresi RLS'e bırakılır (öğrenci için zaten zorunlu, öğretmen
+  // "öğrenci gibi önizle" ile yayınlanmamış modülü/dersi de görebilsin diye —
+  // CLAUDE.md §6.3, bkz. [kurs]/[modul]/[ders]/page.tsx'teki aynı not).
   const { data: modules } = await supabase
     .from("modules")
     .select("id, slug, title, description, icon, color, order_index, is_sequential")
     .eq("course_id", course.id)
-    .eq("is_published", true)
     .order("order_index", { ascending: true });
 
   const moduleIds = (modules ?? []).map((m) => m.id);
@@ -38,7 +40,6 @@ export default async function KursPage({
         .from("lessons")
         .select("id, slug, title, module_id, estimated_minutes, points, order_index")
         .in("module_id", moduleIds)
-        .eq("is_published", true)
         .order("order_index", { ascending: true })
     : { data: [] as never[] };
 

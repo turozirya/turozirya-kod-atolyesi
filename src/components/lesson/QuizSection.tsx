@@ -74,6 +74,9 @@ export function QuizSection({
                 <p className={r?.correct ? "text-success" : "text-destructive"}>
                   {r?.correct ? "✓ Doğru" : `✗ Doğru cevap: ${q.options[r?.correct_index ?? 0]}`}
                 </p>
+                {r?.explanation && (
+                  <p className="text-muted-foreground">{r.explanation}</p>
+                )}
               </div>
             );
           })}

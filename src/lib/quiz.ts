@@ -13,6 +13,7 @@ export type QuizAnswerResult = {
   selected_index: number | null;
   correct_index: number;
   correct: boolean;
+  explanation: string;
 };
 
 export type QuizResult = CompleteLessonResult & {
@@ -46,7 +47,7 @@ function parseAnswerResults(value: Json | undefined): QuizAnswerResult[] {
   }
   return value.flatMap((item) => {
     if (!item || typeof item !== "object" || Array.isArray(item)) return [];
-    const { question_id, selected_index, correct_index, correct } = item as Record<
+    const { question_id, selected_index, correct_index, correct, explanation } = item as Record<
       string,
       Json | undefined
     >;
@@ -61,6 +62,7 @@ function parseAnswerResults(value: Json | undefined): QuizAnswerResult[] {
           selected_index: typeof selected_index === "number" ? selected_index : null,
           correct_index,
           correct,
+          explanation: typeof explanation === "string" ? explanation : "",
         },
       ];
     }

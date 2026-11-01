@@ -8,6 +8,7 @@ export const quizQuestionSchema = z
       .min(2, "En az 2 seçenek gerekli")
       .max(6, "En fazla 6 seçenek olabilir"),
     correct_index: z.number().int().min(0),
+    explanation: z.string().trim().min(1, "Açıklama gerekli").max(300),
     points: z.number().int().min(0).max(100),
     order_index: z.number().int().min(0),
   })

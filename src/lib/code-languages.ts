@@ -1,5 +1,6 @@
 export const CODE_LANGUAGES = [
   { value: "blocks", label: "Bloklar (MakeCode)", shikiLang: null },
+  { value: "sozde_kod", label: "Sözde Kod", shikiLang: null },
   { value: "micropython", label: "MicroPython", shikiLang: "python" },
   { value: "python", label: "Python", shikiLang: "python" },
   { value: "cpp", label: "C++ (Arduino)", shikiLang: "cpp" },
