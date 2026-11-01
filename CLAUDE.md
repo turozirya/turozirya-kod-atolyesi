@@ -14,9 +14,17 @@
 - [x] Faz 3 — İlerleme takibi ve "kaldığın yerden devam"
 - [x] Faz 4 — Oyunlaştırma (puan, seviye, rozet, sıralama)
 - [x] Faz 5 — Öğretmen paneli: sınıf yönetimi ve raporlar
-- [x] Faz 6 — Cilalama, erişilebilirlik, örnek içerik ve Vercel yayını (Vercel yayını hariç — bkz. not)
+- [x] Faz 6 — Cilalama, erişilebilirlik, örnek içerik ve Vercel yayını
 
 Faz notları (Claude Code doldurur — alınan önemli kararlar, ertelenen işler):
+
+- **Faz 6 sonrası — Vercel yayını:**
+  - GitHub: kullanıcı `github.com/turozirya/turozirya-kod-atolyesi` (private) reposunu panelden oluşturdu, ben `git remote add origin` + `git push -u origin main` ile kodu push ettim (yerel `master` dalı `main`'e yeniden adlandırıldı).
+  - Vercel: kullanıcının "turozirya" takımında zaten bağlı bir Vercel MCP bağlayıcısı vardı. GitHub App entegrasyonunu kullanıcı kendi hesabından kurup depoya erişim verdi (hesap/entegrasyon izni gerektiren bir adım, benim yapamayacağım bir şeydi). Proje `create_git_project`/`create_project` ile oluşturuldu (`prj_bxORCtk4WyDVla2DcNDEd0MpH965`), `.env.local`'deki 5 değişken (§4) Vercel'e `create_project_env` ile eklendi (`SUPABASE_SECRET_KEY` tipi `sensitive`, `NEXT_PUBLIC_SITE_URL` yalnızca `production` hedefinde gerçek Vercel alan adıyla — diğerleri `production+preview+development`), `create_deployment` ile `main` dalından production dağıtımı tetiklendi.
+  - **Kullanıcı onayıyla kapatılan bir güvenlik ayarı:** Vercel takımının varsayılan "Deployment Protection" (`ssoProtection`) ayarı projeye `all_except_custom_domains` olarak miras kalmıştı — bu açıkken varsayılan `*.vercel.app` adresi Vercel hesabı olmayan biri (yani öğrenciler) için giriş duvarına takılıyordu. Hesap/güvenlik ayarı değiştirme kategorisine girdiği için önce kullanıcıya soruldu, onay alındıktan sonra `update_project` ile `ssoProtection: null` yapılarak kapatıldı.
+  - Canlı adres: **https://turozirya-kod-atolyesi.vercel.app**. Tarayıcıda uçtan uca doğrulandı: ana sayfa, `/giris`'te test öğrencisi `ayseyilmaz` ile gerçek giriş → `/devam` doğru derse yönlendirdi → "Tamamlandı ✓" → RPC çalıştı, +10 puan kutlaması (konfeti) göründü — production'da Supabase bağlantısı, RLS, RPC'ler ve env değişkenleri uçtan uca doğru çalışıyor.
+  - **Kullanıcıya hatırlatma (CLAUDE.md §13, henüz yapılmadı):** Supabase panelinde Authentication → URL Configuration → Redirect URLs listesine `https://turozirya-kod-atolyesi.vercel.app` eklenmeli. Şu an projede e-posta tabanlı yönlendirme akışı (magic link, OAuth, parola sıfırlama e-postası) kullanılmadığı için bu olmadan da uygulama çalışıyor, ama ileride böyle bir akış eklenirse gerekecek.
+  - `v1.0.0` etiketi bu commit'le birlikte atıldı.
 
 - **Faz 6 sonrası — Mini quiz ve gömülü simülatör** ("Sonraki Sürüm Fikirleri"nden, kullanıcı isteğiyle erken alındı):
   - **Gömülü simülatör:** Yeni öğretmen alanı/iş akışı eklenmedi — `curl -I` ile `makecode.microbit.org`/`python.microbit.org`/`wokwi.com`'da `X-Frame-Options`/CSP `frame-ancestors` olmadığı, `tinkercad.com`'un ise `X-Frame-Options: SAMEORIGIN` gönderdiği doğrulandı (gerçek bir dev sunucusunda canlı iframe testiyle de teyit edildi — MakeCode simülatörü sayfada çalışır halde göründü). `src/lib/tools.ts`'e `isEmbeddableToolUrl()` eklendi (tinkercad hariç alt küme); yeni `src/components/lesson/EmbeddedSimulator.tsx`, `VideoEmbed`'in "tıklayınca yüklenen önizleme" desenini birebir izliyor — mevcut `lesson.tool_url` doğrudan iframe'e veriliyor, teacher'ın ekstra bir şey yapması gerekmiyor.
