@@ -91,5 +91,5 @@ export async function signIn(input: LoginInput): Promise<{ error?: string }> {
 export async function signOut() {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  redirect("/giris");
+  redirect("/");
 }
