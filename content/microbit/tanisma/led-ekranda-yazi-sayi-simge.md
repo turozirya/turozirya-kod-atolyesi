@@ -34,9 +34,13 @@ MakeCode'da ayrıca **hazır simgeler** bulunur: kalp, gülen yüz, ördek, ev, 
 
 **Örnek:** Önce "show string" bloğuna kendi adını yaz. Altına "pause (ms)" bloğu ekle (ms = milisaniye; 1000 ms = 1 saniye). Sonra "show icon" bloğunu ekleyip kalp simgesini seç. Program çalıştığında ekranda önce adın kayar, sonra kalp görünür — bir **isim kartı** oluşturdun.
 
+![led-ekranda-yazi-sayi-simge-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/00f31874-ce2e-48bd-9640-8167c5e59090.png)
+
 > 💡 "show string" yazı (metin) içindir, "show number" sayı içindir. Bunlar farklı veri türleridir (Hatırla: Robotik Kodlamaya Giriş kursu, Modül 6). İleride bir değişkendeki sayıyı göstermek için "show number" kullanacaksın.
 
 **Dene!** MakeCode'da kendi isim kartını hazırla: adın ("show string"), ardından yaşın ("show number" — tek basamaklıysa sabit, iki basamaklıysa kayarak görünür), ardından sevdiğin bir simge ("show icon"). Bloklar arasına "pause (ms)" blokları ekleyerek her birinin görünme süresini ayarla. Simülatörde dene, beğendiğinde karta yükle.
+
+![led-ekranda-yazi-sayi-simge-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/5611c81b-5a53-46f6-97e5-0ad558273b2a.png)
 
 **Bugün öğrendiklerin:**
 - Uzun yazılar ve iki basamaklı sayılar LED ekranda kayarak gösterilir.

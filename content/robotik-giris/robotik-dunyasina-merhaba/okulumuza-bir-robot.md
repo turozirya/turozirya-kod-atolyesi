@@ -34,6 +34,8 @@ Okulundan örnekler düşünelim: kantinde öğle arası uzun sıralar oluşuyor
 
 **Örnek:** "Kütüphane Robotu" fikri — raflardaki boş yerleri **algılar**, hangi kitabın nereye gideceğine **karar verir**, kitabı o rafa **taşır**. Bu fikir, üç adımı (algıla-karar ver-hareket et) içerdiği için gerçek bir robot fikridir.
 
+![okulumuza-bir-robot-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/7dbb72f5-a626-4f41-8ae7-e8778abcffc9.png)
+
 > 💡 Sık yapılan hata: "Uçan araba" gibi çok büyük ve belirsiz fikirler üretmek. Küçük ama gerçek bir soruna odaklanan fikirler daha güçlüdür.
 
 **Dene!** Önce okulunda seni rahatsız eden küçük bir sorunu yaz. Sonra aşağıdaki tabloyu kendi fikrin için doldur (ilk satır örnek olarak doldurulmuş):
@@ -44,6 +46,8 @@ Okulundan örnekler düşünelim: kantinde öğle arası uzun sıralar oluşuyor
 | *(senin sorunun)* | ? | ? | ? |
 
 Kartını yanındaki arkadaşınla paylaş; onun fikrindeki algıla-karar ver-hareket et adımlarını bulmasına yardım et.
+
+![okulumuza-bir-robot-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/2b20844e-e53e-4888-bb7f-59ec361af3f0.png)
 
 **Bugün öğrendiklerin:**
 - Bir robot fikri, gerçek bir sorunla başlar.

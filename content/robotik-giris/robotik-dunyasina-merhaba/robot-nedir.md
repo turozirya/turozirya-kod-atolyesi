@@ -36,6 +36,8 @@ El mikserini düşün. Düğmeye basınca döner. Çevresine bakıp "karışım 
 
 **Örnek:** Bir robot süpürge önündeki duvarı algılar (sensör). "Sağa dönmeliyim" kararını verir (işlemci). Tekerleklerini döndürerek sağa döner (eyleyici). El mikseri ise hiçbir şeyi algılamaz; yalnızca sen düğmeye bastığın sürece döner.
 
+![robot-nedir-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/785652f2-2138-4866-a356-087725b7ba21.png)
+
 > 💡 Sık yapılan hata: Her elektronik alet robot sanılır. Bir alet ancak **algılayıp karar verebiliyorsa** robottur; sadece açılıp kapanmak veya dönmek yetmez.
 
 **Tartışmalı örnekler:**
@@ -43,6 +45,8 @@ El mikserini düşün. Düğmeye basınca döner. Çevresine bakıp "karışım 
 - **Uzaktan kumandalı araba:** kararı sen (insan) verdiğin için robot sayılmaz; araç kendisi karar vermez.
 
 **Dene!** Şu beş kartı düşün: uzaktan kumandalı araba, robot süpürge, el mikseri, otomatik kapı, hesap makinesi. Her biri için kendine şunu sor: "Bu çevresini algılıyor mu? Karar veriyor mu? Hareket ediyor mu?" Üçüne de "evet" diyebildiklerini bir tarafa, diğerlerini öbür tarafa ayır. Arkadaşınla sonuçlarını karşılaştır ve neden öyle düşündüğünü anlat.
+
+![robot-nedir-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/834513ef-5187-4260-bcf7-f646325f4a18.png)
 
 Yani: robot süpürge algılar, karar verir, hareket eder — bu yüzden robottur. El mikseri hiçbirini yapmaz, sadece döner — bu yüzden robot değildir.
 

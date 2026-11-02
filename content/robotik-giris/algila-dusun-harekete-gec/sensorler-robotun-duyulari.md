@@ -34,6 +34,8 @@ Robot çevresini **sensör**lerle algılar. Bir **sensör**, ışık, sıcaklık
 
 **Örnek:** Bir robot süpürge, tampon sensörüyle duvara çarptığını algılar. Bir başka sensörü de merdiven boşluğunu algılar, böylece düşmez. Sensörün işi burada bitiyor — ne yapılacağına sensör değil, bir sonraki derste göreceğin **işlemci** karar verir.
 
+![sensorler-robotun-duyulari-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/f7989dc2-aa13-4162-8389-0b68cb5cdb1b.png)
+
 > 💡 Sık yapılan hata: Sensörün karar verdiği düşünülür. Oysa sensör sadece **bilgi toplar**; kararı robotun başka bir parçası verir.
 
 **Dene!** Aşağıdaki tabloyu tamamla; her duyuyu doğru sensörle eşleştir.
@@ -48,6 +50,8 @@ Robot çevresini **sensör**lerle algılar. Bir **sensör**, ışık, sıcaklık
 Sonra evindeki üç cihazı düşün ve her birinde hangi sensörün olabileceğini yaz (örnek: akıllı telefonun ekranı döndüğünde çalışan bir hareket sensörü vardır).
 
 micro:bit ile Kodlama kursunda kullanacağın micro:bit kartında da ışık, sıcaklık ve ses sensörleri var.
+
+![sensorler-robotun-duyulari-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/8cbd6ae2-980a-477f-8ff0-98ecf78de6d8.png)
 
 **Bugün öğrendiklerin:**
 - Sensör, çevreden bilgi toplayan parçadır.

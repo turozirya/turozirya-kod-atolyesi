@@ -30,7 +30,7 @@ test:
 
 **micro:bit**, avuç içi büyüklüğünde küçük bir bilgisayar kartıdır. Üzerinde sensörler, bir işlemci ve eyleyiciler bulunur — tıpkı önceki derste öğrendiğin robot sistemleri gibi.
 
-Ön yüzde şu parçalar var: **25 LED'lik ekran** ve **hoparlör** eyleyicidir, ışık ve ses üretirler. **A** ve **B** butonları, **dokunmatik logo** ve **mikrofon**, basıldığını veya sesi algılayan sensörlerdir. Kartın **arka yüzünde** ise sallanmayı algılayan bir **ivmeölçer**, yönü algılayan bir **pusula** sensörü, sıcaklığı algılayan bir **sıcaklık sensörü** ve kararları veren **işlemci** bulunur. [KONTROL: arka yüz etiketleri]
+Ön yüzde şu parçalar var: **25 LED'lik ekran** eyleyicidir, ışık üretir. **A** ve **B** butonları ile **dokunmatik logo**, basıldığını algılayan sensörlerdir. Kartın **arka yüzünde** ise ses üreten **hoparlör** eyleyicisi; sesi algılayan **mikrofon**, sallanmayı algılayan **ivmeölçer** ve yönü algılayan **pusula** sensörleri; sıcaklığı da ölçebilen ve kararları veren **işlemci** bulunur.
 
 > 💡 Sık yapılan hata: micro:bit'in sadece bir ekran olduğu düşünülür. Oysa kartta birden fazla sensör, bir işlemci ve iki eyleyici (LED ekran ve hoparlör) birlikte çalışır.
 
@@ -38,7 +38,7 @@ test:
 
 **Örnek:** A butonuna bastığında şu sıra çalışır: buton (sensör) basıldığını algılar, işlemci "LED ekranda gülen yüz göster" kararını verir, LED ekran (eyleyici) gülen yüzü gösterir. Bu, Robotik Kodlamaya Giriş kursu, Modül 2'de öğrendiğin algıla-karar ver-hareket et sırasının aynısıdır.
 
-[GÖRSEL: micro:bit'in ön ve arka yüzü, her parça etiketli]
+![microbit-nedir-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/bfc5ee7f-dc7a-4ac2-af1c-11e1fc798f38.png)
 
 **Dene!** Öğretmeninden aldığın micro:bit kartını eline al ve aşağıdaki tabloyu tamamla.
 
@@ -53,6 +53,8 @@ test:
 | Pil girişi | ? |
 
 Her birini bulduğunda doğru sütuna karar ver ve yanındaki arkadaşınla kontrol et.
+
+![microbit-nedir-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/5249f764-8836-49b9-a957-15bb491fef89.png)
 
 **Bugün öğrendiklerin:**
 - micro:bit, sensör, işlemci ve eyleyicileri bir arada barındıran küçük bir kart bilgisayardır.

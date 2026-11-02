@@ -40,6 +40,8 @@ Bunu bir hesap makinesinde görebilirsin: "5 + 3" tuşlarsın (girdi), makine bu
 
 **Örnek:** Bir robot süpürge, tampon sensörüyle "çarptım" bilgisini gönderir (girdi). **İşlemci**si "geri çekil ve sağa dön" kararını verir (işlem). Tekerlekler döner (çıktı).
 
+![islemci-robotun-beyni-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/0428017f-60f2-4f58-aefe-cd408c042b1f.png)
+
 > 💡 Sık yapılan hata: Girdi ile çıktı birbirine karıştırılır. Girdi her zaman sisteme **giren** bilgi, çıktı ise sistemden **çıkan** sonuçtur.
 
 **Tartışmalı örnek:** Dokunmatik ekran hem girdi hem çıktı aygıtıdır: dokunman girdi, ekranda gördüğün çıktıdır.
@@ -57,6 +59,8 @@ Bunu bir hesap makinesinde görebilirsin: "5 + 3" tuşlarsın (girdi), makine bu
 Arkadaşınla tablonu karşılaştır.
 
 micro:bit kartının arkasındaki küçük çiplerden biri de işlemcidir; micro:bit ile Kodlama kursunda onu programlayacaksın.
+
+![islemci-robotun-beyni-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/6d7e0460-e299-4adf-bf75-a82b768810b7.png)
 
 **Bugün öğrendiklerin:**
 - İşlemci, robotun karar veren beynidir.

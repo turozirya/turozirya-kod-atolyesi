@@ -34,6 +34,8 @@ Kararı gerçek bir harekete veya etkiye çeviren parça **eyleyici**dir. Eyleyi
 
 **Örnek:** Bir robot süpürgede üç eyleyici birlikte çalışır: tekerlek motorları süpürgeyi hareket ettirir, fırça motoru döner, hoparlör ise "şarjım bitti" uyarısı verir.
 
+![eyleyiciler-robotun-kaslari-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/bbd729d3-d711-4dd7-93fb-d7d489247891.png)
+
 > 💡 Sık yapılan hata: Sensör ile eyleyici karıştırılır. Sensör **bilgi toplar** (içeri doğru), eyleyici **etki üretir** (dışarı doğru). Yön tersidir.
 
 **Dene!** Aşağıdaki tabloyu tamamla (ilk satır örnek olarak doldurulmuş). Her cihazda hareket, ışık, ses veya **ısı** üreten eyleyiciyi bul.
@@ -47,6 +49,8 @@ Kararı gerçek bir harekete veya etkiye çeviren parça **eyleyici**dir. Eyleyi
 | Akıllı hoparlör | ? | ? |
 
 Bulduklarını arkadaşınla karşılaştır.
+
+![eyleyiciler-robotun-kaslari-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/524b50e8-5a26-445d-b98d-6d513fdf92fa.png)
 
 **Bugün öğrendiklerin:**
 - Eyleyici, işlemcinin kararını gerçek harekete veya etkiye çevirir.

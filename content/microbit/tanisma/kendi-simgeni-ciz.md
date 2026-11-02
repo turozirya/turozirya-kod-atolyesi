@@ -38,11 +38,15 @@ LED ekran, 5 sütun ve 5 satırdan oluşan bir **ızgara**dır. Her nokta bir **
 
 `Led` kategorisindeki "plot" bloğu (noktayı yak), verdiğin x ve y koordinatındaki tek bir noktayı yakar. "unplot" bloğu (noktayı söndür) ise aynı şekilde bir noktayı söndürür. "clear screen" bloğu (ekranı temizle) tüm noktaları birden söndürür. Birden fazla "plot" bloğunu art arda kullanarak, istediğin herhangi bir deseni **piksel piksel** çizebilirsin.
 
+![kendi-simgeni-ciz-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/7f84d61b-b726-47f4-8e3c-c4f65ebbadc3.png)
+
 **Örnek:** Küçük bir ok çizmek istersen, önce orta sütunun (x=2) tüm satırlarını (y=0,1,2,3,4) yakarak gövdeyi oluşturursun. Sonra iki köşegen noktayı ((1,1) ve (3,1)) ekleyerek ok başını yaparsın.
 
 ![koordinat-izgara-ok-ornegi](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/a57ea052-9aa3-4ec3-b22d-075bba6c8d75.png)
 
 **Dene!** Bir kareli kâğıda 5x5'lik bir ızgara çiz ve kendi basit simgeni (bir yıldız, bir ev, kendi baş harfin gibi) karalayarak tasarla. Sonra her karalı noktanın x,y koordinatını bul ve MakeCode'da "plot" bloklarıyla aynı simgeyi oluştur. Simülatörde kontrol et, sonra karta yükle.
+
+![kendi-simgeni-ciz-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/b2469072-f279-45db-be04-fded6cf638a5.png)
 
 **Bugün öğrendiklerin:**
 - LED ekranda koordinatlar 0'dan başlar; x sağa, y **aşağı** doğru artar.

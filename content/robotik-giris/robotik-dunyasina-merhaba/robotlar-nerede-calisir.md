@@ -38,6 +38,8 @@ Bütün bu örneklerin ortak bir nedeni var: insanın yapması zor, tehlikeli ya
 
 **Örnek:** Bir süt sağma robotu, çiftlikte ineği algılar, doğru pozisyonu bulup sağma işlemini başlatır. Çiftçi gece uyurken bile robot çalışmaya devam eder.
 
+![robotlar-nerede-calisir-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/805249cc-b7e8-4cd3-9552-386b30b338a5.png)
+
 > 💡 Sık yapılan hata: "Robot = insan görünümlü makine" sanılır. Oysa birçok robot hiç insana benzemez; bir kol, bir araç ya da bir kutu şeklinde olabilir.
 
 **Dene!** Aşağıdaki tabloyu tamamla; her robotu doğru alana yerleştir ve insandan neyi daha iyi yaptığını yaz.
@@ -51,6 +53,8 @@ Bütün bu örneklerin ortak bir nedeni var: insanın yapması zor, tehlikeli ya
 | Robot süpürge | ? | ? |
 
 Demek ki robot insan şeklinde olmak zorunda değil; bir kol, bir araç ya da küçük bir kutu şeklinde de olabilir.
+
+![robotlar-nerede-calisir-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/0283472d-20cd-407b-b545-452058ece1b1.png)
 
 **Bugün öğrendiklerin:**
 - Robotlar uzay, sağlık, tarım, sanayi, ev ve tehlikeli yerlerde kullanılır.

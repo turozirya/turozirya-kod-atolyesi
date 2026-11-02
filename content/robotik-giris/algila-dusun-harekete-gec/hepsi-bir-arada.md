@@ -40,6 +40,8 @@ Yalnızca robotlar değil, birçok **akıllı sistem** de bu üç parçayla çal
 
 **Örnek — Park sensörü:** Mesafe sensörü arabanın duvara yaklaştığını algılar (sensör). İşlemci "mesafe çok az, uyar" kararını verir (işlemci). Hoparlör bip sesi çıkarır (eyleyici).
 
+![hepsi-bir-arada-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/2cdfe168-8988-4577-bce4-8ab5256e54bb.png)
+
 > 💡 Sık yapılan hata: Bu üç adımın bir kez çalışıp bittiği sanılır. Oysa otomatik kapı da robot süpürge de algıla – karar ver – harekete geç adımlarını saniyede defalarca tekrarlar.
 
 **Dene!** Aşağıdaki tabloyu tamamla (ilk satır örnek olarak doldurulmuş):
@@ -50,6 +52,8 @@ Yalnızca robotlar değil, birçok **akıllı sistem** de bu üç parçayla çal
 | Akıllı sokak lambası | ? | ? | ? |
 | Park sensörü | ? | ? | ? |
 | *(senin seçtiğin sistem, örn. otomatik musluk)* | ? | ? | ? |
+
+![hepsi-bir-arada-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/e0e55cef-6686-489f-a478-fc0e87763195.png)
 
 **Bugün öğrendiklerin:**
 - Yalnızca robotlar değil, birçok akıllı sistem de algıla, karar ver, hareket et adımlarıyla çalışır.
