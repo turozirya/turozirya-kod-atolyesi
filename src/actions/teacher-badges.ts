@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
-import { requireRole } from "@/lib/auth/session";
+import { requireRoleAction } from "@/lib/auth/session";
 import { badgeSchema, type BadgeInput } from "@/lib/validations/badge";
 
 type ActionResult = { error?: string };
@@ -15,7 +15,8 @@ function mapError(error: { code?: string } | null): string {
 }
 
 export async function createBadge(input: BadgeInput): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const parsed = badgeSchema.safeParse(input);
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Bilgileri kontrol et." };
@@ -32,7 +33,8 @@ export async function createBadge(input: BadgeInput): Promise<ActionResult> {
 }
 
 export async function updateBadge(id: string, input: BadgeInput): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const parsed = badgeSchema.safeParse(input);
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Bilgileri kontrol et." };
@@ -49,7 +51,8 @@ export async function updateBadge(id: string, input: BadgeInput): Promise<Action
 }
 
 export async function deleteBadge(id: string): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
   const { error } = await supabase.from("badges").delete().eq("id", id);
   if (error) {

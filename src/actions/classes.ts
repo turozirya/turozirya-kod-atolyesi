@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
-import { requireRole } from "@/lib/auth/session";
+import { requireRoleAction } from "@/lib/auth/session";
 import { generateJoinCode } from "@/lib/auth/class-code";
 import { classSchema, type ClassInput } from "@/lib/validations/class";
 
@@ -20,7 +20,9 @@ function mapError(error: { code?: string } | null): string {
 export async function createClass(
   input: Pick<ClassInput, "name">
 ): Promise<ActionResult & { id?: string }> {
-  const profile = await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
+  const profile = auth;
   const parsed = classSchema
     .pick({ name: true })
     .safeParse(input);
@@ -53,7 +55,8 @@ export async function createClass(
 }
 
 export async function updateClass(id: string, input: ClassInput): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const parsed = classSchema.safeParse(input);
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Bilgileri kontrol et." };
@@ -81,7 +84,8 @@ export async function setClassLeaderboardEnabled(
   id: string,
   enabled: boolean
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
   const { error } = await supabase
     .from("classes")
@@ -96,7 +100,8 @@ export async function setClassLeaderboardEnabled(
 }
 
 export async function deleteClass(id: string): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
   const { error } = await supabase.from("classes").delete().eq("id", id);
   if (error) {
@@ -110,7 +115,8 @@ export async function deleteClass(id: string): Promise<ActionResult> {
 export async function regenerateJoinCode(
   id: string
 ): Promise<ActionResult & { joinCode?: string }> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
 
   for (let attempt = 0; attempt < MAX_JOIN_CODE_ATTEMPTS; attempt++) {
@@ -138,7 +144,8 @@ export async function toggleClassCourse(
   courseId: string,
   assign: boolean
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
 
   const { error } = assign

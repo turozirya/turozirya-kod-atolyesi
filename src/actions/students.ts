@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { requireRole } from "@/lib/auth/session";
+import { requireRoleAction } from "@/lib/auth/session";
 import { ensureUniqueUsername, suggestUsername, usernameToEmail } from "@/lib/auth/username";
 import { generateSimplePassword } from "@/lib/auth/password";
 
@@ -29,7 +29,8 @@ function mapRpcError(error: { message: string } | null): string {
 export async function resetStudentPassword(
   studentId: string
 ): Promise<ActionResult & { password?: string }> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
 
   const { data: allowed } = await supabase.rpc("teaches_student", { student: studentId });
@@ -51,7 +52,8 @@ export async function moveStudentClass(
   studentId: string,
   newClassId: string | null
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
   // Supabase'in tip üreteci uuid parametresini nullable olarak işaretlemiyor,
   // ama fonksiyon sınıftan çıkarmak için null'ı kabul ediyor (0013 migration).
@@ -72,7 +74,8 @@ export async function addBonusPoints(
   amount: number,
   note: string
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   if (!Number.isInteger(amount) || amount <= 0) {
     return { error: "Puan miktarı pozitif bir tam sayı olmalı." };
   }
@@ -99,7 +102,9 @@ export async function bulkCreateStudents(
   classId: string,
   rawNames: string
 ): Promise<ActionResult & { created?: CreatedStudent[] }> {
-  const profile = await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
+  const profile = auth;
   const supabase = await createClient();
 
   const { data: klass } = await supabase

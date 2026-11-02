@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
-import { requireRole } from "@/lib/auth/session";
+import { requireRoleAction } from "@/lib/auth/session";
 import { quizQuestionSchema, type QuizQuestionInput } from "@/lib/validations/quiz";
 
 type ActionResult = { error?: string };
@@ -11,7 +11,8 @@ export async function createQuizQuestion(
   lessonId: string,
   input: QuizQuestionInput
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const parsed = quizQuestionSchema.safeParse(input);
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Bilgileri kontrol et." };
@@ -34,7 +35,8 @@ export async function updateQuizQuestion(
   lessonId: string,
   input: QuizQuestionInput
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const parsed = quizQuestionSchema.safeParse(input);
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Bilgileri kontrol et." };
@@ -54,7 +56,8 @@ export async function updateQuizQuestion(
 }
 
 export async function deleteQuizQuestion(id: string, lessonId: string): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
   const { error } = await supabase.from("lesson_quiz_questions").delete().eq("id", id);
   if (error) {

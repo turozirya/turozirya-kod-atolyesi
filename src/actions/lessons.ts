@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
-import { requireRole } from "@/lib/auth/session";
+import { requireRoleAction } from "@/lib/auth/session";
 import { lessonSchema, type LessonInput } from "@/lib/validations/lesson";
 
 type ActionResult = { error?: string; id?: string };
@@ -15,7 +15,8 @@ function mapError(error: { code?: string } | null): string {
 }
 
 export async function createLesson(input: LessonInput): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const parsed = lessonSchema.safeParse(input);
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Bilgileri kontrol et." };
@@ -39,7 +40,8 @@ export async function updateLesson(
   id: string,
   input: LessonInput
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const parsed = lessonSchema.safeParse(input);
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Bilgileri kontrol et." };
@@ -60,7 +62,8 @@ export async function deleteLesson(
   id: string,
   moduleId: string
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
   const { error } = await supabase.from("lessons").delete().eq("id", id);
   if (error) {
@@ -76,7 +79,8 @@ export async function setLessonPublished(
   moduleId: string,
   isPublished: boolean
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
   const { error } = await supabase
     .from("lessons")
@@ -95,7 +99,8 @@ export async function reorderLesson(
   moduleId: string,
   direction: "up" | "down"
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
   const { data: lessons, error } = await supabase
     .from("lessons")

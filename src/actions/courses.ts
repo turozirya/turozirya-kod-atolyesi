@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
-import { requireRole } from "@/lib/auth/session";
+import { requireRoleAction } from "@/lib/auth/session";
 import { courseSchema, type CourseInput } from "@/lib/validations/course";
 
 type ActionResult = { error?: string };
@@ -15,7 +15,8 @@ function mapError(error: { code?: string } | null): string {
 }
 
 export async function createCourse(input: CourseInput): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const parsed = courseSchema.safeParse(input);
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Bilgileri kontrol et." };
@@ -35,7 +36,8 @@ export async function updateCourse(
   id: string,
   input: CourseInput
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const parsed = courseSchema.safeParse(input);
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Bilgileri kontrol et." };
@@ -53,7 +55,8 @@ export async function updateCourse(
 }
 
 export async function deleteCourse(id: string): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
   const { error } = await supabase.from("courses").delete().eq("id", id);
   if (error) {
@@ -68,7 +71,8 @@ export async function setCoursePublished(
   id: string,
   isPublished: boolean
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
   const { error } = await supabase
     .from("courses")
@@ -86,7 +90,8 @@ export async function reorderCourse(
   id: string,
   direction: "up" | "down"
 ): Promise<ActionResult> {
-  await requireRole("teacher");
+  const auth = await requireRoleAction("teacher");
+  if ("error" in auth) return auth;
   const supabase = await createClient();
   const { data: courses, error } = await supabase
     .from("courses")

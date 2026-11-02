@@ -41,6 +41,23 @@ export async function requireRole(role: Profile["role"]): Promise<Profile> {
   return profile;
 }
 
+// Server Action'lar için: requireRole gibi rolü doğrular, ama oturum süresi
+// dolmuşsa sayfayı sessizce redirect() etmek yerine görünür bir hata döner.
+// Aksi halde Next.js, Server Action içindeki redirect()'i istemciyi arka
+// planda otomatik yönlendirerek işler — çağıran form hiçbir hata görmez ve
+// kaydedilmemiş değişiklikler sessizce kaybolur.
+export async function requireRoleAction(
+  role: Profile["role"]
+): Promise<Profile | { error: string }> {
+  const profile = await getCurrentProfile();
+
+  if (!profile || profile.role !== role) {
+    return { error: "Oturumun sona erdi. Sayfayı yenileyip tekrar giriş yap." };
+  }
+
+  return profile;
+}
+
 // Öğrenci sayfaları için: oturum şart ama rol şart değil — öğretmen kendi
 // hesabıyla "öğrenci gibi önizle" yapabilsin diye (RLS zaten öğretmene her
 // şeyi gösteriyor). Yalnızca öğrencinin /ogretmen/* yollarına giremediği
