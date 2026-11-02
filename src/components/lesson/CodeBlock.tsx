@@ -10,7 +10,11 @@ export async function CodeBlock({
   language: string;
 }) {
   const lang = getShikiLang(language) ?? "text";
-  const html = await codeToHtml(code, { lang, theme: "github-light" });
+  const html = await codeToHtml(code, {
+    lang,
+    themes: { light: "github-light", dark: "github-dark" },
+    defaultColor: false,
+  });
 
   return (
     <div className="my-4 overflow-hidden rounded-2xl border bg-card">

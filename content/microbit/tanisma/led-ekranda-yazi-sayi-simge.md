@@ -34,7 +34,7 @@ MakeCode'da ayrıca **hazır simgeler** bulunur: kalp, gülen yüz, ördek, ev, 
 
 **Örnek:** Önce "show string" bloğuna kendi adını yaz. Altına "pause (ms)" bloğu ekle (ms = milisaniye; 1000 ms = 1 saniye). Sonra "show icon" bloğunu ekleyip kalp simgesini seç. Program çalıştığında ekranda önce adın kayar, sonra kalp görünür — bir **isim kartı** oluşturdun.
 
-> 💡 "show string" yazı (metin) içindir, "show number" sayı içindir. Bunlar farklı veri türleridir (Hatırla: Kurs 1, Modül 6). İleride bir değişkendeki sayıyı göstermek için "show number" kullanacaksın.
+> 💡 "show string" yazı (metin) içindir, "show number" sayı içindir. Bunlar farklı veri türleridir (Hatırla: Robotik Kodlamaya Giriş kursu, Modül 6). İleride bir değişkendeki sayıyı göstermek için "show number" kullanacaksın.
 
 **Dene!** MakeCode'da kendi isim kartını hazırla: adın ("show string"), ardından yaşın ("show number" — tek basamaklıysa sabit, iki basamaklıysa kayarak görünür), ardından sevdiğin bir simge ("show icon"). Bloklar arasına "pause (ms)" blokları ekleyerek her birinin görünme süresini ayarla. Simülatörde dene, beğendiğinde karta yükle.
 

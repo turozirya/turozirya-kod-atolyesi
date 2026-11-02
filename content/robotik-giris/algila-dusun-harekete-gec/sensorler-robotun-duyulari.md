@@ -47,7 +47,7 @@ Robot çevresini **sensör**lerle algılar. Bir **sensör**, ışık, sıcaklık
 
 Sonra evindeki üç cihazı düşün ve her birinde hangi sensörün olabileceğini yaz (örnek: akıllı telefonun ekranı döndüğünde çalışan bir hareket sensörü vardır).
 
-Kurs 2'de kullanacağın micro:bit kartında da ışık, sıcaklık ve ses sensörleri var.
+micro:bit ile Kodlama kursunda kullanacağın micro:bit kartında da ışık, sıcaklık ve ses sensörleri var.
 
 **Bugün öğrendiklerin:**
 - Sensör, çevreden bilgi toplayan parçadır.

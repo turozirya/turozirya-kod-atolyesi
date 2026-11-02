@@ -56,7 +56,7 @@ Bunu bir hesap makinesinde görebilirsin: "5 + 3" tuşlarsın (girdi), makine bu
 
 Arkadaşınla tablonu karşılaştır.
 
-micro:bit kartının arkasındaki küçük çiplerden biri de işlemcidir; Kurs 2'de onu programlayacaksın.
+micro:bit kartının arkasındaki küçük çiplerden biri de işlemcidir; micro:bit ile Kodlama kursunda onu programlayacaksın.
 
 **Bugün öğrendiklerin:**
 - İşlemci, robotun karar veren beynidir.

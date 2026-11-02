@@ -26,7 +26,7 @@ test:
     aciklama: "İşlemci kartın arka yüzündedir; ön yüzde LED ekran ve butonlar bulunur."
 ---
 
-**Hatırla:** Kurs 1, Modül 2'de robotun sensör, işlemci ve eyleyici parçalarını öğrenmiştin. Şimdi bunları gerçek bir kartta göreceksin.
+**Hatırla:** Robotik Kodlamaya Giriş kursu, Modül 2'de robotun sensör, işlemci ve eyleyici parçalarını öğrenmiştin. Şimdi bunları gerçek bir kartta göreceksin.
 
 **micro:bit**, avuç içi büyüklüğünde küçük bir bilgisayar kartıdır. Üzerinde sensörler, bir işlemci ve eyleyiciler bulunur — tıpkı önceki derste öğrendiğin robot sistemleri gibi.
 
@@ -36,7 +36,7 @@ test:
 
 **Tartışmalı örnek:** LED ekran hem eyleyicidir (ışık verir) hem de sensördür (ortamdaki ışığı ölçebilir).
 
-**Örnek:** A butonuna bastığında şu sıra çalışır: buton (sensör) basıldığını algılar, işlemci "LED ekranda gülen yüz göster" kararını verir, LED ekran (eyleyici) gülen yüzü gösterir. Bu, Kurs 1, Modül 2'de öğrendiğin algıla-karar ver-hareket et sırasının aynısıdır.
+**Örnek:** A butonuna bastığında şu sıra çalışır: buton (sensör) basıldığını algılar, işlemci "LED ekranda gülen yüz göster" kararını verir, LED ekran (eyleyici) gülen yüzü gösterir. Bu, Robotik Kodlamaya Giriş kursu, Modül 2'de öğrendiğin algıla-karar ver-hareket et sırasının aynısıdır.
 
 [GÖRSEL: micro:bit'in ön ve arka yüzü, her parça etiketli]
 

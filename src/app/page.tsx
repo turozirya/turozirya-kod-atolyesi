@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 const OZELLIKLER = [
   {
     baslik: "Gerçek Projeler",
-    aciklama: "micro:bit ile LED yakmaktan oyun yapmaya kadar adım adım öğren.",
+    aciklama: "Robotikten micro:bit'e, LED yakmaktan oyun yapmaya kadar adım adım öğren.",
     avatar: "/avatars/robot-2.svg",
   },
   {
@@ -39,7 +39,7 @@ export default function Home() {
             Turozirya Kod Atölyesi
           </h1>
           <p className="max-w-md text-lg text-muted-foreground">
-            micro:bit ile kodlamayı öğren, rozetler topla, sınıfınla
+            Robotik ve kodlamayı adım adım öğren, rozetler topla, sınıfınla
             yarış! Turozirya Kod Atölyesi&apos;nin eğlenceli öğrenme platformu.
           </p>
         </div>

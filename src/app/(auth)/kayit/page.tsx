@@ -74,8 +74,8 @@ export default function KayitPage() {
         : { state: "checking" };
 
   useEffect(() => {
-    if (!usernameTouched) {
-      setValue("username", suggestUsername(displayName || ""));
+    if (!usernameTouched && displayName) {
+      setValue("username", suggestUsername(displayName));
     }
   }, [displayName, usernameTouched, setValue]);
 
@@ -106,7 +106,7 @@ export default function KayitPage() {
               id="classCode"
               className="h-12 uppercase"
               maxLength={6}
-              placeholder="MBT6A2"
+              placeholder="ÖRN123"
               {...register("classCode")}
             />
             {classCodeStatus.state === "checking" && (

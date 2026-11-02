@@ -131,6 +131,24 @@
   --sidebar-ring: #a78bfa;
 }
 
+/* Shiki ikili tema (CodeBlock.tsx): defaultColor:false ile üretilen HTML
+   rengini doğrudan tema değişkenlerinden alır, next-themes'in .dark sınıfına
+   göre (prefers-color-scheme medya sorgusuna göre değil) geçiş yapar. */
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
