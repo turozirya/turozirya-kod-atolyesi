@@ -27,13 +27,16 @@ function getPlainText(node: ReactNode): string {
   return "";
 }
 
-// Dersin "Dene!" ve "Bugün öğrendiklerin:" bölümlerini içeriklerden görsel
-// olarak ayırmak için: bu metinlerle başlayan paragrafı ve ona ait takip
-// eden blokları (tablo, liste, ara paragraflar) özel bir kutu düğümüne
-// toplar. Kutunun gerçek görünümü aşağıdaki lessonSectionBoxHandler ile
-// hast'e (ve components.div yerine doğrudan className ile) çevrilir.
+// Dersin "Dene!" ve "Bugün öğrendiklerin" bölümlerini içeriklerden görsel
+// olarak ayırmak için: bu metinlerle başlayan paragrafı veya başlığı ve ona
+// ait takip eden blokları (tablo, liste, ara paragraflar) özel bir kutu
+// düğümüne toplar. İçerik dosyaları iki farklı yazım biçimi kullanabiliyor —
+// kalın paragraf ("**Dene!** ...", pilot dalga) ya da başlık ("### Dene!",
+// Modül 3-9) — ikisi de aynı şekilde yakalanır. Kutunun gerçek görünümü
+// aşağıdaki lessonSectionBoxHandler ile hast'e (ve components.div yerine
+// doğrudan className ile) çevrilir.
 const TRY_PREFIX = "Dene!";
-const SUMMARY_PREFIX = "Bugün öğrendiklerin:";
+const SUMMARY_PREFIX = "Bugün öğrendiklerin";
 const TRY_BOX_CLASSNAME =
   "my-4 rounded-2xl border-2 border-sky-300 bg-sky-50 p-4 dark:border-sky-800 dark:bg-sky-950/40 [&>:first-child]:mt-0 [&>:last-child]:mb-0";
 const SUMMARY_BOX_CLASSNAME =
@@ -46,7 +49,16 @@ interface LessonSectionBoxNode {
 }
 
 function startsWithText(node: RootContent, prefix: string): boolean {
-  return node.type === "paragraph" && mdastToString(node).trim().startsWith(prefix);
+  if (node.type === "paragraph") {
+    return mdastToString(node).trim().startsWith(prefix);
+  }
+  // "### Dene!" / "### Bugün öğrendiklerin" gibi başlıklar paragraf değil,
+  // ayrı bir blok olduğu için metni tam olarak (kolon farkını yok sayarak)
+  // karşılaştırıyoruz.
+  if (node.type === "heading") {
+    return mdastToString(node).trim().replace(/:$/, "") === prefix;
+  }
+  return false;
 }
 
 const remarkLessonSections: Plugin<[], Root> = () => (tree) => {
