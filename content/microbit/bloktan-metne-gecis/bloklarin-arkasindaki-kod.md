@@ -43,7 +43,7 @@ Bloklar bir **programlama dilinin** görsel halidir. Her bloğun arkasında yaz�
 
 **Görünümü değiştir.** Zar programını MakeCode'da aç (Hatırla: Modül 2 — Rastgele Sayı: Zar). Editörün üstünde `Blocks` düğmesinin yanında `JavaScript` düğmesi vardır. Yanındaki küçük oka bas ve `Python`ı seç. Bloklar kaybolur ve aynı program yazı olarak görünür. `Blocks` düğmesine basınca bloklara geri dönersin.
 
-[GÖRSEL mb-m9-01: MakeCode ekranının üst kısmı (şematik): Blocks | JavaScript düğmesi ve Python seçeneği. Altta solda zar programının blokları, sağda aynı programın Python görünümü; eşleşen satırlar aynı renkte çizgilerle bağlı.]
+![Blokların Arkasındaki Kod — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/9c148b3e-abc2-48f0-afe0-15e1a79d7b22.png)
 
 Örnek kod kutusundaki program, zar bloklarının Python halidir. Satırları eşleştirelim:
 
@@ -71,6 +71,8 @@ Bloklar bir **programlama dilinin** görsel halidir. Her bloğun arkasında yaz�
 > 💡 Dikkat: Python görünümünde bir satırı değiştirirsen bloklar da değişir. Yanlış bir şey yazarsan bloklara geri dönülemeyebilir. Denemeye başlamadan önce projeni kaydet.
 
 ### Dene!
+
+![Blokların Arkasındaki Kod — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/8a99b964-45f9-4fe4-a3ee-e2805d91263a.png)
 
 MakeCode'da yeni bir proje aç. Aşağıdaki blokları kur, sonra Python görünümüne geç. Her bloğun hangi satıra dönüştüğünü yaz.
 

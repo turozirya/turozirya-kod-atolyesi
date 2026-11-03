@@ -65,9 +65,13 @@ def goster_yuz(yuz):
 
 `display.scroll` ve `sleep` de birer fonksiyondur. Onları başkaları yazmıştır; sen yalnızca çağırıyorsun.
 
+![Fonksiyonlar — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/7b5814b2-ffec-4b53-90b7-f07a080a82b4.png)
+
 > 💡 Sık yapılan hata: Fonksiyon, tanımlanmadan önce çağrılır ve `NameError` çıkar. Python kodu yukarıdan aşağı okur. Bu yüzden `def` bölümünü programın üst kısmına yaz.
 
 ### Dene!
+
+![Fonksiyonlar — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/6662710e-2579-437f-93e3-61711ab8b9c9.png)
 
 Bu fonksiyonun iki parametresi var. Editöre yaz, sonra aşağıdaki çağrıları tek tek dene.
 

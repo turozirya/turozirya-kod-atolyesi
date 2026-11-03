@@ -61,9 +61,13 @@ Notaları bir listede toplar ve `music.play(melodi)` ile çalarsın (Hatırla: L
 
 **Mikrofon.** `microphone.sound_level()` ses seviyesini 0 ile 255 arasında verir (Hatırla: Modül 4 — Mikrofon). Mikrofon sesi kaydetmez, yalnızca ölçer. Örnek koddaki program, ses 128'i geçince kızgın yüz gösterir. 128 yerine sınıfına uygun bir eşik seçebilirsin.
 
+![Müzik ve Mikrofon — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/d531032c-0769-4778-b239-f89eb0d8ce2e.png)
+
 > 💡 Dikkat: `music.play` melodi bitene kadar programı bekletir. Bu sırada döngüdeki diğer satırlar çalışmaz. Örnek kodda mikrofon kontrolü, melodi bitince kaldığı yerden devam eder.
 
 ### Dene!
+
+![Müzik ve Mikrofon — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/42e4f278-c2ea-4d84-91ec-c52f4b4ae108.png)
 
 Şarkının ikinci kısmını Python'da yaz: Fa Fa Mi Mi Re Re Do. Son nota iki vuruş sürsün. Önce tabloyu doldur.
 

@@ -68,9 +68,13 @@ Kodun ekranda çalışıyor. Peki bir kalabalığın önünde de sorunsuz çalı
 
 **Geri bildirim.** Arkadaşlarının sunumlarına “İki yıldız, bir dilek” yöntemiyle geri bildirim ver. Beğendiğin iki şeyi ve geliştirilebilecek bir şeyi söyle.
 
+![Final: Proje Sunumu — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/ff62ac01-5774-493f-8df6-9abe35f76357.png)
+
 > 💡 Sık yapılan hata: Canlı gösteriden hemen önce kod değiştirilir ve proje çalışmaz. Sunumdan önceki son çalışan hâli kaydet. Gösteride o hâli kullan.
 
 ### Dene!
+
+![Final: Proje Sunumu — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/8963c5f1-c6d3-4b1f-9083-5cf2c267e34f.png)
 
 Projeni bitir ve yıl sonu proje gününde sun. Sunumdan önce kontrol et:
 

@@ -60,9 +60,13 @@ micro:bit ekranında x sağa doğru, y ise **aşağı doğru** artar (Hatırla: 
 
 `range` başka biçimlerde de yazılabilir. `range(1, 6)` 1'den 5'e kadar sayar. `range(0, 10, 2)` ise 0'dan başlar, ikişer artarak 8'e kadar sayar.
 
+![while ve for Döngüleri — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/f792f439-9895-4368-a4d8-82ca54fb8b60.png)
+
 > 💡 Dikkat: `range(5)` içinde 5 yoktur. Dizi 0'dan başlar ve son sayıdan bir önce biter. 5 sayısını da istiyorsan `range(6)` ya da `range(1, 6)` yazmalısın.
 
 ### Dene!
+
+![while ve for Döngüleri — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/fc589845-df04-4d76-9ca2-3cabefc9229d.png)
 
 Her döngüde değişkenin hangi değerleri aldığını ve döngünün kaç tur döndüğünü yaz. Emin olamazsan döngünün içine `display.scroll(i)` yazıp simülatörde izle.
 

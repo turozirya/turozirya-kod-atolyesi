@@ -66,9 +66,13 @@ Hareketi okumanın üç yolu vardır:
 
 Eğimin sayısal değerini de okuyabilirsin: `accelerometer.get_x()`. Kart düzken 0'a yakındır; sağa yattıkça artar, sola yattıkça eksiye iner.
 
+![Hareketler — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/3579a89a-830d-445e-bca5-ce491769acef.png)
+
 > 💡 Dikkat: Hareket adları küçük harfle ve tam doğru yazılmalıdır. `"Shake"` ya da `"faceup"` yazarsan Python bu adı tanımaz ve hata verir. Ekran yönleri için arada boşluk vardır: `"face up"`.
 
 ### Dene!
+
+![Hareketler — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/46cb8e66-a830-43a3-b611-6b5cd95f24e2.png)
 
 Hareketlerin adını kartın kendisine söylet. Şu programı karta yükle:
 

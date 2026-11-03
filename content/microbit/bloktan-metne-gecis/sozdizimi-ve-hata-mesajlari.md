@@ -62,9 +62,13 @@ Her programlama dilinin yazım kuralları vardır. Bunlara **sözdizimi** denir 
 2. Hata türüne göre o satırı kontrol et.
 3. Tek bir şeyi düzelt ve yeniden çalıştır.
 
+![Sözdizimi ve Hata Mesajları — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/3b749a7c-0c75-45f9-a44b-02171fe0f5ff.png)
+
 > 💡 Dikkat: Python bazen hatayı bir alt satırda bildirir. Örneğin bir parantezi kapatmayı unutursan hata sonraki satırda görünebilir. Satırda hata bulamazsan bir üst satıra da bak.
 
 ### Dene!
+
+![Sözdizimi ve Hata Mesajları — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/bb46173e-021f-4779-a8dd-2dded203e127.png)
 
 Aşağıdaki satırların her birinde bir hata var. Hata türünü ve satırın doğru halini yaz. Sonra editörde dene ve mesajı kontrol et.
 

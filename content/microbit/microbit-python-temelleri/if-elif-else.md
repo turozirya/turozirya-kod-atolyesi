@@ -63,9 +63,13 @@ Her koşul satırı iki noktayla biter. Koşula bağlı satırlar 4 boşluk içe
 
 Örnek kod kutusundaki program, termometrenin Python sürümüdür (Hatırla: Modül 4 — Sıcaklık Sensörü). `temperature()` sıcaklığı santigrat derece olarak verir. Koşullar yukarıdan aşağı kontrol edilir. İlk doğru koşulun işi yapılır, gerisi atlanır. Blok sürümünde gördüğün `else if` burada `elif` olarak yazılır.
 
+![if, elif, else — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/1bc3cb79-4429-40b2-a6a7-8cf8cf49a782.png)
+
 > 💡 Sık yapılan hata: Koşulda tek eşittir yazılır: `if puan = 10:`. Bu satır `SyntaxError` verir. “Eşit mi?” sorusu her zaman çift eşittirle (`==`) sorulur.
 
 ### Dene!
+
+![if, elif, else — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/aedbe697-57ce-49fe-ace4-6bf27c424118.png)
 
 Örnek kodu editöre yaz. Simülatörde kartın yanında beliren sıcaklık ayarını aşağıdaki değerlere getir. İlk doğru koşulu ve ekranda ne göründüğünü yaz.
 

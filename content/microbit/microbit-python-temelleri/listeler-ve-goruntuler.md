@@ -53,13 +53,15 @@ Her değerin bir **sıra numarası** vardır. Sıra numarası 0'dan başlar: `is
 
 **Kendi görüntünü çiz.** `Image.HEART` gibi hazır simgelerin yanında kendi görüntünü de yapabilirsin. `Image("...")` içine 5 satır yazılır. Satırlar iki nokta üst üste (`:`) ile ayrılır. Her satırda 5 rakam vardır. Rakam o LED'in parlaklığıdır: 0 sönük, 9 en parlak.
 
-[GÖRSEL mb-m10-01: Solda 5×5 kareli ızgarada çizilmiş büyük kalp, sağda aynı kalbin Image("09090:99999:99999:09990:00900") yazısı. Her ızgara satırı, yazıdaki rakam grubuna oklarla bağlı.]
+![Listeler ve Görüntüler — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/21f6cf62-db9c-49b1-ad3b-1bf434748030.png)
 
 **Animasyon.** Görüntüleri bir listede toplarsın. Sonra `display.show(kareler, delay=400)` listeyi sırayla gösterir. `delay`, her karenin ekranda kaç milisaniye kalacağıdır. Örnek kod kutusundaki program, kalbi büyütüp küçülterek atan bir kalp yapar (Hatırla: Modül 1 — LED Ekranda Yazı, Sayı, Simge).
 
 > 💡 Dikkat: Listede olmayan bir sıra numarası istersen hata çıkar. Üç elemanlı listede son eleman `isimler[2]`dir. `isimler[3]` yazarsan `IndexError` hatası alırsın.
 
 ### Dene!
+
+![Listeler ve Görüntüler — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/3d4c635a-8482-4131-bcba-e4cd7647f241.png)
 
 **1. Bölüm — Liste.** Şu listeyle çalış: `isimler = ["Ali", "Ayse", "Can"]`. Her satırı `display.scroll(...)` içine yazıp sonucu yaz.
 

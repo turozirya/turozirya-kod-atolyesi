@@ -47,7 +47,7 @@ Bu dersten itibaren **MicroPython** kullanacağız. MicroPython, Python dilinin 
 - **Simülatör:** Sağdaki micro:bit resmi. Kodunu kartsız denersin.
 - **Düğmeler:** Altta `Send to micro:bit` (micro:bit'e gönder) ve `Save` (kaydet) düğmeleri.
 
-[GÖRSEL mb-m9-02: python.microbit.org editörünün şematik ekranı: ortada kod alanı (satır numaralı), sağda simülatör ve oynat düğmesi, altta Send to micro:bit ve Save düğmeleri. Üç bölüm numaralı etiketlerle gösterilmiş.]
+![Python Editörü ve İlk Satırlar — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/692e648b-7480-46a6-9e73-c674a2d259ef.png)
 
 **İlk satırlar.** Örnek kod kutusundaki programa bak. Program yukarıdan aşağı, satır satır çalışır:
 
@@ -64,6 +64,8 @@ Komutlardaki nokta (`.`) “içindeki” anlamına gelir. `display.scroll` “ek
 > 💡 Dikkat: MakeCode'daki `show number` için MicroPython'da ayrı bir komut yoktur. Sayıyı da `display.scroll(5)` diye kaydırırsın.
 
 ### Dene!
+
+![Python Editörü ve İlk Satırlar — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/180756b5-86dc-4205-a700-7f0c904fbebb.png)
 
 Örnek koddaki programı editöre yaz ve simülatörde çalıştır. Sonra aşağıdaki değişiklikleri tek tek yap ve sonucu yaz.
 

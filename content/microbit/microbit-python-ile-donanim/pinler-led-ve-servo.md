@@ -58,7 +58,7 @@ Pinler, kartı dış dünyadaki parçalara bağlar (Hatırla: Modül 7 — Pinle
 
 **Servo.** Kahverengi kablo GND'ye, kırmızı 3V'a, turuncu P0'a bağlıdır.
 
-[GÖRSEL mb-m7-02 (tekrar kullanılır): Servo motor ve micro:bit bağlantısı. Kahverengi kablo GND'ye, kırmızı 3V'a, turuncu P0'a gidiyor.]
+![Servo Motor — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/acb6ad72-fd76-4db1-9e9e-91c735601aaf.png)
 
 MicroPython'da bloklardaki gibi hazır bir servo komutu yoktur. Servo, pinden gelen kısa sinyallerin uzunluğuna bakarak açısını seçer. Bu yüzden önce `pin0.set_analog_period(20)` yazılır. Sonra `write_analog` ile açıya uygun bir değer gönderilir: yaklaşık 26 → 0 derece, 77 → 90 derece, 128 → 180 derece.
 
@@ -66,9 +66,13 @@ Bu hesabı her seferinde yapmak zordur. Bu yüzden örnek kodda bir fonksiyon ya
 
 **Bariyer.** Örnek kod kutusundaki program, otomatik bariyerin Python sürümüdür (Hatırla: Modül 7 — Sensörle Servo: Bariyer). A'ya basınca ya da ekranın üstü kapanınca bariyer 3 saniye açılır. `bariyer_ac` fonksiyonu sayesinde aynı üç satırı iki kez yazmadık.
 
+![Pinler, LED ve Servo — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/a112fafe-96e9-4448-9236-e77c059a29e6.png)
+
 > 💡 Dikkat: Her servo biraz farklıdır. Kol 0 ya da 180 dereceye tam gitmiyorsa fonksiyondaki 26 ve 128 sayılarını biraz değiştir. Servo titriyorsa ya da zorlanıyorsa öğretmenine haber ver.
 
 ### Dene!
+
+![Pinler, LED ve Servo — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/80d3375f-757f-46c2-9281-b399e8757b10.png)
 
 **1. Bölüm — LED.** LED'i P0 ile GND arasına bağla. Her satırı `from microbit import *` satırının altına tek başına yazıp dene.
 

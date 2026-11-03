@@ -60,9 +60,13 @@ Metin her zaman tırnak içinde yazılır. Mantıksal değerler yalnızca `True`
 
 Örnek kod kutusundaki program bir puan sayacıdır. A'ya basınca puan artar ve gösterilir. B'ye basınca “Puan: 3” gibi bir yazı kayar. `if` satırlarını bir sonraki derste ayrıntılı göreceksin.
 
+![Değişkenler ve Veri Türleri — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/ce61cabb-30ae-4456-8e55-985397273c5a.png)
+
 > 💡 Sık yapılan hata: `"Puan: " + puan` yazılır ve `TypeError` hatası çıkar. Python metinle sayıyı doğrudan toplayamaz. Sayıyı önce `str(puan)` ile metne çevirmelisin.
 
 ### Dene!
+
+![Değişkenler ve Veri Türleri — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/02ce1ba8-6656-468e-b950-9023e5d04724.png)
 
 Her satırı editörde `display.scroll(...)` içine yazarak dene. Sonucun türünü ve ekranda ne göründüğünü yaz.
 

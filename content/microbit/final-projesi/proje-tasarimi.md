@@ -79,9 +79,13 @@ Bu ve bir sonraki ders kursun **final projesidir**. Bir arkadaşınla ikili çal
 | Döngü | `while True:` ile sürekli ölçüm | |
 | Malzemeler | 2 micro:bit, servo, krokodil kablolar | |
 
+![Final: Proje Tasarımı — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/d34addf8-41aa-41a9-857e-12a09c3e35ca.png)
+
 > 💡 Sık yapılan hata: Proje çok büyük seçilir ve bitmez. Önce en basit çalışan hâli yaz. Zaman kalırsa yeni bir fonksiyon eklersin.
 
 ### Dene!
+
+![Final: Proje Tasarımı — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/c2cf5d3d-b824-4c0c-90a2-201f60c2a6b5.png)
 
 Proje kartını doldur. Sonra algoritmanın akış şemasını kâğıda çiz. Planını öğretmenine göster ve onay al. Onay alınca en basit çalışan hâli yazmaya başla ve simülatörde dene. Kontrol listesi:
 

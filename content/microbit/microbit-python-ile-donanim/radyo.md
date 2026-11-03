@@ -60,9 +60,13 @@ Haberleşmenin adımları bloklardakiyle aynıdır, ama bir adım fazladır:
 
 Örnek kod kutusundaki programı iki karta da yükle. Bir kartta A'ya basınca öbüründe SELAM kayar. B'ye basınca 5 kayar.
 
+![Radyo ile Mesajlaşma — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/f759f0b8-14e3-48fa-8199-36aef45ae177.png)
+
 > 💡 Dikkat: Sınıfta her ikili farklı bir grup numarası seçmeli. Grup 0 ile 255 arasında bir sayıdır. Herkes aynı grubu seçerse mesajlar birbirine karışır.
 
 ### Dene!
+
+![Radyo ile Mesajlaşma — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/38f27ed5-3b26-4559-8ea6-60785eadd1e6.png)
 
 Arkadaşınla aynı grup numarasını seçin ve örnek kodu iki karta da yükleyin.
 

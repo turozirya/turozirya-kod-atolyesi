@@ -64,9 +64,13 @@ Bir kapı ziline benzetebiliriz. `is_pressed` zile o anda basılıyor mu diye ba
 
 Örnek kod kutusundaki program bir **ölçüm istasyonudur**. A sıcaklığı, B ışık seviyesini gösterir. Logoya dokunduğun sürece kalp görünür.
 
+![Butonlar ve Sensörler — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/d0a73819-fffc-41ee-801a-3f260504fdf3.png)
+
 > 💡 Dikkat: Ekranda yazı kayarken program o satırda bekler. Bu sırada `is_pressed` ile yapılan kontroller basışı kaçırabilir. Bir basışı kaçırmak istemiyorsan `was_pressed` kullan.
 
 ### Dene!
+
+![Butonlar ve Sensörler — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/bb9bb896-e5ae-4d89-aa5f-7d3da9dd43a8.png)
 
 **1. Bölüm.** Aşağıdaki iki programı ayrı ayrı dene. A'yı önce basılı tut, sonra kısa kısa bas.
 
