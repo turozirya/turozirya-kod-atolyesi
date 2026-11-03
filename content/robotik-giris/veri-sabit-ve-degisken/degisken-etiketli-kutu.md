@@ -14,15 +14,15 @@ video: ""
 ornek_kod: ""
 test:
   - soru: "Robot süpürge temizlediği oda sayısını aklında tutmak istiyor. Bunun için ne kullanmalı?"
-    secenekler: ["Bir sabit", "Bir değişken", "Bir sensör", "Bir eyleyici"]
+    secenekler: ["Bir eyleyici", "Bir değişken", "Bir sensör", "Bir sabit"]
     dogru: 1
     aciklama: "Oda sayısı her temizlikte değişir; değişen veriyi saklamak için değişken kullanılır."
   - soru: "`set skor to 0` bloğundan sonra 3 kez `change skor by 1` çalışırsa skor kaç olur?"
-    secenekler: ["1", "0", "4", "3"]
+    secenekler: ["0", "1", "4", "3"]
     dogru: 3
     aciklama: "Skor 0'dan başlar ve her seferinde 1 artar: 1, 2, 3."
   - soru: "Hangisi iyi bir değişken adıdır?"
-    secenekler: ["adim sayisi", "x1y2z3", "adim_sayisi", "a"]
+    secenekler: ["a", "x1y2z3", "adim_sayisi", "adim sayisi"]
     dogru: 2
     aciklama: "Anlamlıdır ve boşluk içermez; boşluklu adlar kullanılamaz."
 ---
@@ -49,11 +49,13 @@ Değişkene ad verirken şunlara dikkat et:
 6. Altına `Basic` kategorisinden `show number` (sayı göster) bloğunu ekle. İçine `skor` değişkenini yerleştir.
 7. Simülatörde A düğmesine birkaç kez bas.
 
-[GÖRSEL: Ekran görüntüsü — MakeCode'da on start içinde set skor to 0; on button A pressed içinde change skor by 1 ve show number skor blokları. İngilizce arayüz.]
+![Değişken: Etiketli Kutu — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/283fcd63-651b-4a8e-92f9-2d3a17229b11.png)
 
 > 💡 Sık yapılan hata: Değişkenin adı ile değeri karıştırılır. “skor” kutunun adıdır; içindeki 3 ise değeridir. `show number` bloğu ekranda adı değil, değeri gösterir.
 
 ### Dene!
+
+![Değişken: Etiketli Kutu — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/54918062-6ad0-4af9-bf3c-4783f4659bc5.png)
 
 Programına bir sıfırlama düğmesi ekle. `on button B pressed` bloğunun içine `set skor to 0` ve `show number skor` koy. Sonra aşağıdakileri dene.
 

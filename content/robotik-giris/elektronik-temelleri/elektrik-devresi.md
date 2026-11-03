@@ -14,16 +14,16 @@ video: ""
 ornek_kod: ""
 test:
   - soru: "Hangisi kapalı devredir?"
-    secenekler: ["Kablosu kopuk olan devre", "Anahtarı açık olan devre", "Yolu tam bir halka olan devre", "Pili çıkarılmış devre"]
-    dogru: 2
+    secenekler: ["Kablosu kopuk olan devre", "Yolu tam bir halka olan devre", "Anahtarı açık olan devre", "Pili çıkarılmış devre"]
+    dogru: 1
     aciklama: "Elektrik ancak yol tam bir halka olduğunda akar; buna kapalı devre denir."
   - soru: "El fenerinde düğmenin görevi nedir?"
-    secenekler: ["Elektrik üretmek", "Yolu açıp kapatmak", "Işığı renklendirmek", "Pili şarj etmek"]
-    dogru: 1
+    secenekler: ["Işığı renklendirmek", "Elektrik üretmek", "Yolu açıp kapatmak", "Pili şarj etmek"]
+    dogru: 2
     aciklama: "Düğme bir anahtardır; yolu kapatınca ışık yanar, açınca söner."
   - soru: "Robot süpürgenin şarj ışığı yanmıyor. Önce neyi kontrol etmek mantıklıdır?"
-    secenekler: ["Kablolarda kopukluk olup olmadığını", "LED'in renginin doğru olup olmadığını", "Tekerleklerin dönüp dönmediğini", "Odanın sıcaklığını"]
-    dogru: 0
+    secenekler: ["LED'in renginin doğru olup olmadığını", "Odanın sıcaklığını", "Tekerleklerin dönüp dönmediğini", "Kablolarda kopukluk olup olmadığını"]
+    dogru: 3
     aciklama: "Yol bir yerden kopuksa devre açık kalır ve LED yanmaz."
 ---
 
@@ -42,11 +42,13 @@ Yol tam bir halkaysa buna **kapalı devre** denir. Elektrik akar ve LED yanar. Y
 
 Bunu bir koşu pistine benzet. Pist tam bir halkaysa koşucu turunu tamamlar. Pistin bir yeri kopuksa koşucu ilerleyemez.
 
-![elektrik-devresi-a-d](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/73b5d51f-34d8-4883-86c3-21f58521c33c.png)
+![Elektrik Devresi — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/e2128180-a705-401a-8bd1-94f28c812221.png)
 
 > 💡 Sık yapılan hata: Pil ve LED olunca devrenin çalışacağı sanılır. Oysa yol tam bir halka olmazsa LED yanmaz. Önce yolda kopukluk olup olmadığına bak.
 
 ### Dene!
+
+![Elektrik Devresi — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/e607966b-ed24-4bb1-b68e-82b85d56c661.png)
 
 Görseldeki dört devreye bak. Her biri için LED'in yanıp yanmayacağını tahmin et. Nedenini de yaz.
 

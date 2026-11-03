@@ -41,11 +41,9 @@ Program hazır olduğunda, onu gerçek karta aktarman gerekir. Bu işleme **yük
 > 💡 Sık yapılan hata: Program simülatörde çalıştıktan sonra "yükleme" adımı unutulur. Gerçek kartta görmek için dosyayı **mutlaka** karta aktarman gerekir.
 > 💡 Kart bilgisayarda görünmüyorsa USB kablon yalnızca şarj kablosu olabilir; veri aktaran başka bir kablo dene.
 
-![makecode-ilk-program-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/12a1c23d-07dc-4ed5-9104-a814141aafc3.png)
+[GÖRSEL mb-m1-05: MakeCode ekranı: solda blok kategorileri, ortada çalışma alanı (on start içinde show string), sağda simülatör, altta Download düğmesi; bölümler etiketli.]
 
 **Dene!** MakeCode'u aç ve `Basic` kategorisindeki `show string` bloğunu `on start` içine koy. İçine kendi adını yaz. Önce simülatörde çalıştığını gör, sonra programı indirip gerçek micro:bit'ine yükle. Sonra şunu dene: aynı bloğu `forever` içine koyarsan ne olur? (Cevap: yazı art arda, aralıksız tekrar tekrar kayar — çünkü `forever` bitmeden sürekli çalışır.)
-
-![makecode-ilk-program-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/bbbea84d-b969-42b0-af0e-db23e664e092.png)
 
 **Bugün öğrendiklerin:**
 - MakeCode, blokları birleştirerek program yazdığın bir editördür.

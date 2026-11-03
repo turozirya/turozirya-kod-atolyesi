@@ -21,16 +21,16 @@ ornek_kod: |
   7. Bitir
 test:
   - soru: "Algoritma nedir?"
-    secenekler: ["Bir bilgisayar parçası", "Bir işi yapmak için izlenen sıralı adımlar", "Yalnızca matematik işlemleri", "Bir programlama dilinin adı"]
-    dogru: 1
+    secenekler: ["Yalnızca matematik işlemleri", "Bir programlama dilinin adı", "Bir bilgisayar parçası", "Bir işi yapmak için izlenen sıralı adımlar"]
+    dogru: 3
     aciklama: "Algoritma, bir işi yapmak için izlenen açık ve sıralı adımlar listesidir."
   - soru: "Hangisi bir algoritma örneğidir?"
-    secenekler: ["Bir yemek tarifindeki adımlar", "Bir yemeğin fotoğrafı", "Malzemelerin fiyat listesi", "Yemeğin adı"]
-    dogru: 0
+    secenekler: ["Bir yemeğin fotoğrafı", "Bir yemek tarifindeki adımlar", "Malzemelerin fiyat listesi", "Yemeğin adı"]
+    dogru: 1
     aciklama: "Tarifteki adımlar, yemeği yapmak için sırayla izlenir; bu bir algoritmadır."
   - soru: "Robot için yazılan algoritma neden çok net olmalıdır?"
-    secenekler: ["Robot uzun yazıları okuyamaz", "Robotun pili çabuk biter", "Robot yazılanı tam olarak yapar, tahmin yürütemez", "Robot yalnızca sayıları anlar"]
-    dogru: 2
+    secenekler: ["Robot yazılanı tam olarak yapar, tahmin yürütemez", "Robotun pili çabuk biter", "Robot uzun yazıları okuyamaz", "Robot yalnızca sayıları anlar"]
+    dogru: 0
     aciklama: "Robot eksik adımı kendisi tamamlayamaz; ne yazılırsa onu yapar."
 ---
 
@@ -48,9 +48,13 @@ Bu yazım biçimine **sözde kod** denir. Sözde kod, kodlama diline benzer ama 
 
 Robot süpürge de bir algoritma izler: ilerle, bir şeye çarparsan dön, sonra tekrar ilerle.
 
+![Algoritma Nedir? — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/5da88731-1a92-495a-a0a1-a835bec706db.png)
+
 > 💡 Sık yapılan hata: Algoritmanın yalnızca bilgisayarlar için olduğu sanılır. Oysa yemek tarifi, yol tarifi ve oyun kuralları da birer algoritmadır.
 
 ### Dene!
+
+![Algoritma Nedir? — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/28002bf5-f6f6-4785-9137-f2c774f2a9a1.png)
 
 Tost yapma algoritmasını en az 6 adımda yaz. Sonra kâğıdını bir arkadaşına ver. Arkadaşın yalnızca yazdıklarını okusun ve “Bu adımla tost olur mu?” diye kontrol etsin. Eksik adım var mı?
 

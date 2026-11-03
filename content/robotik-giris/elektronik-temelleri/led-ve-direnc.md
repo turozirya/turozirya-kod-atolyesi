@@ -14,16 +14,16 @@ video: ""
 ornek_kod: ""
 test:
   - soru: "LED'in uzun bacağı pilin hangi ucuna bağlanır?"
-    secenekler: ["Eksi (−) ucuna", "Artı (+) ucuna", "Herhangi bir uca", "Hiçbir uca bağlanmaz"]
-    dogru: 1
+    secenekler: ["Herhangi bir uca", "Hiçbir uca bağlanmaz", "Artı (+) ucuna", "Eksi (−) ucuna"]
+    dogru: 2
     aciklama: "Uzun bacak artı (+) bacaktır ve pilin artı ucuna bağlanır."
   - soru: "Direncin devredeki görevi nedir?"
-    secenekler: ["Elektriği artırmak", "Işık üretmek", "Elektriğin akışını azaltıp LED'i korumak", "Devreyi açıp kapatmak"]
-    dogru: 2
+    secenekler: ["Devreyi açıp kapatmak", "Işık üretmek", "Elektriği artırmak", "Elektriğin akışını azaltıp LED'i korumak"]
+    dogru: 3
     aciklama: "Direnç elektriğin akışını azaltır; böylece LED fazla akımdan korunur."
   - soru: "Ali LED'i ters taktı ve LED yanmadı. Ne yapmalı?"
-    secenekler: ["LED'i atıp yenisini takmalı", "Devreye daha çok pil eklemeli", "Direnci çıkarmalı", "LED'i çevirip uzun bacağı artıya bağlamalı"]
-    dogru: 3
+    secenekler: ["LED'i atıp yenisini takmalı", "LED'i çevirip uzun bacağı artıya bağlamalı", "Direnci çıkarmalı", "Devreye daha çok pil eklemeli"]
+    dogru: 1
     aciklama: "LED tek yönde çalışır; çevirip doğru takınca yanar."
 ---
 
@@ -41,11 +41,13 @@ Bahçe hortumunu düşün. Ucunu parmağınla biraz sıkarsan su yine akar ama d
 
 Örnek: Robot süpürgenin üstündeki “şarj oluyor” ışığı bir LED'dir. Bu LED'in devresinde onu koruyan bir direnç bulunur.
 
-![led-ve-direnc](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/d494d047-247a-4863-8c93-7aa8edbe83c1.png)
+![LED ve Direnç — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/5b9e03fd-114d-48bb-b717-4f0d6e90feb2.png)
 
 > 💡 Sık yapılan hata: Ters takılan LED'in bozulduğu sanılır. Pille kurulan basit devrelerde LED genellikle bozulmaz, sadece yanmaz. Çevirip doğru takınca yanar.
 
 ### Dene!
+
+![LED ve Direnç — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/3a538fc4-3150-4995-9f3a-fcee20d1b25b.png)
 
 Aşağıdaki durumlarda LED'e ne olacağını tahmin et. Sınıfta öğretmeninle birlikte deneyerek kontrol et.
 

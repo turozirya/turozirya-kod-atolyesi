@@ -14,15 +14,15 @@ video: ""
 ornek_kod: ""
 test:
   - soru: "Şema 1'de S yerine 4 girilirse çıktı ne olur?"
-    secenekler: ["11", "14", "8", "7"]
-    dogru: 0
+    secenekler: ["8", "11", "14", "7"]
+    dogru: 1
     aciklama: "Önce 4 × 2 = 8, sonra 8 + 3 = 11 olur; sıra önemlidir."
   - soru: "Şema okurken değerleri adım adım yazdığımız tabloya ne denir?"
-    secenekler: ["Akış tablosu", "İzleme tablosu", "Sembol tablosu", "Sonuç listesi"]
-    dogru: 1
+    secenekler: ["Akış tablosu", "Sembol tablosu", "İzleme tablosu", "Sonuç listesi"]
+    dogru: 2
     aciklama: "Değerleri adım adım takip ettiğimiz tabloya izleme tablosu denir."
   - soru: "Bir robot kolunun şemasında art arda üç “Açı = Açı + 30” adımı var. Açı başta 0 ise sonunda kaçtır?"
-    secenekler: ["30", "60", "0", "90"]
+    secenekler: ["30", "0", "60", "90"]
     dogru: 3
     aciklama: "Her adımda 30 eklenir: 0 → 30 → 60 → 90."
 ---
@@ -40,7 +40,7 @@ Değerleri adım adım yazdığımız bu tabloya **izleme tablosu** denir. İzle
 
 Örnek: Şema 1'i inceleyelim.
 
-![sema-1-s-sayisi](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/b7ff0ec7-a31e-4e76-afbd-192ca4236c56.png)
+![Şemayı Oku — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/a0f85a81-0e2d-413b-8442-c3ff580f2e4d.png)
 
 “S = S × 2” şu anlama gelir: S'nin yeni değeri, eski değerinin iki katıdır. S yerine 5 girelim ve izleme tablosunu dolduralım:
 
@@ -57,9 +57,11 @@ Değerleri adım adım yazdığımız bu tabloya **izleme tablosu** denir. İzle
 
 ### Dene!
 
+![Şemayı Oku — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/44a215ef-29b6-4321-a793-2ffe75143222.png)
+
 Şema 2'yi oku. Fiyat olarak 80 gir ve izleme tablosunu doldur. Sonra şemanın ne yaptığını bir cümleyle yaz.
 
-![sema-2-fiyat-indirim](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/51f6d7a1-1b33-45cb-847b-273e6cc2d19f.png)
+[GÖRSEL rg-m5-04: Şema 2, yukarıdan aşağı: oval “Başla” → paralelkenar “Fiyatı al” → dikdörtgen “İndirim = Fiyat ÷ 4” → dikdörtgen “Yeni fiyat = Fiyat − İndirim” → paralelkenar “Yeni fiyatı yaz” → oval “Bitir”.]
 
 | Adım | Fiyat | İndirim | Yeni fiyat |
 |---|---|---|---|

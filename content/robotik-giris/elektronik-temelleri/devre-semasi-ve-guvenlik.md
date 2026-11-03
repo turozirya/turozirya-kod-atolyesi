@@ -14,16 +14,16 @@ video: ""
 ornek_kod: ""
 test:
   - soru: "Devre şemasında pilin artı (+) ucu nasıl gösterilir?"
-    secenekler: ["Uzun çizgiyle", "Kısa çizgiyle", "Daireyle", "Okla"]
-    dogru: 0
+    secenekler: ["Daireyle", "Uzun çizgiyle", "Kısa çizgiyle", "Okla"]
+    dogru: 1
     aciklama: "Pil sembolünde uzun çizgi artı (+), kısa çizgi eksi (−) uçtur."
   - soru: "Pilin artı ve eksi ucunu bir kabloyla doğrudan birleştirmeye ne denir?"
-    secenekler: ["Kapalı devre", "Kısa devre", "Açık devre", "Devre şeması"]
-    dogru: 1
+    secenekler: ["Kısa devre", "Açık devre", "Kapalı devre", "Devre şeması"]
+    dogru: 0
     aciklama: "Elektrik hiçbir elemana uğramadan pile döner; buna kısa devre denir ve pil ısınır."
   - soru: "Robot yaparken hangisi güvenli bir davranıştır?"
-    secenekler: ["Devreyi prize bağlamak", "Islak elle kablolara dokunmak", "Kabloyu dişle soymak", "Isınan bir parça fark edince devreyi açmak"]
-    dogru: 3
+    secenekler: ["Islak elle kablolara dokunmak", "Kabloyu dişle soymak", "Isınan bir parça fark edince devreyi açmak", "Devreyi prize bağlamak"]
+    dogru: 2
     aciklama: "Isınan bir parça tehlike işaretidir; devreyi açıp öğretmene haber vermek gerekir."
 ---
 
@@ -39,7 +39,7 @@ Temel semboller şunlardır:
 - **LED:** Bir üçgen ve önünde bir çizgi. Yanında dışarı bakan iki küçük ok vardır.
 - **Direnç:** Bir dikdörtgen ya da zikzak çizgi.
 
-![devre-semasi-sembolleri](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/4182a95c-3056-4ea6-8c9a-017b7b1789b4.png)
+![Devre Şeması ve Güvenlik — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/7d1264ee-5282-4418-86be-0e1a201f2d68.png)
 
 **Tartışmalı örnek:** Kitaplarda direnç bazen dikdörtgen, bazen zikzak çizilir. İkisi de doğrudur. Farklı ülkeler farklı çizim kullanır.
 
@@ -54,6 +54,8 @@ Devrelerle çalışırken şu güvenlik kurallarına uy:
 > 💡 Sık yapılan hata: Kısa devrenin “kısa bir devre” olduğu sanılır. Aslında elektriğin LED gibi bir elemana uğramadan doğrudan pile dönmesidir.
 
 ### Dene!
+
+![Devre Şeması ve Güvenlik — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/9481189b-0378-45a3-8aeb-2ff97740f5dd.png)
 
 Bir devre şeması çiz. Devrede bir pil, bir anahtar, bir direnç ve bir LED tek halka oluşturuyor. Sonra şemana bakarak soruları cevapla.
 

@@ -38,7 +38,9 @@ test:
 
 **Örnek:** A butonuna bastığında şu sıra çalışır: buton (sensör) basıldığını algılar, işlemci "LED ekranda gülen yüz göster" kararını verir, LED ekran (eyleyici) gülen yüzü gösterir. Bu, Robotik Kodlamaya Giriş kursu, Modül 2'de öğrendiğin algıla-karar ver-hareket et sırasının aynısıdır.
 
-![microbit-nedir-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/bfc5ee7f-dc7a-4ac2-af1c-11e1fc798f38.png)
+[GÖRSEL mb-m1-03: micro:bit v2 kartının ön yüzü; LED ekran, A ve B butonları, dokunmatik logo, mikrofon ışığı, pinler etiketli.]
+
+[GÖRSEL mb-m1-04: micro:bit v2 kartının arka yüzü; işlemci, ivmeölçer/pusula, hoparlör, mikrofon, USB girişi, pil girişi etiketli. Etiketler kartın üzerindeki yazılarla karşılaştırılmalı.]
 
 **Dene!** Öğretmeninden aldığın micro:bit kartını eline al ve aşağıdaki tabloyu tamamla.
 
@@ -53,8 +55,6 @@ test:
 | Pil girişi | ? |
 
 Her birini bulduğunda doğru sütuna karar ver ve yanındaki arkadaşınla kontrol et.
-
-![microbit-nedir-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/5249f764-8836-49b9-a957-15bb491fef89.png)
 
 **Bugün öğrendiklerin:**
 - micro:bit, sensör, işlemci ve eyleyicileri bir arada barındıran küçük bir kart bilgisayardır.

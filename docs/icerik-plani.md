@@ -328,7 +328,7 @@ Kurs sırası kodla zorlanmaz: Kurs 2 sınıfa, Kurs 1 bitince öğretmen paneli
 | 1 — Pilot | Kurs 1 Modül 1–2 ve Kurs 2 Modül 1 | 11 | Hemen; sınıfta denenip üslup ayarlanır |
 | 2 | Kurs 1 Modül 3–9 | 24 | Kurs 1'in 2. haftası |
 | 3 | Kurs 2 Modül 2–8 (blok, pinler ve servo dahil) | 25 | Kurs 2 başlamadan (9. hafta) |
-| 4 | Kurs 2 Modül 9–12 (Python) | 15 | Blok dönemi bitmeden (21. hafta) |
+| 4 | Kurs 2 Modül 9–12 (Python) | 15 | İçerik yüklendi, görseller bekleniyor |
 
 **Dosya düzeni.** Dersler platforma tek tek elle girilmez. Her ders projede bir Markdown dosyası olur; Claude Code bir içe aktarma komutu yazar ve dersleri slug'a göre Supabase'e ekler ya da günceller. Böylece 66 ders git'te saklanır, bir yazım hatası dosyada düzeltilip komut yeniden çalıştırılır.
 

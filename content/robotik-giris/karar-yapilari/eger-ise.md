@@ -20,16 +20,16 @@ ornek_kod: |
   5. Bitir
 test:
   - soru: "Hangisi bir koşuldur?"
-    secenekler: ["Şemsiyeni al", "Yağmur yağıyor mu?", "Evden çık", "Bitir"]
-    dogru: 1
+    secenekler: ["Bitir", "Evden çık", "Yağmur yağıyor mu?", "Şemsiyeni al"]
+    dogru: 2
     aciklama: "Koşul, cevabı doğru ya da yanlış olan bir sorudur."
   - soru: "Örnek koddaki algoritmada hava güneşliyse ne olur?"
-    secenekler: ["Program durur", "Şemsiye alınır", "Şemsiye alınmadan evden çıkılır", "Hava durumuna tekrar bakılır"]
-    dogru: 2
+    secenekler: ["Şemsiye alınmadan evden çıkılır", "Hava durumuna tekrar bakılır", "Program durur", "Şemsiye alınır"]
+    dogru: 0
     aciklama: "Koşul yanlış olduğu için 3. adımdaki iş atlanır ve 4. adıma geçilir."
   - soru: "“Eğer tampon çarptıysa: geri çekil” kuralında tampon çarpmazsa robot ne yapar?"
-    secenekler: ["Geri çekilmeden çalışmaya devam eder", "Kapanır", "Yine geri çekilir", "Hata verir"]
-    dogru: 0
+    secenekler: ["Kapanır", "Hata verir", "Yine geri çekilir", "Geri çekilmeden çalışmaya devam eder"]
+    dogru: 3
     aciklama: "Koşul yanlışsa “geri çekil” işi atlanır; robot sonraki adımlarla devam eder."
 ---
 
@@ -43,13 +43,15 @@ Sabah evden çıkmadan önce camdan bakarsın. Şemsiye alıp almayacağına nas
 
 Akış şemasında karar, eşkenar dörtgenle gösterilir. Ondan iki ok çıkar: “Evet” ve “Hayır”.
 
-![semsiye-karar-semasi](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/dd155b3e-033f-4e38-ab41-9dc897b14742.png)
+![Eğer… İse — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/f2d44f1c-eb47-4602-ab9e-7eabd8b7930f.png)
 
-Robotlar da sürekli böyle kararlar verir. Robot süpürgenin kuralı şöyledir: Eğer tampon çarptıysa, geri çekil ve dön (Hatırla: Robotik Kodlamaya Giriş kursu, Modül 2).
+Robotlar da sürekli böyle kararlar verir. Robot süpürgenin kuralı şöyledir: Eğer tampon çarptıysa, geri çekil ve dön (Hatırla: Modül 2 — Algıla, Düşün, Harekete Geç).
 
 > 💡 Sık yapılan hata: Koşul yanlış olunca programın durduğu sanılır. Program durmaz. Yalnızca koşula bağlı işi atlar ve devam eder.
 
 ### Dene!
+
+![Eğer… İse — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/e86e1db8-9d74-4153-a055-2b8df1b01d44.png)
 
 Her durum için koşulu ve koşul doğruysa yapılacak işi yaz. Sonra birini seç ve sözde kodunu yaz.
 

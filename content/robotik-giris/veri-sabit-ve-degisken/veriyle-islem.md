@@ -20,16 +20,16 @@ ornek_kod: |
   6. Bitir
 test:
   - soru: "Kodda 6 ile 7'nin çarpımı nasıl yazılır?"
-    secenekler: ["6 x 7", "6 * 7", "6 · 7", "6 ÷ 7"]
-    dogru: 1
+    secenekler: ["6 ÷ 7", "6 · 7", "6 * 7", "6 x 7"]
+    dogru: 2
     aciklama: "Kodda çarpma işlemi yıldız (*) ile yazılır."
   - soru: "2 + 3 * 4 işleminin sonucu kaçtır?"
-    secenekler: ["20", "24", "14", "9"]
-    dogru: 2
+    secenekler: ["20", "9", "24", "14"]
+    dogru: 3
     aciklama: "Önce çarpma yapılır: 3 * 4 = 12, sonra 2 + 12 = 14."
   - soru: "Robot süpürgenin pili 15 ise “pil < 20” karşılaştırmasının sonucu nedir?"
-    secenekler: ["15", "20", "yanlış", "doğru"]
-    dogru: 3
+    secenekler: ["doğru", "15", "yanlış", "20"]
+    dogru: 0
     aciklama: "15, 20'den küçüktür; karşılaştırmanın sonucu mantıksal bir değerdir: doğru."
 ---
 
@@ -54,9 +54,13 @@ Bilgisayar sayıları karşılaştırabilir de. Bunlara **karşılaştırma işl
 
 Robot süpürge örneği: Pil 15 ise “pil < 20” karşılaştırmasının sonucu doğrudur. Bir sonraki modülde robot bu sonuca göre karar verecek.
 
+![Veriyle İşlem — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/4900d2f9-9e2a-4cc5-ac24-ea417193aea6.png)
+
 > 💡 Dikkat: Python'da “eşit mi?” sorusu iki eşittir işaretiyle yazılır: ==. Tek eşittir (=) ise bir değişkene değer vermek için kullanılır. MakeCode'un karşılaştırma bloğunda ise tek = görünür.
 
 ### Dene!
+
+![Veriyle İşlem — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/ef468b2c-01b4-4d50-9928-61302fac4c85.png)
 
 Her ifadenin sonucunu yaz.
 

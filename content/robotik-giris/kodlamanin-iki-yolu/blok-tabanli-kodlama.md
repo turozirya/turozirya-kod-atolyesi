@@ -14,15 +14,15 @@ video: ""
 ornek_kod: ""
 test:
   - soru: "Blok tabanlı kodlamada neden yazım hatası yapılmaz?"
-    secenekler: ["Komutlar hazır bloklar olduğu için", "Bilgisayar hataları kendiliğinden siler", "Bloklar yalnızca İngilizce olduğu için", "Program hiç çalıştırılmadığı için"]
+    secenekler: ["Komutlar hazır bloklar olduğu için", "Bilgisayar hataları kendiliğinden siler", "Program hiç çalıştırılmadığı için", "Bloklar yalnızca İngilizce olduğu için"]
     dogru: 0
     aciklama: "Komutları klavyeyle yazmayız; hazır blokları sürükleyip birleştiririz."
   - soru: "`show string` bloğu `forever` içine konursa ne olur?"
-    secenekler: ["Yazı bir kez kayar", "Yazı sürekli tekrar tekrar kayar", "Hiçbir şey görünmez", "Yazı ekranda sabit durur"]
-    dogru: 1
+    secenekler: ["Yazı bir kez kayar", "Yazı ekranda sabit durur", "Hiçbir şey görünmez", "Yazı sürekli tekrar tekrar kayar"]
+    dogru: 3
     aciklama: "`forever` bir sonsuz döngüdür; içindeki blok durmadan tekrar çalışır."
   - soru: "MakeCode'u neden İngilizce kullanıyoruz?"
-    secenekler: ["Türkçesi olmadığı için", "Daha hızlı çalıştığı için", "Python'a geçince aynı kelimeleri tanımak için", "Simülatör yalnızca İngilizcede çalıştığı için"]
+    secenekler: ["Türkçesi olmadığı için", "Simülatör yalnızca İngilizcede çalıştığı için", "Python'a geçince aynı kelimeleri tanımak için", "Daha hızlı çalıştığı için"]
     dogru: 2
     aciklama: "Blok adları Python'daki komutlara benzer; şimdiden alışmak geçişi kolaylaştırır."
 ---
@@ -48,13 +48,15 @@ MakeCode'u İngilizce kullanıyoruz. Dili değiştirmek için sağ üstteki ⚙ 
 3. Bloğun içine adını yaz. ş, ğ, ı gibi harfleri kullanma; micro:bit ekranı bu harfleri gösteremez.
 4. Simülatörde adının kaydığını izle.
 
-[GÖRSEL: Ekran görüntüsü — MakeCode ekranı: solda blok kategorileri, ortada çalışma alanı (on start içinde show string “Ayse”), sağda simülatör. İngilizce arayüz. Kurs 2'deki makecode-ilk-program dersinin ekran görüntüsü kullanılabilir.]
+![Blok Tabanlı Kodlama — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/423db364-5b1e-41b0-ac6b-391ec056efa3.png)
 
 Bloklar aslında yazılı koda dönüşür. Editörün üst kısmında `Blocks` düğmesinin yanında yazılı kod görünümüne geçen bir düğme vardır. Ona basarsan aynı programın yazılı halini görürsün.
 
 > 💡 Sık yapılan hata: Blok tabanlı kodlamanın “gerçek kodlama olmadığı” sanılır. Bloklar da gerçek bir programdır. Arka planda yazılı koda dönüşür.
 
 ### Dene!
+
+![Blok Tabanlı Kodlama — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/c835a045-d474-45de-b9e9-c253af937169.png)
 
 Programında aşağıdaki değişiklikleri dene ve ne olduğunu yaz.
 

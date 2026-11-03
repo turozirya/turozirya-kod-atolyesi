@@ -23,15 +23,15 @@ ornek_kod: |
            yeşil LED'i yak
 test:
   - soru: "Akıllı saksı projesinde “nem < ESIK mi?” hangi yapıdır?"
-    secenekler: ["Döngü", "Karar", "Sabit", "Eyleyici"]
+    secenekler: ["Eyleyici", "Karar", "Döngü", "Sabit"]
     dogru: 1
     aciklama: "Cevabı doğru ya da yanlış olan bir koşula göre iş seçilir; bu bir karardır."
   - soru: "Akıllı saksıda ESIK neden sabit olarak tanımlanmıştır?"
-    secenekler: ["Sensörle ölçüldüğü için", "Metin olduğu için", "Program çalışırken değişmediği için", "Sensörün adı olduğu için"]
+    secenekler: ["Metin olduğu için", "Sensörle ölçüldüğü için", "Program çalışırken değişmediği için", "Sensörün adı olduğu için"]
     dogru: 2
     aciklama: "ESIK hep 30 kalır; ölçülen ve değişen değer ise nem değişkenidir."
   - soru: "Akıllı saksıda uyarı sesini çalan hoparlör hangi parçadır?"
-    secenekler: ["Eyleyici", "Sensör", "İşlemci", "Değişken"]
+    secenekler: ["Eyleyici", "İşlemci", "Sensör", "Değişken"]
     dogru: 0
     aciklama: "Hoparlör, işlemcinin kararını sese çeviren bir eyleyicidir."
 ---
@@ -65,9 +65,13 @@ Bu derste bir **proje** yapacaksın. Proje adımları şunlardır:
 | Karar | nem < ESIK mi? | |
 | Döngü | Sürekli tekrarla | |
 
+![Final: Robotunu Tasarla — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/bd825001-79a3-4d2c-aeda-d420ae0dde1f.png)
+
 > 💡 Sık yapılan hata: En karmaşık robotun en iyi proje olduğu sanılır. Küçük ama iyi düşünülmüş ve iyi anlatılan bir fikir daha değerlidir.
 
 ### Dene!
+
+![Final: Robotunu Tasarla — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/b0205bad-a7b0-4cec-89f4-a80ffb01390b.png)
 
 Proje kartını doldur. Sonra sözde kodunu, akış şemanı ve devre şemanı kâğıda çiz. Sunumdan önce şu listeyle kendini kontrol et:
 

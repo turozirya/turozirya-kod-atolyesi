@@ -18,12 +18,12 @@ test:
     dogru: 1
     aciklama: "Mantıksal veri yalnızca doğru ya da yanlış olabilir; tırnak içindeki “doğru” ise metindir."
   - soru: "Kodda üç buçuk nasıl yazılır?"
-    secenekler: ["3,5", "\"3,5\"", "3.5", "3½"]
-    dogru: 2
+    secenekler: ["3½", "\"3,5\"", "3,5", "3.5"]
+    dogru: 3
     aciklama: "Kodda ondalık ayırıcı olarak virgül değil nokta kullanılır."
   - soru: "Robot süpürgenin “Toz haznesi dolu mu?” sorusunun cevabı hangi türdedir?"
-    secenekler: ["Mantıksal", "Metin", "Ondalıklı sayı", "Tam sayı"]
-    dogru: 0
+    secenekler: ["Tam sayı", "Metin", "Mantıksal", "Ondalıklı sayı"]
+    dogru: 2
     aciklama: "Cevap yalnızca doğru ya da yanlış olabilir; bu mantıksal veridir."
 ---
 
@@ -47,9 +47,13 @@ Bilgisayar “13” ile 13'ü aynı şey olarak mı görür?
 
 Tırnak işareti önemlidir. "13" tırnak içinde olduğu için metindir. Bilgisayar onunla hesap yapmaz. "13" ile "1" toplanırsa sonuç 14 değil, "131" olur. İki metin yan yana eklenir.
 
+![Veri Türleri — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/e11d4c2a-8310-4b8f-8462-644cbb75030f.png)
+
 > 💡 Dikkat: Matematikte ondalık sayıyı virgülle yazarsın: 3,5. Kodda ise nokta kullanılır: 3.5. Virgülle yazarsan bilgisayar onu sayı olarak anlamaz.
 
 ### Dene!
+
+![Veri Türleri — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/da86f77e-3e0e-4151-b86e-be482548eb45.png)
 
 Her verinin türünü yaz.
 

@@ -20,16 +20,16 @@ ornek_kod: |
   6. ...
 test:
   - soru: "Algoritma tasarlarken ilk adım nedir?"
-    secenekler: ["Hemen komutları yazmak", "Problemi anlamak: başlangıç ve hedef nerede?", "Arkadaşına cevabı sormak", "En uzun yolu seçmek"]
-    dogru: 1
+    secenekler: ["Problemi anlamak: başlangıç ve hedef nerede?", "Hemen komutları yazmak", "En uzun yolu seçmek", "Arkadaşına cevabı sormak"]
+    dogru: 0
     aciklama: "Önce başlangıcı, hedefi ve engelleri anlamak gerekir."
   - soru: "Haritada sağa bakan robot “sağa dön” komutunu alırsa ne olur?"
-    secenekler: ["Bir kare sağa gider", "Sola bakar", "Yerinden kıpırdamadan aşağıya bakar", "Bir kare geri gider"]
+    secenekler: ["Sola bakar", "Bir kare sağa gider", "Yerinden kıpırdamadan aşağıya bakar", "Bir kare geri gider"]
     dogru: 2
     aciklama: "Dönmek yalnızca yönü değiştirir; robot yerinde kalır ve aşağıya bakar."
   - soru: "Aynı hedefe giden iki algoritmadan biri 9, diğeri 14 adımsa hangisi genelde daha iyidir?"
-    secenekler: ["9 adımlı olan, çünkü daha kısa", "14 adımlı olan, çünkü daha ayrıntılı", "İkisi de aynıdır", "Hangisi önce yazıldıysa"]
-    dogru: 0
+    secenekler: ["İkisi de aynıdır", "14 adımlı olan, çünkü daha ayrıntılı", "Hangisi önce yazıldıysa", "9 adımlı olan, çünkü daha kısa"]
+    dogru: 3
     aciklama: "İkisi de hedefe ulaşıyorsa daha kısa olan genelde daha iyidir."
 ---
 
@@ -62,9 +62,13 @@ Robot yalnızca üç komutu anlar:
 
 Aynı hedefe giden birden fazla algoritma olabilir. İkisi de hedefe ulaşıyorsa daha kısa olan genelde daha iyidir.
 
+![Algoritma Tasarla — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/eacda876-79c6-4b74-8c3c-286663135acb.png)
+
 > 💡 Sık yapılan hata: Dönme komutunun robotu bir kare ilerlettiği sanılır. Dönmek yalnızca yönü değiştirir. İlerlemek için ayrıca “İleri git” gerekir.
 
 ### Dene!
+
+![Algoritma Tasarla — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/eb2efdb1-88c1-45a2-9c1f-78cbb83b7a23.png)
 
 Algoritmayı tamamla ve robotu K karesine ulaştır. Her adımdan sonra robotun yerini ve yönünü tabloya yaz. Sonra adımlarını say ve bir arkadaşınınkiyle karşılaştır. Kimin algoritması daha kısa?
 

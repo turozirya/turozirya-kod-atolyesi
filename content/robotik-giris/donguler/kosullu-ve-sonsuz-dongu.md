@@ -27,15 +27,15 @@ ornek_kod: |
        sıcaklığı ekrana yaz
 test:
   - soru: "“Bardak dolmadığı sürece bekle” hangi tür döngüdür?"
-    secenekler: ["Sayılı döngü", "Koşullu döngü", "Karar yapısı", "Sonsuz döngü"]
-    dogru: 1
+    secenekler: ["Koşullu döngü", "Sonsuz döngü", "Karar yapısı", "Sayılı döngü"]
+    dogru: 0
     aciklama: "Tekrar sayısı belli değil; bir koşul sağlandıkça devam ediyor."
   - soru: "Robotlar neden çoğunlukla sonsuz döngüde çalışır?"
-    secenekler: ["Çevrelerini sürekli algılayıp tepki vermeleri gerektiği için", "Kapatma düğmeleri olmadığı için", "Döngü yazmak kolay olduğu için", "Pilleri bitmesin diye"]
-    dogru: 0
+    secenekler: ["Kapatma düğmeleri olmadığı için", "Döngü yazmak kolay olduğu için", "Çevrelerini sürekli algılayıp tepki vermeleri gerektiği için", "Pilleri bitmesin diye"]
+    dogru: 2
     aciklama: "Robot, algıla–karar ver–harekete geç adımlarını çalıştığı sürece tekrarlamalıdır."
   - soru: "Musluk hiç açılmadan “Bardak dolmadığı sürece bekle” çalışırsa ne olur?"
-    secenekler: ["Bardak hemen dolar", "Döngü bir kez çalışıp biter", "Program kendini düzeltir", "Bardak hiç dolmaz, döngü hiç bitmez"]
+    secenekler: ["Döngü bir kez çalışıp biter", "Program kendini düzeltir", "Bardak hemen dolar", "Bardak hiç dolmaz, döngü hiç bitmez"]
     dogru: 3
     aciklama: "Koşul hiçbir zaman yanlış olmaz; döngü istemeden sonsuza kadar sürer."
 ---
@@ -54,9 +54,13 @@ Robotlar ve akıllı sistemler genellikle sonsuz döngüde çalışır. Algıla,
 
 **Tartışmalı örnek:** Sonsuz döngü iyi mi, kötü mü? İkisi de olabilir. Robotlarda sonsuz döngü bilerek kullanılır. Ama bazen bir koşul hiç yanlış olmaz ve döngü istemeden sonsuza kadar sürer. Bu bir hatadır. Örneğin musluğu açmayı unutursan bardak hiç dolmaz.
 
+![Koşullu ve Sonsuz Döngü — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/4a153e0a-26d4-4dbc-8925-6c2ab367c8f3.png)
+
 > 💡 Sık yapılan hata: Her döngünün kaç kez çalışacağının önceden bilindiği sanılır. Koşullu döngüde tekrar sayısı, koşul yanlış olana kadar belli değildir.
 
 ### Dene!
+
+![Koşullu ve Sonsuz Döngü — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/56c6e0d0-c7c6-4c69-8168-34ce850811bd.png)
 
 Her durumun hangi döngü türüne uyduğunu yaz: sayılı, koşullu ya da sonsuz.
 

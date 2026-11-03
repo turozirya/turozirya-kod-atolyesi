@@ -23,12 +23,12 @@ test:
     dogru: 2
     aciklama: "Döngü 3 kez çalışır ve her turda bir kez alkışlanır."
   - soru: "Döngünün faydası nedir?"
-    secenekler: ["Programı yavaşlatır", "Aynı adımları tekrar tekrar yazmadan tekrarlatır", "Sensörden daha çok veri toplar", "Robotu durdurur"]
-    dogru: 1
+    secenekler: ["Programı yavaşlatır", "Robotu durdurur", "Sensörden daha çok veri toplar", "Aynı adımları tekrar tekrar yazmadan tekrarlatır"]
+    dogru: 3
     aciklama: "Döngü, tekrar eden adımları bir kez yazıp istediğimiz kadar çalıştırmamızı sağlar."
   - soru: "Kare çizen robotun döngüsünde “4 kez” yerine “3 kez” yazılırsa ne olur?"
-    secenekler: ["Üçgen çizer", "Daha büyük bir kare çizer", "Hiç çizmez", "Kare tamamlanmaz, bir kenarı eksik kalır"]
-    dogru: 3
+    secenekler: ["Kare tamamlanmaz, bir kenarı eksik kalır", "Üçgen çizer", "Hiç çizmez", "Daha büyük bir kare çizer"]
+    dogru: 0
     aciklama: "Dönüş açısı hâlâ 90 derece olduğu için üçgen oluşmaz; karenin bir kenarı eksik kalır."
 ---
 
@@ -48,9 +48,13 @@ Döngünün üç faydası vardır:
 
 Robotlar döngüyü çok kullanır. Fabrika robotu aynı parçayı takmak için aynı hareketi binlerce kez tekrarlar (Hatırla: Robotlar Nerede Çalışır? dersi).
 
+![Döngü Nedir? — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/e0e69f4a-a781-4ff2-aee5-1c4dd3c19cc8.png)
+
 > 💡 Sık yapılan hata: “4 kez tekrarla” içindeki her adımın toplam 4 kez çalıştığı unutulur. Kare algoritmasında robot 4 kez ilerler ve 4 kez döner. Yani toplam 8 adım çalışır.
 
 ### Dene!
+
+![Döngü Nedir? — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/5ffc4855-1ffc-427c-a036-c71e810a221d.png)
 
 Robotun düzgün şekiller çizmesi için kaç kez tekrar etmesi gerektiğini yaz. Dönüş açıları verilmiştir.
 

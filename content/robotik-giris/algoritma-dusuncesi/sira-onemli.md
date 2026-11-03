@@ -20,16 +20,16 @@ ornek_kod: |
   6. Bitir
 test:
   - soru: "Algoritmadaki bir hatayı bulup düzeltmeye ne denir?"
-    secenekler: ["Hata ayıklama", "Algoritma silme", "Kodu kopyalama", "Programı kapatma"]
-    dogru: 0
+    secenekler: ["Kodu kopyalama", "Programı kapatma", "Algoritma silme", "Hata ayıklama"]
+    dogru: 3
     aciklama: "Hatayı bulup düzeltmeye hata ayıklama denir."
   - soru: "Bitki sulama algoritmasında “Bitkiye su dök” adımı neden hatalıdır?"
-    secenekler: ["Bitki iki kez sulanır", "Musluk hiç açılmaz", "Kap henüz boşken su dökülmeye çalışılır", "Algoritma daha hızlı biter"]
-    dogru: 2
+    secenekler: ["Kap henüz boşken su dökülmeye çalışılır", "Bitki iki kez sulanır", "Musluk hiç açılmaz", "Algoritma daha hızlı biter"]
+    dogru: 0
     aciklama: "Bu adım, kap dolmadan önce geliyor; sıra yanlış."
   - soru: "Robot arkadaşın kalemin bir adım gerisinde durdu. En olası hata nedir?"
-    secenekler: ["“Sağa dön” yerine “sola dön” yazılmış", "Bir “1 adım ileri” komutu eksik", "Komutlar çok yavaş okunmuş", "Kalem yanlış renkte"]
-    dogru: 1
+    secenekler: ["Komutlar çok yavaş okunmuş", "“Sağa dön” yerine “sola dön” yazılmış", "Bir “1 adım ileri” komutu eksik", "Kalem yanlış renkte"]
+    dogru: 2
     aciklama: "Robot yönü doğru ama bir adım eksik gitmiş; algoritmada bir ileri adımı eksik."
 ---
 
@@ -50,9 +50,13 @@ Algoritmadaki yanlışa **hata** denir. Programcılar buna İngilizcede “bug�
 
 Hatayı bulmanın iyi bir yolu, algoritmayı adım adım kendin uygulamaktır. Her adımda “Şu an bu yapılabilir mi?” diye sor.
 
+![Sıra Önemli! — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/bb38f459-f06d-4b10-92b5-e15713d6140a.png)
+
 > 💡 Sık yapılan hata: Hata yapmanın kötü bir şey olduğu sanılır. Oysa her programcı hata yapar. Önemli olan hatayı bulup düzeltmektir.
 
 ### Dene!
+
+![Sıra Önemli! — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/1b28f6d3-7b2d-4136-befe-9934fc83cf47.png)
 
 **Robot arkadaşını yönet** oyunu: Bir arkadaşın robot olur. Robot yalnızca şu komutları anlar: “1 adım ileri”, “sağa dön”, “sola dön”, “kalemi al”. Hedef, robotun masadaki kalemi almasıdır.
 

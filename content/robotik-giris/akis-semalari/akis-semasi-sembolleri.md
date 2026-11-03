@@ -14,16 +14,16 @@ video: ""
 ornek_kod: ""
 test:
   - soru: "Akış şemasında karar adımı hangi şekille gösterilir?"
-    secenekler: ["Oval", "Dikdörtgen", "Eşkenar dörtgen", "Paralelkenar"]
-    dogru: 2
+    secenekler: ["Dikdörtgen", "Eşkenar dörtgen", "Paralelkenar", "Oval"]
+    dogru: 1
     aciklama: "Karar adımı eşkenar dörtgenle (baklava dilimi) gösterilir ve iki çıkışı vardır."
   - soru: "“Kullanıcıdan bir sayı al” adımı hangi şekille çizilir?"
-    secenekler: ["Paralelkenar", "Eşkenar dörtgen", "Oval", "Dikdörtgen"]
-    dogru: 0
+    secenekler: ["Eşkenar dörtgen", "Oval", "Paralelkenar", "Dikdörtgen"]
+    dogru: 2
     aciklama: "Bilgi alma bir girdidir; girdi ve çıktı paralelkenarla gösterilir."
   - soru: "Robot süpürgenin “Önünde engel var mı?” sorusu akış şemasında hangi şekle yazılır?"
-    secenekler: ["Dikdörtgen", "Oval", "Paralelkenar", "Eşkenar dörtgen"]
-    dogru: 3
+    secenekler: ["Eşkenar dörtgen", "Paralelkenar", "Dikdörtgen", "Oval"]
+    dogru: 0
     aciklama: "Bu bir evet/hayır sorusudur; karar şekline, yani eşkenar dörtgene yazılır."
 ---
 
@@ -39,15 +39,17 @@ Akış şemasında beş temel sembol kullanılır:
 - **Karar — Eşkenar dörtgen:** Cevabı evet ya da hayır olan bir soruyu anlatır.
 - **Ok:** Akışın yönünü gösterir.
 
-![akis-semasi-sembolleri](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/85100234-74cc-4524-973c-45e0fbc74b43.png)
+![Akış Şeması Sembolleri — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/23b65f1d-9820-4ac0-89d4-6cc12248419a.png)
 
-Bu şekilleri daha önce gördüğün bir fikre bağlayabilirsin (Hatırla: Robotik Kodlamaya Giriş kursu, Modül 2). Paralelkenar girdi ve çıktıyı, dikdörtgen işlemi gösterir. Yani akış şeması, girdi–işlem–çıktı düzeninin çizilmiş halidir.
+Bu şekilleri daha önce gördüğün bir fikre bağlayabilirsin (Hatırla: Modül 2 — Algıla, Düşün, Harekete Geç). Paralelkenar girdi ve çıktıyı, dikdörtgen işlemi gösterir. Yani akış şeması, girdi–işlem–çıktı düzeninin çizilmiş halidir.
 
 **Tartışmalı örnek:** Bazı kitaplarda çıktı için alt kenarı dalgalı bir “belge” şekli kullanılır. İkisini de görebilirsin. Bu kursta çıktı için paralelkenar kullanacağız.
 
 > 💡 Sık yapılan hata: Karar şeklinden tek ok çıktığı sanılır. Karar şeklinden iki ok çıkar: biri “Evet”, biri “Hayır” yoluna gider.
 
 ### Dene!
+
+![Akış Şeması Sembolleri — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/0042857a-68b5-431e-bee5-b578211b6fdb.png)
 
 Her adımın hangi şekille çizileceğini yaz.
 

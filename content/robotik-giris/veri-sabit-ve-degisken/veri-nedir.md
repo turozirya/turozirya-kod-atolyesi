@@ -14,15 +14,15 @@ video: ""
 ornek_kod: ""
 test:
   - soru: "Hangisi bir veridir?"
-    secenekler: ["Sensörün ölçtüğü 24 °C", "Sensörün kendisi", "Bir kablo", "Bir motor"]
-    dogru: 0
+    secenekler: ["Sensörün kendisi", "Sensörün ölçtüğü 24 °C", "Bir motor", "Bir kablo"]
+    dogru: 1
     aciklama: "Veri, ölçülen ya da toplanan bilgidir; sensör, kablo ve motor birer parçadır."
   - soru: "Robot süpürge pilinin %35 dolu olduğunu ölçüyor. Bu ölçüm nedir?"
-    secenekler: ["Çıktı verisi", "Girdi verisi", "Bir eyleyici", "Bir karar"]
-    dogru: 1
+    secenekler: ["Çıktı verisi", "Bir karar", "Bir eyleyici", "Girdi verisi"]
+    dogru: 3
     aciklama: "Ölçülen pil seviyesi robota giren bilgidir; bu bir girdi verisidir."
   - soru: "Kantin kasasının ekranında yazan toplam tutar nedir?"
-    secenekler: ["Girdi verisi", "Bir sensör", "Çıktı verisi", "Bir işlemci"]
+    secenekler: ["Bir sensör", "Bir işlemci", "Çıktı verisi", "Girdi verisi"]
     dogru: 2
     aciklama: "Toplam tutar, kasanın hesaplayıp gösterdiği sonuçtur; bu bir çıktı verisidir."
 ---
@@ -31,7 +31,7 @@ Bir adımsayar, bugün kaç adım attığını nereden biliyor?
 
 **Veri**, toplanan ve işlenebilen bilgidir. Bir sayı, bir kelime ya da bir ölçüm veri olabilir. Robotlar ve bilgisayarlar veriyle çalışır.
 
-Veriyi iki gruba ayırabiliriz (Hatırla: Robotik Kodlamaya Giriş kursu, Modül 2 — girdi, işlem, çıktı):
+Veriyi iki gruba ayırabiliriz (Hatırla: Modül 2 — Algıla, Düşün, Harekete Geç):
 
 - **Girdi verisi:** Sisteme giren veridir. Sensörün ölçtüğü sıcaklık, bir tuşa basılması ya da yazılan bir isim girdi verisidir.
 - **Çıktı verisi:** Sistemin ürettiği sonuçtur. Ekranda görünen yazı ya da hesaplanan bir sayı çıktı verisidir.
@@ -40,9 +40,13 @@ Veriyi iki gruba ayırabiliriz (Hatırla: Robotik Kodlamaya Giriş kursu, Modül
 
 Robot süpürge de sürekli veri toplar. Tamponun çarpıp çarpmadığı bir veridir. Pilin yüzde kaç dolu olduğu da bir veridir.
 
+![Veri Nedir? — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/4b23eb3c-7202-47b5-8ba5-c89edaeaab55.png)
+
 > 💡 Sık yapılan hata: Verinin yalnızca sayı olduğu sanılır. Bir isim, bir renk ya da “evet” cevabı da veridir.
 
 ### Dene!
+
+![Veri Nedir? — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/5d51fa95-6b93-4184-b78e-184586cd974f.png)
 
 Her cihaz için bir girdi verisi ve bir çıktı verisi yaz.
 

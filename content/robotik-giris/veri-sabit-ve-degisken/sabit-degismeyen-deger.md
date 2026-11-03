@@ -20,16 +20,16 @@ ornek_kod: |
   6. Bitir
 test:
   - soru: "Hangisi bir sabittir?"
-    secenekler: ["Robot süpürgenin pil yüzdesi", "Bir saatteki dakika sayısı", "Oyundaki skor", "Odanın sıcaklığı"]
+    secenekler: ["Oyundaki skor", "Bir saatteki dakika sayısı", "Odanın sıcaklığı", "Robot süpürgenin pil yüzdesi"]
     dogru: 1
     aciklama: "Bir saat her zaman 60 dakikadır; diğerleri zamanla değişir."
   - soru: "Örnek koddaki algoritmaya 3 hafta girilirse toplam_gun kaç olur?"
-    secenekler: ["10", "7", "3", "21"]
-    dogru: 3
+    secenekler: ["21", "3", "7", "10"]
+    dogru: 0
     aciklama: "toplam_gun = 3 × 7 = 21 olur."
   - soru: "Okuldaki öğrenci sayısı neden değişken sayılır?"
-    secenekler: ["Çok büyük bir sayı olduğu için", "Bir sensörle ölçüldüğü için", "Yıl içinde öğrenci gelip gidebildiği için", "Ondalıklı bir sayı olduğu için"]
-    dogru: 2
+    secenekler: ["Bir sensörle ölçüldüğü için", "Çok büyük bir sayı olduğu için", "Ondalıklı bir sayı olduğu için", "Yıl içinde öğrenci gelip gidebildiği için"]
+    dogru: 3
     aciklama: "Değeri değişebilen her veri değişkendir; büyüklüğü önemli değildir."
 ---
 
@@ -53,9 +53,13 @@ Python'da sabitler genellikle BÜYÜK harfle yazılır: GUN_SAYISI. Böylece kod
 
 **Tartışmalı örnek:** Okuldaki öğrenci sayısı sabit mi? Yıl içinde yeni öğrenci gelebilir ya da biri ayrılabilir. Bu yüzden değişkendir. Sabit, yalnızca değişmeyeceğinden emin olduğumuz değerdir.
 
+![Sabit: Değişmeyen Değer — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/74668732-dedf-4444-8460-495b66394671.png)
+
 > 💡 Sık yapılan hata: Sabitin “önemli bir sayı” olduğu sanılır. Bir değer önemli olduğu için değil, değişmediği için sabittir.
 
 ### Dene!
+
+![Sabit: Değişmeyen Değer — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/6c6d5072-9676-4382-a91d-d03d0d280351.png)
 
 Her veri için değişken mi, sabit mi olduğunu ve nedenini yaz.
 

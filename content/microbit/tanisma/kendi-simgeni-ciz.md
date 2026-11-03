@@ -32,21 +32,17 @@ LED ekran, 5 sütun ve 5 satırdan oluşan bir **ızgara**dır. Her nokta bir **
 
 > 💡 Dikkat: Matematikte y yukarı doğru artar, micro:bit'te **aşağı doğru** artar. Sol üst (0, 0), sol alt (0, 4), sağ alt (4, 4).
 
-![koordinat-izgara](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/2510a8a2-4c6c-43c0-b4bc-0375bd8d959e.png)
+[GÖRSEL mb-m1-01: 5×5 LED ızgarası; sütunlar x = 0–4 (soldan sağa), satırlar y = 0–4 (yukarıdan aşağı). Köşeler etiketli: (0,0) sol üst, (4,0) sağ üst, (0,4) sol alt, (4,4) sağ alt. y'nin aşağı doğru arttığını gösteren ok.]
 
 Önce kolay yolu dene: `show leds` bloğunda ızgaradaki noktalara doğrudan tıklayarak çizim yapabilirsin. Peki neden koordinatla da çizmeyi öğreniyoruz? Çünkü koordinatla çizmek, ileride değişkenlerle hareket eden noktalar ve animasyonlar yapmanı sağlar.
 
 `Led` kategorisindeki "plot" bloğu (noktayı yak), verdiğin x ve y koordinatındaki tek bir noktayı yakar. "unplot" bloğu (noktayı söndür) ise aynı şekilde bir noktayı söndürür. "clear screen" bloğu (ekranı temizle) tüm noktaları birden söndürür. Birden fazla "plot" bloğunu art arda kullanarak, istediğin herhangi bir deseni **piksel piksel** çizebilirsin.
 
-![kendi-simgeni-ciz-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/7f84d61b-b726-47f4-8e3c-c4f65ebbadc3.png)
-
 **Örnek:** Küçük bir ok çizmek istersen, önce orta sütunun (x=2) tüm satırlarını (y=0,1,2,3,4) yakarak gövdeyi oluşturursun. Sonra iki köşegen noktayı ((1,1) ve (3,1)) ekleyerek ok başını yaparsın.
 
-![koordinat-izgara-ok-ornegi](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/a57ea052-9aa3-4ec3-b22d-075bba6c8d75.png)
+[GÖRSEL mb-m1-02: Aynı 5×5 ızgarada yukarıyı gösteren ok: gövde x = 2, y = 0–4; ok başı (1,1) ve (3,1). Yanan noktalar dolu, diğerleri boş.]
 
 **Dene!** Bir kareli kâğıda 5x5'lik bir ızgara çiz ve kendi basit simgeni (bir yıldız, bir ev, kendi baş harfin gibi) karalayarak tasarla. Sonra her karalı noktanın x,y koordinatını bul ve MakeCode'da "plot" bloklarıyla aynı simgeyi oluştur. Simülatörde kontrol et, sonra karta yükle.
-
-![kendi-simgeni-ciz-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/b2469072-f279-45db-be04-fded6cf638a5.png)
 
 **Bugün öğrendiklerin:**
 - LED ekranda koordinatlar 0'dan başlar; x sağa, y **aşağı** doğru artar.

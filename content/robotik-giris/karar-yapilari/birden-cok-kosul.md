@@ -23,16 +23,16 @@ ornek_kod: |
   4. Bitir
 test:
   - soru: "Örnek koddaki algoritmada sıcaklık 5 ise ne yazılır?"
-    secenekler: ["Mont giy", "Ceket giy", "Tişört giy", "Hem “Mont giy” hem “Ceket giy”"]
-    dogru: 0
+    secenekler: ["Hem “Mont giy” hem “Ceket giy”", "Tişört giy", "Mont giy", "Ceket giy"]
+    dogru: 2
     aciklama: "İlk koşul (5 < 10) doğrudur; ilk doğru koşulun işi yapılır, gerisi atlanır."
   - soru: "“Hava güneşli VE ödevin bitti” koşulu ne zaman doğrudur?"
-    secenekler: ["Yalnızca hava güneşliyse", "İkisinden biri doğruysa", "İkisi de doğruysa", "Hiçbiri doğru değilse"]
-    dogru: 2
+    secenekler: ["İkisinden biri doğruysa", "İkisi de doğruysa", "Yalnızca hava güneşliyse", "Hiçbiri doğru değilse"]
+    dogru: 1
     aciklama: "“Ve” ile bağlanan koşulda iki koşulun da doğru olması gerekir."
   - soru: "Robot süpürge “Eğer hafta içiyse VEYA saat 10'u geçtiyse: temizliğe başla” kuralını izliyor. Bugün cumartesi ve saat 11. Ne yapar?"
-    secenekler: ["Cumartesi olduğu için başlamaz", "Temizliğe başlar", "Hata verir", "Yarım temizlik yapar"]
-    dogru: 1
+    secenekler: ["Yarım temizlik yapar", "Cumartesi olduğu için başlamaz", "Hata verir", "Temizliğe başlar"]
+    dogru: 3
     aciklama: "“Veya” ile koşullardan birinin doğru olması yeter; saat 10'u geçmiştir."
 ---
 
@@ -60,9 +60,13 @@ Bazen bir kararı iki koşula birden bağlarız. Bunun için **ve**, **veya** ba
 
 Robot süpürge de birden çok koşul kullanır. Eğer pil 20'den azsa şarja döner. Değilse eğer toz haznesi doluysa uyarı sesi çalar. Değilse temizlemeye devam eder.
 
+![Birden Çok Koşul — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/e9cb9c82-7e29-47b7-bc34-f56ce39b5909.png)
+
 > 💡 Dikkat: Günlük dilde “veya” çoğu zaman “ikisinden yalnızca biri” anlamına gelir. Kodda ise “veya”, iki koşul birden doğru olduğunda da doğrudur.
 
 ### Dene!
+
+![Birden Çok Koşul — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/4eb33cea-c0a2-4077-8dcb-f6681250d5d1.png)
 
 Bir sınav puanına göre mesaj veren algoritmayı izle:
 

@@ -14,15 +14,15 @@ video: ""
 ornek_kod: ""
 test:
   - soru: "`if … then … else` yapısında koşul yanlışsa ne olur?"
-    secenekler: ["Hiçbir şey yapılmaz", "`else` kısmındaki bloklar çalışır", "`then` kısmındaki bloklar çalışır", "Program durur"]
-    dogru: 1
+    secenekler: ["Program durur", "Hiçbir şey yapılmaz", "`else` kısmındaki bloklar çalışır", "`then` kısmındaki bloklar çalışır"]
+    dogru: 2
     aciklama: "Koşul yanlışsa “değilse” (else) kısmındaki iş yapılır."
   - soru: "Gece lambası programında ışık seviyesi tam 50 ise ekranda ne olur?"
-    secenekler: ["Bütün LED'ler yanar", "Program hata verir", "Ekran temizlenir", "LED'lerin yarısı yanar"]
-    dogru: 2
+    secenekler: ["Ekran temizlenir", "Program hata verir", "LED'lerin yarısı yanar", "Bütün LED'ler yanar"]
+    dogru: 0
     aciklama: "50, 50'den küçük değildir; koşul yanlıştır ve else kısmı çalışır."
   - soru: "Robot süpürge “Eğer pil < 20 ise şarja dön, değilse temizlemeye devam et” kuralını izliyor. Pil 60 ise ne yapar?"
-    secenekler: ["Şarja döner", "Durur", "Hem şarja döner hem temizler", "Temizlemeye devam eder"]
+    secenekler: ["Şarja döner", "Hem şarja döner hem temizler", "Durur", "Temizlemeye devam eder"]
     dogru: 3
     aciklama: "60 < 20 yanlıştır; bu yüzden “değilse” kısmı çalışır."
 ---
@@ -50,13 +50,15 @@ Değilse:
 6. `else` kısmına `Basic` kategorisinden `clear screen` (ekranı temizle) bloğunu koy.
 7. Simülatörde beliren ışık ayarını değiştirerek dene.
 
-[GÖRSEL: Ekran görüntüsü — MakeCode'da forever içinde if light level < 50 then show leds (bütün noktalar seçili) else clear screen blokları. İngilizce arayüz.]
+![Eğer… Değilse — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/f2bb5146-1d0a-4ae3-af81-f832ec842784.png)
 
 Neden `forever` kullandık? Lamba ışığı bir kez değil, sürekli ölçmeli. Algıla, karar ver ve harekete geç adımları sürekli tekrarlanır (Hatırla: Hepsi Bir Arada dersi).
 
 > 💡 Dikkat: `light level` 0 ile 255 arasında bir sayı verir. Sayı küçükse ortam karanlıktır. 0 en karanlık değerdir.
 
 ### Dene!
+
+![Eğer… Değilse — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/54052649-b03e-4f14-b4f7-5cf30ae11204.png)
 
 Işık seviyesini aşağıdaki değerlere getir. Koşulun doğru mu yanlış mı olduğunu ve ekranda ne olduğunu yaz.
 

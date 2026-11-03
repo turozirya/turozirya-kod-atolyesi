@@ -34,13 +34,11 @@ Sensör bilgiyi topladı. Şimdi bu bilgiyle kim karar veriyor?
 
 Kararı veren parça **işlemci**dir. İşlemci, robotun beynidir; gelen bilgiyi inceler ve ne yapılacağına karar verir. Bilgisayarlar ve robotlar bilgiyi **girdi → işlem → çıktı** sırasıyla işler. Girdi, dışarıdan gelen ham bilgidir. İşlem, bu bilgiyle yapılan hesaplama veya karardır. Çıktı, ortaya çıkan sonuçtur.
 
-![girdi-islem-cikti](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/5298636b-9093-4e5e-8697-78cf58df1eeb.png)
-
 Bunu bir hesap makinesinde görebilirsin: "5 + 3" tuşlarsın (girdi), makine bu sayıları toplar (işlem), ekranda "8" yazar (çıktı). Akıllı telefonunda da aynı mantık var. Ekrana dokunursun, bu **girdi**dir. Telefon hangi uygulamanın açılacağına karar verir, bu **işlem**dir. Ekranda uygulama açılır, bu **çıktı**dır.
 
 **Örnek:** Bir robot süpürge, tampon sensörüyle "çarptım" bilgisini gönderir (girdi). **İşlemci**si "geri çekil ve sağa dön" kararını verir (işlem). Tekerlekler döner (çıktı).
 
-![islemci-robotun-beyni-kavram](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/0428017f-60f2-4f58-aefe-cd408c042b1f.png)
+[GÖRSEL rg-m2-01: Soldan sağa üç kutu ve oklar: Girdi → İşlem → Çıktı. Altında robot süpürge örneği: tampon sensörü "çarptım" (girdi) → işlemci "geri çekil ve sağa dön" (işlem) → tekerlekler döner (çıktı).]
 
 > 💡 Sık yapılan hata: Girdi ile çıktı birbirine karıştırılır. Girdi her zaman sisteme **giren** bilgi, çıktı ise sistemden **çıkan** sonuçtur.
 
@@ -59,8 +57,6 @@ Bunu bir hesap makinesinde görebilirsin: "5 + 3" tuşlarsın (girdi), makine bu
 Arkadaşınla tablonu karşılaştır.
 
 micro:bit kartının arkasındaki küçük çiplerden biri de işlemcidir; micro:bit ile Kodlama kursunda onu programlayacaksın.
-
-![islemci-robotun-beyni-dene](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/6d7e0460-e299-4adf-bf75-a82b768810b7.png)
 
 **Bugün öğrendiklerin:**
 - İşlemci, robotun karar veren beynidir.

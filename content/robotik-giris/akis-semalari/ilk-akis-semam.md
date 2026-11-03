@@ -20,16 +20,16 @@ ornek_kod: |
   6. Bitir
 test:
   - soru: "Düz (kararsız) bir akış şemasında hangi şekil bulunmaz?"
-    secenekler: ["Oval", "Dikdörtgen", "Eşkenar dörtgen", "Paralelkenar"]
-    dogru: 2
+    secenekler: ["Paralelkenar", "Oval", "Dikdörtgen", "Eşkenar dörtgen"]
+    dogru: 3
     aciklama: "Eşkenar dörtgen karar şeklidir; düz bir algoritmada karar yoktur."
   - soru: "Toplama şemasında A = 4 ve B = 7 girilirse ekrana ne yazılır?"
-    secenekler: ["47", "11", "3", "28"]
-    dogru: 1
+    secenekler: ["3", "47", "11", "28"]
+    dogru: 2
     aciklama: "Toplam = 4 + 7 = 11 olur; sayılar yan yana yazılmaz, toplanır."
   - soru: "“Toplam = A + B” adımı hangi şekille çizilir?"
-    secenekler: ["Dikdörtgen", "Paralelkenar", "Oval", "Eşkenar dörtgen"]
-    dogru: 0
+    secenekler: ["Oval", "Dikdörtgen", "Eşkenar dörtgen", "Paralelkenar"]
+    dogru: 1
     aciklama: "Hesaplama bir işlemdir; işlemler dikdörtgenle çizilir."
 ---
 
@@ -49,13 +49,15 @@ Bazı algoritmalarda hiç karar yoktur. Adımlar tek bir sırada, yukarıdan aş
 - “Toplam = A + B” dikdörtgen olur, çünkü bu bir işlemdir.
 - “Toplamı yaz” paralelkenar olur, çünkü bu bir çıktıdır.
 
-![iki-sayiyi-topla-semasi](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/95dc7596-17c6-481b-85bb-c8790bbacc44.png)
+![İlk Akış Şemam — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/b0005d9c-1380-4b6a-bc53-2980c41758e8.png)
 
 Şemanı bitirince bir örnek sayıyla kontrol et. A = 4 ve B = 7 olsun. Okları izleyerek ilerlersen Toplam = 11 bulursun. Şemayı bir örnekle adım adım izlemek, hatayı bulmanın en kolay yoludur.
 
 > 💡 Sık yapılan hata: Oklar ya da “Bitir” şekli unutulur. Ok olmazsa hangi adımın önce geldiği anlaşılmaz. Bitir olmazsa algoritmanın nerede bittiği belli olmaz.
 
 ### Dene!
+
+![İlk Akış Şemam — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/23a7cd58-44d5-4d9f-a306-81c3444c430c.png)
 
 Bir dikdörtgenin alanını hesaplayan akış şemasını kâğıda çiz. Önce tabloyu doldur, sonra şemayı çiz.
 

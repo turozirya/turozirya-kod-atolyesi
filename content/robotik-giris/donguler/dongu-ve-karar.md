@@ -20,15 +20,15 @@ ornek_kod: |
            ileri git
 test:
   - soru: "Robot süpürge algoritmasında “Önünde engel var mı?” kararı kaç kez verilir?"
-    secenekler: ["Yalnızca bir kez", "Döngünün her turunda bir kez", "Yalnızca engel görünce", "Hiç verilmez"]
+    secenekler: ["Yalnızca engel görünce", "Döngünün her turunda bir kez", "Hiç verilmez", "Yalnızca bir kez"]
     dogru: 1
     aciklama: "Karar döngünün içindedir; her turda yeniden verilir."
   - soru: "Akış şemasında döngü nasıl gösterilir?"
-    secenekler: ["Okun geri dönüp önceki bir adıma bağlanmasıyla", "Oval bir şekille", "Kırmızı renkle", "İki tane Bitir şekliyle"]
-    dogru: 0
+    secenekler: ["Oval bir şekille", "Kırmızı renkle", "İki tane Bitir şekliyle", "Okun geri dönüp önceki bir adıma bağlanmasıyla"]
+    dogru: 3
     aciklama: "Döngüde ok geri döner ve aynı adımlar tekrar çalışır."
   - soru: "Algoritmada önünde engel yoksa robot ne yapar?"
-    secenekler: ["Sağa döner", "Durur", "İleri gider", "Şarja döner"]
+    secenekler: ["Durur", "Şarja döner", "İleri gider", "Sağa döner"]
     dogru: 2
     aciklama: "Koşul yanlışsa “değilse” kısmı çalışır: ileri git."
 ---
@@ -41,7 +41,7 @@ Döngü ve karar birlikte kullanılabilir. Bu durumda döngünün her turunda bi
 
 Akış şemasında döngü, geri dönen bir okla gösterilir. Ok, önceki bir adıma bağlanır ve aynı adımlar tekrar çalışır.
 
-![robot-supurge-dongu-karar](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/9e6a0cd1-118a-4a5d-aa6e-044ba595d1cd.png)
+![Döngü ve Karar Birlikte — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/c6624943-fb6e-49ee-81b6-7abab9c7208d.png)
 
 Bu şemada “Bitir” yoktur. Robot çalıştığı sürece döngü devam eder. Akış şemalarında “Bitir” yalnızca biten algoritmalarda bulunur.
 
@@ -50,6 +50,8 @@ Bu şemada “Bitir” yoktur. Robot çalıştığı sürece döngü devam eder.
 > 💡 Sık yapılan hata: Döngünün içindeki kararın yalnızca bir kez verildiği sanılır. Karar döngünün her turunda yeniden verilir.
 
 ### Dene!
+
+![Döngü ve Karar Birlikte — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/d864345b-def1-460b-b5aa-da81d4409fe2.png)
 
 Algoritmayı geliştirelim: Robot pil 20'nin altına düşene kadar temizlesin, sonra şarj istasyonuna dönsün. Bu algoritmanın akış şemasını çiz. Önce tabloyu doldur.
 

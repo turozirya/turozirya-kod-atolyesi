@@ -14,16 +14,16 @@ video: ""
 ornek_kod: ""
 test:
   - soru: "Hangisi yalıtkandır?"
-    secenekler: ["Ataş", "Alüminyum folyo", "Plastik cetvel", "Bakır tel"]
-    dogru: 2
+    secenekler: ["Bakır tel", "Plastik cetvel", "Ataş", "Alüminyum folyo"]
+    dogru: 1
     aciklama: "Plastik elektriği geçirmez; ataş, folyo ve bakır metaldir ve iletkendir."
   - soru: "Elektrik kablosunun dışındaki plastik kaplama ne işe yarar?"
-    secenekler: ["Elektriğin daha hızlı akmasını sağlar", "Elektriği dışarı sızdırmaz, bizi korur", "Kabloyu ısıtır", "Kabloyu iletken yapar"]
-    dogru: 1
+    secenekler: ["Elektriği dışarı sızdırmaz, bizi korur", "Kabloyu ısıtır", "Kabloyu iletken yapar", "Elektriğin daha hızlı akmasını sağlar"]
+    dogru: 0
     aciklama: "Plastik yalıtkandır; içindeki metalden geçen elektriğin bize ulaşmasını engeller."
   - soru: "Test devresinde iki kablo ucu arasına bir nesne koydun ve LED yandı. Bu ne demektir?"
-    secenekler: ["Nesne yalıtkandır", "Pil bitmiştir", "Devre açık kalmıştır", "Nesne iletkendir"]
-    dogru: 3
+    secenekler: ["Pil bitmiştir", "Devre açık kalmıştır", "Nesne iletkendir", "Nesne yalıtkandır"]
+    dogru: 2
     aciklama: "LED yandıysa elektrik nesnenin içinden geçmiştir; nesne iletkendir."
 ---
 
@@ -35,7 +35,7 @@ Bazı maddeler ise elektriği geçirmez. Bunlara **yalıtkan** denir. Plastik, t
 
 Bir maddenin iletken olup olmadığını bir **test devresiyle** anlayabilirsin. Pil ve LED'den oluşan devrede bir kabloyu ortadan ayır. Böylece iki kablo ucu boşta kalır. Bu iki ucu test edeceğin nesneye dokundur. LED yanarsa nesne iletkendir. Yanmazsa yalıtkandır.
 
-![iletken-test-devresi](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/2b6d1dba-b96b-4be1-913d-a198e72f4b29.png)
+![İletken ve Yalıtkan — kavram görseli](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/612e9441-db97-42a9-877d-553faead6ca0.png)
 
 **Tartışmalı örnekler:**
 
@@ -45,6 +45,8 @@ Bir maddenin iletken olup olmadığını bir **test devresiyle** anlayabilirsin.
 > 💡 Sık yapılan hata: Yalnızca metallerin iletken olduğu sanılır. Kurşun kalem ucu ve musluk suyu da elektriği iletir.
 
 ### Dene!
+
+![İletken ve Yalıtkan — Dene! çalışma kartı](https://jgucnevkknxczcsiqrjf.supabase.co/storage/v1/object/public/lesson-media/491fa86f-8dd4-4654-a39d-44d43b71a49a.png)
 
 Önce her nesne için tahminini yaz. Sonra test devresiyle dene. Devre kuramıyorsan yalnızca tahmin sütununu doldur; sonuçları derste birlikte kontrol edin.
 
